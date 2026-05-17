@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Imperial Campaign Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#465164",
+                      "surface-variant": "#353438",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#bcc7dd",
+                      "on-surface-variant": "#e1bebb",
+                      "background": "#131316",
+                      "on-secondary-fixed": "#261900",
+                      "surface-container-high": "#2a2a2d",
+                      "outline": "#a98986",
+                      "primary-container": "#9e1b1b",
+                      "surface-container": "#1f1f22",
+                      "on-tertiary-fixed": "#111c2c",
+                      "surface-bright": "#39393c",
+                      "inverse-surface": "#e4e1e6",
+                      "surface": "#131316",
+                      "primary-fixed-dim": "#ffb4ac",
+                      "on-error": "#690005",
+                      "surface-dim": "#131316",
+                      "error": "#ffb4ab",
+                      "secondary-fixed-dim": "#e9c176",
+                      "on-secondary": "#412d00",
+                      "on-primary": "#690006",
+                      "on-secondary-container": "#dab36a",
+                      "tertiary-fixed": "#d8e3fa",
+                      "on-background": "#e4e1e6",
+                      "surface-tint": "#ffb4ac",
+                      "surface-container-highest": "#353438",
+                      "inverse-primary": "#b22a27",
+                      "on-secondary-fixed-variant": "#5d4201",
+                      "surface-container-low": "#1b1b1e",
+                      "primary-fixed": "#ffdad6",
+                      "error-container": "#93000a",
+                      "on-surface": "#e4e1e6",
+                      "on-primary-fixed-variant": "#8f0e12",
+                      "surface-container-lowest": "#0e0e11",
+                      "secondary-container": "#604403",
+                      "on-tertiary-container": "#b9c4da",
+                      "on-primary-container": "#ffafa7",
+                      "tertiary": "#bcc7dd",
+                      "secondary-fixed": "#ffdea5",
+                      "on-tertiary-fixed-variant": "#3c475a",
+                      "on-primary-fixed": "#410002",
+                      "on-tertiary": "#263142",
+                      "primary": "#ffb4ac",
+                      "inverse-on-surface": "#303033",
+                      "secondary": "#e9c176",
+                      "outline-variant": "#59413e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-safe": "32px",
+                      "gutter": "16px",
+                      "data-density": "tight",
+                      "unit": "4px",
+                      "panel-gap": "8px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "jetbrainsMono"
+                      ],
+                      "headline-md": [
+                              "ebGaramond"
+                      ],
+                      "data-tabular": [
+                              "jetbrainsMono"
+                      ],
+                      "headline-sm": [
+                              "ebGaramond"
+                      ],
+                      "label-caps": [
+                              "jetbrainsMono"
+                      ],
+                      "display-lg": [
+                              "ebGaramond"
+                      ],
+                      "body-lg": [
+                              "jetbrainsMono"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-tabular": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+      </script>
+<style>
+        .map-grid {
+            background-image: 
+                linear-gradient(to right, rgba(169, 137, 134, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(169, 137, 134, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .glow-overlay {
+            background: radial-gradient(circle at center, rgba(158, 27, 27, 0.15) 0%, transparent 70%);
+        }
+        .scan-line {
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255, 255, 255, 0.03),
+                rgba(255, 255, 255, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-hidden relative">
+<!-- TopAppBar -->
+<header class="w-full top-0 border-b border-outline-variant bg-surface-container-high dark:bg-surface-container-high z-50">
+<div class="flex justify-between items-center px-gutter py-unit w-full max-w-none">
+<button class="text-on-surface-variant hover:bg-surface-bright transition-colors p-2 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-secondary tracking-widest uppercase">IMPERIUM STRATEGOS</h1>
+<button class="text-on-surface-variant hover:bg-surface-bright transition-colors p-2 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area - Campaign Map -->
+<main class="flex-grow relative map-grid overflow-hidden flex flex-col items-center justify-center pt-16 pb-24">
+<!-- Glow / Command Table Effect -->
+<div class="absolute inset-0 glow-overlay z-0 pointer-events-none"></div>
+<!-- Map Image Background Placeholder (Simulated Parchment) -->
+<div class="absolute inset-0 opacity-40 z-0 bg-surface-container" data-alt="An ancient, worn parchment map spread across a heavy war room table. The map features faded ink contours, topographical lines, and compass roses. The lighting is dramatic and moody, with deep shadows and warm, low-angle illumination suggesting candlelight. The overall aesthetic is grim, historic, and brutalist, dominated by dark gunmetal surfaces and aged paper textures, aligning with a grimdark imperial strategy setting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkSf7VhF1ImaFGWk62YEmBuVs_MUYKESi-LsMTAjs55lUVL6bKKgLlYOBAj26krD8Fyzxc0B2cr1LuMFwipTwlW8BwnLPCqzQQP5NUUuQEIDzlF81fV_XAL8DSIK0rtlAO2002qptJ_VA3-rkI9b14UzTLdWhbqC8j7Mn1PuH9R9zmnwUW3UQmbpE-CpIkNHNEeXKL1pIHeMI83w760jdbz0wpNoEb66RSI325c2tKOSmYSn3bSs3UfgFlyzuhdVwN2iRzSi_yCgE7'); background-size: cover; background-position: center; mix-blend-mode: overlay;"></div>
+<div class="absolute inset-0 scan-line z-0 pointer-events-none opacity-50"></div>
+<!-- Tactical Overlay UI -->
+<div class="relative z-10 w-full max-w-6xl px-gutter grid grid-cols-1 md:grid-cols-12 gap-gutter h-full pb-8 pt-4">
+<!-- Left Panel: Campaign Status -->
+<div class="md:col-span-3 flex flex-col gap-panel-gap">
+<!-- Status Card -->
+<div class="bg-surface-container-high border border-outline-variant rounded-DEFAULT overflow-hidden shadow-none">
+<div class="bg-secondary-container px-3 py-2 border-b border-outline-variant">
+<h2 class="font-headline-sm text-headline-sm text-on-secondary-container">Campaign Status</h2>
+</div>
+<div class="p-4 flex flex-col gap-4">
+<div>
+<div class="flex justify-between items-end mb-1">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">Progression</span>
+<span class="font-body-md text-body-md text-primary">3/10 Sectors</span>
+</div>
+<div class="w-full bg-surface-variant h-2 flex rounded-none">
+<div class="bg-primary h-full w-[30%]"></div>
+<div class="bg-primary opacity-30 h-full w-[10%] border-l border-background"></div>
+<div class="bg-primary opacity-30 h-full w-[10%] border-l border-background"></div>
+<div class="bg-primary opacity-30 h-full w-[10%] border-l border-background"></div>
+</div>
+</div>
+<div class="border-t border-dashed border-outline-variant pt-3">
+<ul class="flex flex-col gap-2">
+<li class="flex items-center gap-2">
+<span class="font-data-tabular text-data-tabular text-tertiary-fixed-dim">[001-A]</span>
+<div class="w-2 h-2 bg-error rounded-none animate-pulse shadow-[0_0_8px_rgba(255,180,171,0.6)]"></div>
+<span class="font-body-md text-body-md text-on-surface flex-grow">Aethelgard</span>
+<span class="font-label-caps text-label-caps text-error bg-error-container px-2 py-0.5 rounded-DEFAULT border border-error">UNDER SIEGE</span>
+</li>
+<li class="flex items-center gap-2 border-t border-dashed border-outline-variant pt-2">
+<span class="font-data-tabular text-data-tabular text-tertiary-fixed-dim">[002-B]</span>
+<div class="w-2 h-2 bg-secondary rounded-none shadow-[0_0_4px_rgba(233,193,118,0.4)]"></div>
+<span class="font-body-md text-body-md text-on-surface flex-grow">Valkyria</span>
+<span class="font-label-caps text-label-caps text-secondary bg-secondary-container px-2 py-0.5 rounded-DEFAULT border border-secondary">SECURED</span>
+</li>
+<li class="flex items-center gap-2 border-t border-dashed border-outline-variant pt-2">
+<span class="font-data-tabular text-data-tabular text-tertiary-fixed-dim">[003-C]</span>
+<div class="w-2 h-2 bg-primary rounded-none shadow-[0_0_4px_rgba(255,180,172,0.4)]"></div>
+<span class="font-body-md text-body-md text-on-surface flex-grow">Dread Pass</span>
+<span class="font-label-caps text-label-caps text-primary bg-primary-container px-2 py-0.5 rounded-DEFAULT border border-primary">REBELLION</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Center/Right: Map Interaction Area (Placeholder for actual interactive map nodes) -->
+<div class="md:col-span-9 relative flex-grow min-h-[400px]">
+<!-- Map Nodes / Strategic Points -->
+<!-- Node 1: Secured -->
+<div class="absolute top-[20%] left-[30%] flex flex-col items-center group cursor-pointer">
+<div class="relative">
+<div class="w-4 h-4 bg-secondary rotate-45 border border-on-secondary shadow-[0_0_12px_rgba(233,193,118,0.5)]"></div>
+<div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity rotate-45"></div>
+</div>
+<div class="mt-2 text-center bg-surface-container-high border border-outline-variant px-2 py-1 hidden group-hover:block transition-all z-20">
+<div class="font-label-caps text-label-caps text-secondary">Valkyria</div>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant">Garrison: 12,000</div>
+</div>
+</div>
+<!-- Node 2: Siege -->
+<div class="absolute top-[50%] left-[60%] flex flex-col items-center group cursor-pointer z-10">
+<div class="relative">
+<div class="w-6 h-6 bg-error rotate-45 border-2 border-on-error shadow-[0_0_20px_rgba(255,180,171,0.8)] animate-pulse"></div>
+<span class="material-symbols-outlined absolute inset-0 flex items-center justify-center text-on-error text-sm font-bold pointer-events-none">warning</span>
+</div>
+<div class="mt-2 text-center bg-surface-container-highest border border-error px-2 py-1 block z-20">
+<div class="font-headline-sm text-headline-sm text-error">Aethelgard</div>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant">Siege Day 44</div>
+</div>
+<!-- Attack Line -->
+<svg class="absolute top-1/2 left-1/2 w-64 h-32 pointer-events-none -z-10" style="transform: translate(-50%, -50%); overflow: visible;">
+<path class="opacity-50" d="M 0,-100 Q 100,-50 0,0" fill="transparent" stroke="#ffb4ac" stroke-dasharray="4 4" stroke-width="2"></path>
+<path class="animate-pulse" d="M 0,-100 Q 100,-50 0,0" fill="transparent" stroke="#ffb4ac" stroke-dasharray="1 10" stroke-width="4"></path>
+</svg>
+</div>
+<!-- Node 3: Target -->
+<div class="absolute bottom-[20%] right-[20%] flex flex-col items-center group cursor-pointer">
+<div class="relative">
+<div class="w-5 h-5 bg-background border border-primary rounded-full flex items-center justify-center shadow-[0_0_10px_rgba(255,180,172,0.3)] group-hover:bg-primary-container transition-colors">
+<div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+</div>
+</div>
+<div class="mt-2 text-center bg-surface-container border border-outline-variant px-2 py-1 hidden group-hover:block transition-all z-20">
+<div class="font-label-caps text-label-caps text-primary">Target: Osgiliath</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="fixed bottom-[80px] w-full flex justify-center z-40 px-gutter pointer-events-none">
+<button class="pointer-events-auto bg-primary text-on-primary font-label-caps text-label-caps px-8 py-3 border border-outline hover:bg-surface-tint transition-all relative overflow-hidden group shadow-[0_4px_20px_rgba(255,180,172,0.15)] flex items-center gap-2">
+<span class="absolute inset-0 scan-line opacity-50 group-hover:opacity-100 transition-opacity"></span>
+<span class="relative z-10 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">swords</span>
+                    SEFERİ BAŞLAT (EXPAND EMPIRE)
+                </span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin-safe py-2 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant hidden md:flex">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg px-4 py-1 border border-primary scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">strategy</span>
+<span class="font-label-caps text-label-caps text-primary mt-1">War Room</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-container opacity-70 p-2 hover:bg-surface-variant transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">swords</span>
+<span class="font-label-caps text-label-caps mt-1">Arsenal</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-container opacity-70 p-2 hover:bg-surface-variant transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-label-caps text-label-caps mt-1">Diplomacy</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-container opacity-70 p-2 hover:bg-surface-variant transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-caps text-label-caps mt-1">Records</span>
+</a>
+</nav>
+<!-- Mobile Nav (Visible on md:hidden) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin-safe py-2 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant md:hidden">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg px-4 py-1 border border-primary scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">strategy</span>
+<span class="font-label-caps text-label-caps text-primary mt-1 hidden sm:block">War Room</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-container opacity-70 p-2 hover:bg-surface-variant transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">swords</span>
+<span class="font-label-caps text-label-caps mt-1 hidden sm:block">Arsenal</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-container opacity-70 p-2 hover:bg-surface-variant transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-label-caps text-label-caps mt-1 hidden sm:block">Diplomacy</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-container opacity-70 p-2 hover:bg-surface-variant transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-caps text-label-caps mt-1 hidden sm:block">Records</span>
+</a>
+</nav>
+</body></html>

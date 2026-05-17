@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Medeniyet Arşivi - Gök Umay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#dab36a",
+                        "secondary": "#e9c176",
+                        "on-surface": "#e4e1e6",
+                        "surface-container-high": "#2a2a2d",
+                        "outline-variant": "#59413e",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "on-primary-fixed": "#410002",
+                        "secondary-container": "#604403",
+                        "surface-bright": "#39393c",
+                        "on-secondary-fixed": "#261900",
+                        "inverse-surface": "#e4e1e6",
+                        "inverse-on-surface": "#303033",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "on-tertiary": "#263142",
+                        "on-surface-variant": "#e1bebb",
+                        "surface": "#131316",
+                        "on-tertiary-fixed": "#111c2c",
+                        "on-primary-container": "#ffafa7",
+                        "on-background": "#e4e1e6",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "surface-container-low": "#1b1b1e",
+                        "primary-fixed": "#ffdad6",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "tertiary": "#bcc7dd",
+                        "surface-dim": "#131316",
+                        "on-primary-fixed-variant": "#8f0e12",
+                        "surface-tint": "#ffb4ac",
+                        "on-tertiary-container": "#b9c4da",
+                        "secondary-fixed": "#ffdea5",
+                        "on-primary": "#690006",
+                        "inverse-primary": "#b22a27",
+                        "tertiary-fixed": "#d8e3fa",
+                        "surface-container-highest": "#353438",
+                        "surface-container": "#1f1f22",
+                        "on-secondary": "#412d00",
+                        "surface-container-lowest": "#0e0e11",
+                        "secondary-fixed-dim": "#e9c176",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "outline": "#a98986",
+                        "surface-variant": "#353438",
+                        "primary-container": "#9e1b1b",
+                        "primary": "#ffb4ac",
+                        "tertiary-container": "#465164",
+                        "background": "#131316",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-safe": "32px",
+                        "unit": "4px",
+                        "panel-gap": "8px",
+                        "data-density": "tight"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "display-lg": ["EB Garamond"],
+                        "headline-md": ["EB Garamond"],
+                        "data-tabular": ["JetBrains Mono"],
+                        "body-md": ["JetBrains Mono"],
+                        "body-lg": ["JetBrains Mono"],
+                        "headline-sm": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "data-tabular": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar to match the aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131316;
+            border-left: 1px solid #59413e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #604403;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e9c176;
+        }
+        .parchment-bg {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" opacity="0.05"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#noise)" fill="%23e9c176"/></svg>');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface h-screen flex flex-col md:flex-row overflow-hidden font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Desktop Navigation Drawer (Hidden on Mobile) -->
+<nav class="hidden md:flex flex-col gap-unit p-margin-safe bg-surface-container-low dark:bg-surface-container-low h-full w-72 border-r border-outline-variant z-40 shrink-0">
+<div class="mb-8">
+<h1 class="font-headline-sm text-headline-sm text-secondary dark:text-secondary uppercase tracking-widest border-b border-outline-variant pb-4">IMPERIAL VAULT</h1>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<!-- Active State -->
+<a class="flex items-center gap-3 p-3 text-primary font-bold border-l-4 border-primary bg-primary-container/20 hover:bg-secondary-container/10 hover:text-secondary transition-colors group" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-caps text-label-caps">MEDENİYET ARŞİVİ</span>
+<span class="ml-auto material-symbols-outlined text-primary text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant border-l-4 border-transparent hover:bg-secondary-container/10 hover:text-secondary transition-colors group" href="#">
+<span class="material-symbols-outlined">public</span>
+<span class="font-label-caps text-label-caps">CIVILIZATION ATLAS</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant border-l-4 border-transparent hover:bg-secondary-container/10 hover:text-secondary transition-colors group" href="#">
+<span class="material-symbols-outlined">rebase_edit</span>
+<span class="font-label-caps text-label-caps">LANGUAGE FRAGMENTS</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant border-l-4 border-transparent hover:bg-secondary-container/10 hover:text-secondary transition-colors group" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-caps text-label-caps">RUNIC ALPHABETS</span>
+</a>
+<a class="flex items-center gap-3 p-3 text-on-surface-variant border-l-4 border-transparent hover:bg-secondary-container/10 hover:text-secondary transition-colors group" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-caps text-label-caps">STRATEGIC PHILOSOPHY</span>
+</a>
+</div>
+<div class="mt-auto border-t border-outline-variant pt-4">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SİSTEM DURUMU</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">signal_cellular_alt</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-data-tabular text-data-tabular text-primary">KORUMA: AKTİF</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col h-full overflow-hidden relative">
+<!-- TopAppBar (Web & Mobile) -->
+<header class="flex justify-between items-center w-full px-gutter h-20 bg-surface dark:bg-surface border-b border-outline-variant bg-surface-container-high shrink-0 z-30 relative">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-secondary dark:text-secondary hover:bg-secondary-container dark:hover:bg-secondary-container transition-colors p-2 rounded-sm ring-1 ring-inset ring-transparent focus:ring-secondary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-display-lg text-headline-sm uppercase tracking-widest text-secondary dark:text-secondary font-extrabold leading-none">TIMURLENK CHESS</h1>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-[0.2em] mt-1">İMPARATORLUK ARŞİVİ</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex flex-col items-end mr-4 border-r border-outline-variant pr-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">KÜLTÜREL KORUMA SEVİYESİ</span>
+<div class="flex items-center gap-2 mt-1">
+<div class="flex gap-1">
+<div class="w-4 h-2 bg-primary"></div>
+<div class="w-4 h-2 bg-primary"></div>
+<div class="w-4 h-2 bg-primary"></div>
+<div class="w-4 h-2 bg-primary"></div>
+<div class="w-4 h-2 bg-surface-variant"></div>
+</div>
+<span class="font-data-tabular text-data-tabular text-primary">[ %80 ]</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<div class="font-data-tabular text-data-tabular text-on-surface">Imperial Strategist Profile</div>
+<div class="font-label-caps text-label-caps text-secondary">Erişim: Sınırsız</div>
+</div>
+<div class="w-10 h-10 rounded-full border border-secondary bg-surface-container-high flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-secondary">shield_person</span>
+</div>
+</div>
+</div>
+<!-- Scanning Line Overlay -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+<div class="w-full h-1 bg-secondary absolute top-0 animate-[scan_4s_ease-in-out_infinite]"></div>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-grow overflow-y-auto parchment-bg relative p-4 md:p-8 pb-24 md:pb-8">
+<!-- Manuscript Content Container -->
+<div class="max-w-6xl mx-auto space-y-8">
+<!-- Section 1: Medeniyet Atlası -->
+<section class="border border-outline-variant bg-surface-container/90 backdrop-blur-sm relative group">
+<!-- Corner Accents -->
+<div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-secondary"></div>
+<div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-secondary"></div>
+<div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-secondary"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-secondary"></div>
+<header class="bg-surface-container-highest border-b border-outline-variant p-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">public</span>
+<h2 class="font-headline-sm text-headline-sm text-secondary uppercase tracking-widest">Medeniyet Atlası</h2>
+<span class="ml-auto font-data-tabular text-data-tabular text-on-surface-variant border border-outline-variant px-2 py-1 bg-surface">[BÖLÜM 01]</span>
+</header>
+<div class="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 space-y-4">
+<p class="font-headline-md text-headline-md text-on-surface leading-snug">
+                                "Gök çadırımız, yeryüzü döşeğimizdir." Bu kadim felsefe, tahtanın sınırlarını aşan bir stratejik derinliği işaret eder.
+                            </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant text-justify">
+                                Gök Umay evreninde medeniyet, salt fiziksel sınırlarla değil, manevi bir etki alanıyla tanımlanır. Orta Asya steplerinden yükselen bu anlayış, Timurlenk Satrancı'nın devasa tahtasına doğrudan yansır. 112 karenin her biri, göçebe yaşam tarzının değişken ve dinamik doğasını simgelerken, kalelerin (Hisar) sabitliği imparatorluğun yerleşik gücünü temsil eder.
+                            </p>
+<div class="border-l-2 border-primary pl-4 py-2 mt-4 bg-primary-container/10">
+<span class="font-data-tabular text-data-tabular text-primary uppercase block mb-1">STRATEJİK NOT [001-A]</span>
+<span class="font-body-md text-body-md text-on-surface">Merkez kareler 'Bozkır' (Steppe) olarak kabul edilir. Buralarda hakimiyet kurmak, ticaret yollarını (İpek Yolu) kontrol etmekle eşdeğerdir.</span>
+</div>
+</div>
+<div class="relative h-64 lg:h-auto border border-outline-variant bg-surface p-2 flex flex-col">
+<span class="font-label-caps text-label-caps text-secondary mb-2 block border-b border-outline-variant pb-1">KADİM HARİTA PARÇASI</span>
+<div class="flex-grow relative border border-secondary-container overflow-hidden">
+<img alt="A weathered, ancient map drawn on textured parchment, showing stylized representations of Central Asian steppes and mountain ranges. The map features faded ink, cryptic cartographic symbols, and a compass rose in an archaic design. The lighting is dim and warm, evoking the atmosphere of an underground imperial archive. The color palette is dominated by deep browns, golds, and faded blacks, consistent with a high-stakes, brutalist historical aesthetic." class="object-cover w-full h-full opacity-60 mix-blend-luminosity hover:opacity-100 transition-opacity duration-500" data-alt="A weathered, ancient map drawn on textured parchment, showing stylized representations of Central Asian steppes and mountain ranges. The map features faded ink, cryptic cartographic symbols, and a compass rose in an archaic design. The lighting is dim and warm, evoking the atmosphere of an underground imperial archive. The color palette is dominated by deep browns, golds, and faded blacks, consistent with a high-stakes, brutalist historical aesthetic." data-location="Central Asia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl9w8Z78-JqK0FjfrPafkaPMn9YH5G6J5feR_0sPSS1r8TdnoJW27K-aRCGLI-vvFBoUHH2juZTLVBCBLidYpA9ilBQ0ecGm3sWLJl_XX1ip9k57lhBL44aiG6SUGP7t-XUFHjytphRlsL2mVLCMK8rq8xQKWnaGfyKtEOGXvnfYXH_YpHu1DaUcCLSB_ckl_l7O49lKoJuw-XfI-B_TO9_fnc8QcW_tY9S9EOF69ru7IAL9U10LnkEzZ6WnA7VxiQQ606gAo9BLxH"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent pointer-events-none"></div>
+<div class="absolute bottom-2 left-2 flex items-center gap-2 bg-surface/80 p-1 border border-outline-variant backdrop-blur-md">
+<span class="material-symbols-outlined text-secondary text-[16px]">location_searching</span>
+<span class="font-data-tabular text-data-tabular text-secondary">KORD: 41.0°N, 71.5°E</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Dil Parçaları & Rünler -->
+<section class="border border-outline-variant bg-surface-container/90 backdrop-blur-sm relative">
+<header class="bg-surface-container-highest border-b border-outline-variant p-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+<h2 class="font-headline-sm text-headline-sm text-secondary uppercase tracking-widest">Dil Parçaları &amp; Rünler</h2>
+<span class="ml-auto font-data-tabular text-data-tabular text-on-surface-variant border border-outline-variant px-2 py-1 bg-surface">[BÖLÜM 02]</span>
+</header>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 text-justify">
+                                Taşların üzerindeki oymalar sadece süsleme değil, birer güç mührüdür. Eski Türkçe rünler, taşın savaş alanındaki görevini ve ruhunu tanımlar.
+                            </p>
+<ul class="space-y-4 font-body-md text-on-surface">
+<li class="flex items-start gap-4 border-b border-outline-variant border-dashed pb-4">
+<span class="font-data-tabular text-data-tabular text-secondary mt-1 w-16 shrink-0">[RÜN-01]</span>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-headline-sm text-headline-sm text-primary">Tengri</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant border border-outline-variant px-1">(Gök/Tanrı)</span>
+</div>
+<p class="text-on-surface-variant">Şah (Shah) taşının tabanına işlenir. Mutlak otoriteyi ve ilahi kut'u temsil eder.</p>
+</div>
+</li>
+<li class="flex items-start gap-4 border-b border-outline-variant border-dashed pb-4">
+<span class="font-data-tabular text-data-tabular text-secondary mt-1 w-16 shrink-0">[RÜN-02]</span>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-headline-sm text-headline-sm text-primary">Kut</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant border border-outline-variant px-1">(Kutsal Enerji)</span>
+</div>
+<p class="text-on-surface-variant">Vezir (Vizier) taşına işlenir. Yönetim gücünü ve bilgeliği aktarır.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="font-data-tabular text-data-tabular text-secondary mt-1 w-16 shrink-0">[RÜN-03]</span>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-headline-sm text-headline-sm text-primary">Yalman</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant border border-outline-variant px-1">(Keskin Uç)</span>
+</div>
+<p class="text-on-surface-variant">Piyade (Piyada) silahlarına kazınır. Delici gücü ve hücum iradesini simgeler.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Runic Display Area -->
+<div class="bg-surface border border-outline-variant p-4 flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Brutalist structural elements -->
+<div class="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-secondary-container"></div>
+<div class="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-secondary-container"></div>
+<div class="font-display-lg text-[120px] text-secondary opacity-80 leading-none mb-4 select-none drop-shadow-[0_0_15px_rgba(233,193,118,0.2)]">
+                                𐱅𐰭𐰼𐰃
+                            </div>
+<div class="flex flex-col items-center gap-1 z-10 bg-surface/90 px-4 py-2 border border-outline-variant">
+<span class="font-label-caps text-label-caps text-primary tracking-widest">AKTİF RÜN REZONANSI</span>
+<div class="w-full h-1 bg-surface-container-highest relative mt-2">
+<div class="absolute top-0 left-0 h-full bg-secondary w-3/4 shadow-[0_0_8px_#e9c176]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Taş-Kültür Eşleşmesi (Bento Grid) -->
+<section class="border border-outline-variant bg-surface-container/90 backdrop-blur-sm relative">
+<header class="bg-surface-container-highest border-b border-outline-variant p-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">groups</span>
+<h2 class="font-headline-sm text-headline-sm text-secondary uppercase tracking-widest">Taş-Kültür Eşleşmesi</h2>
+<span class="ml-auto font-data-tabular text-data-tabular text-on-surface-variant border border-outline-variant px-2 py-1 bg-surface">[BÖLÜM 03]</span>
+</header>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Card 1: Alp -->
+<div class="border border-outline-variant bg-surface p-4 flex flex-col gap-4 hover:border-secondary hover:shadow-[0_0_15px_rgba(233,193,118,0.1)] transition-all group">
+<div class="flex justify-between items-start border-b border-outline-variant pb-2">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Alp (Kahraman)</h3>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">EŞDEĞER: ŞOVALYE / AT</span>
+</div>
+<span class="material-symbols-outlined text-secondary opacity-50 text-[32px]">sports_martial_arts</span>
+</div>
+<p class="font-body-md text-on-surface-variant flex-grow">
+                                Bozkır kültüründeki efsanevi savaşçı figürünü temsil eder. Zırhları ağır değil, manevra kabiliyeti yüksektir. Ani baskınları (L-şeklinde hareket) göçebe vur-kaç taktiklerinin bir yansımasıdır.
+                            </p>
+<div class="flex items-center justify-between mt-2 pt-2 border-t border-outline-variant border-dashed">
+<span class="font-label-caps text-label-caps text-primary">TARİHSEL KÖKEN</span>
+<span class="font-data-tabular text-data-tabular text-on-surface bg-surface-container px-2 py-1 border border-outline-variant">GÖKTÜRK DÖNEMİ</span>
+</div>
+</div>
+<!-- Card 2: Hisar -->
+<div class="border border-outline-variant bg-surface p-4 flex flex-col gap-4 hover:border-secondary hover:shadow-[0_0_15px_rgba(233,193,118,0.1)] transition-all group">
+<div class="flex justify-between items-start border-b border-outline-variant pb-2">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Hisar (Kale)</h3>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">EŞDEĞER: KALE (ROOK)</span>
+</div>
+<span class="material-symbols-outlined text-secondary opacity-50 text-[32px]">castle</span>
+</div>
+<p class="font-body-md text-on-surface-variant flex-grow">
+                                İpek Yolu üzerindeki kervansarayları ve sınır garnizonlarını simgeler. Düz hatlardaki sarsılmaz ilerleyişi, imparatorluğun lojistik hatlarının ve sarsılmaz savunmasının bir göstergesidir.
+                            </p>
+<div class="flex items-center justify-between mt-2 pt-2 border-t border-outline-variant border-dashed">
+<span class="font-label-caps text-label-caps text-primary">TARİHSEL KÖKEN</span>
+<span class="font-data-tabular text-data-tabular text-on-surface bg-surface-container px-2 py-1 border border-outline-variant">TİMURLU MİMARİSİ</span>
+</div>
+</div>
+<!-- Card 3: Ruhban -->
+<div class="border border-outline-variant bg-surface p-4 flex flex-col gap-4 hover:border-secondary hover:shadow-[0_0_15px_rgba(233,193,118,0.1)] transition-all group lg:col-span-1 md:col-span-2">
+<div class="flex justify-between items-start border-b border-outline-variant pb-2">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Şaman / Kam</h3>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">EŞDEĞER: FİL (BISHOP)</span>
+</div>
+<span class="material-symbols-outlined text-secondary opacity-50 text-[32px]">self_improvement</span>
+</div>
+<p class="font-body-md text-on-surface-variant flex-grow">
+                                Çapraz hareketleri, görünen fiziksel dünyanın ötesindeki görünmez yolları (ruhani alemi) kat etmelerini simgeler. Orduya manevi rehberlik ederler ve savaşın psikolojik yönünü yönetirler.
+                            </p>
+<div class="flex items-center justify-between mt-2 pt-2 border-t border-outline-variant border-dashed">
+<span class="font-label-caps text-label-caps text-primary">TARİHSEL KÖKEN</span>
+<span class="font-data-tabular text-data-tabular text-on-surface bg-surface-container px-2 py-1 border border-outline-variant">ŞAMANİZM İNANCI</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Stratejik Felsefe (Asymmetric) -->
+<section class="border border-outline-variant bg-surface-container/90 backdrop-blur-sm relative">
+<header class="bg-surface-container-highest border-b border-outline-variant p-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h2 class="font-headline-sm text-headline-sm text-secondary uppercase tracking-widest">Stratejik Felsefe</h2>
+<span class="ml-auto font-data-tabular text-data-tabular text-on-surface-variant border border-outline-variant px-2 py-1 bg-surface">[BÖLÜM 04]</span>
+</header>
+<div class="flex flex-col md:flex-row border-b border-outline-variant">
+<div class="md:w-1/3 border-b md:border-b-0 md:border-r border-outline-variant p-6 bg-surface flex flex-col justify-center items-center text-center gap-4">
+<span class="material-symbols-outlined text-primary text-[64px] opacity-80">balance</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Kurt Kapanı<br/><span class="text-secondary text-headline-sm">"Turan Taktiği"</span></h3>
+</div>
+<div class="md:w-2/3 p-6 space-y-4">
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                                Timurlenk satrancındaki en karmaşık manevralardan biri, tahtanın genişliğini kullanarak rakibi merkeze çekme ve kanatlardan sarma prensibidir. Bu, klasik satrançtan ziyade gerçek bir meydan muharebesi simülasyonudur.
+                            </p>
+<div class="grid grid-cols-2 gap-4 mt-4">
+<div class="border border-outline-variant p-3 bg-surface-container-low">
+<span class="font-label-caps text-label-caps text-secondary block mb-1 border-b border-outline-variant pb-1">SAHTE RİCAT (GERİ ÇEKİLME)</span>
+<p class="font-body-md text-on-surface text-sm">Merkezdeki piyadelerin bilinçli olarak feda edilmesi veya geri çekilmesiyle rakibin ileri atılması sağlanır.</p>
+</div>
+<div class="border border-outline-variant p-3 bg-surface-container-low">
+<span class="font-label-caps text-label-caps text-secondary block mb-1 border-b border-outline-variant pb-1">KANAT HÜCUMU</span>
+<p class="font-body-md text-on-surface text-sm">Alp ve Fil taşlarının tahtanın dış hatlarından hızla merkeze doğru L ve çapraz manevralarla kapanması.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-stretch h-16 bg-surface-container-lowest dark:bg-surface-container-lowest z-50 bg-surface-container-highest border-t border-secondary flat no shadows">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 opacity-70 hover:bg-surface-container-high dark:hover:bg-surface-container-high flex-1 border-r border-outline-variant" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-caps text-label-caps mt-1">TACTICAL MAP</span>
+</a>
+<!-- Active State -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container p-2 border-x border-outline-variant border-t-2 border-primary transition-all flex-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="font-label-caps text-label-caps mt-1">ARCHIVES</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 opacity-70 hover:bg-surface-container-high dark:hover:bg-surface-container-high flex-1" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-label-caps text-label-caps mt-1">COMMAND</span>
+</a>
+</nav>
+</body></html>

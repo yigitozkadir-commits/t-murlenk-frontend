@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ancient Manuscript Tooltip</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#b9c4da",
+                        "on-error": "#690005",
+                        "surface-tint": "#ffb4ac",
+                        "primary": "#ffb4ac",
+                        "surface-container-low": "#1b1b1e",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "tertiary": "#bcc7dd",
+                        "on-primary": "#690006",
+                        "surface-variant": "#353438",
+                        "on-surface-variant": "#e1bebb",
+                        "primary-fixed": "#ffdad6",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container-lowest": "#0e0e11",
+                        "secondary": "#e9c176",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#e9c176",
+                        "background": "#131316",
+                        "surface-container": "#1f1f22",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "on-surface": "#e4e1e6",
+                        "inverse-surface": "#e4e1e6",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#dab36a",
+                        "outline-variant": "#59413e",
+                        "on-secondary": "#412d00",
+                        "primary-container": "#9e1b1b",
+                        "inverse-primary": "#b22a27",
+                        "secondary-container": "#604403",
+                        "surface-container-high": "#2a2a2d",
+                        "surface-dim": "#131316",
+                        "surface-container-highest": "#353438",
+                        "on-primary-fixed": "#410002",
+                        "on-tertiary": "#263142",
+                        "tertiary-fixed": "#d8e3fa",
+                        "surface-bright": "#39393c",
+                        "inverse-on-surface": "#303033",
+                        "on-primary-container": "#ffafa7",
+                        "on-primary-fixed-variant": "#8f0e12",
+                        "on-tertiary-fixed": "#111c2c",
+                        "on-background": "#e4e1e6",
+                        "surface": "#131316",
+                        "secondary-fixed": "#ffdea5",
+                        "outline": "#a98986",
+                        "on-secondary-fixed": "#261900",
+                        "tertiary-container": "#465164"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-safe": "32px",
+                        "data-density": "tight",
+                        "panel-gap": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["EB Garamond", "serif"],
+                        "data-tabular": ["JetBrains Mono", "monospace"],
+                        "headline-sm": ["EB Garamond", "serif"],
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "body-lg": ["JetBrains Mono", "monospace"],
+                        "display-lg": ["EB Garamond", "serif"],
+                        "body-md": ["JetBrains Mono", "monospace"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "data-tabular": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .texture-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex items-center justify-center p-8">
+<!-- Tooltip Container -->
+<div class="relative w-80 bg-surface-container-high border border-secondary/40 shadow-2xl p-6 group">
+<!-- Texture Overlay -->
+<div class="absolute inset-0 texture-overlay mix-blend-overlay z-0"></div>
+<!-- Corner Ornaments -->
+<div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-secondary/60"></div>
+<div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-secondary/60"></div>
+<div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-secondary/60"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-secondary/60"></div>
+<!-- Content Wrapper -->
+<div class="relative z-10 flex flex-col gap-4">
+<!-- Header Section -->
+<div class="flex items-start gap-4 border-b border-secondary/20 pb-4">
+<!-- Miniature Preview -->
+<div class="w-16 h-16 shrink-0 border border-secondary/30 bg-surface-dim overflow-hidden relative">
+<img alt="Tactical preview of the Fil (Elephant) piece" class="w-full h-full object-cover object-center filter contrast-125 grayscale-[50%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbkknBV1fHuuFIXZpMAKIuMt-3N8FJFIygnDZfT_Tb-pWgqM9v6mVrb7yXJiJvZhaXEGkNuQY3e-lt3lAvAXQDNWmJns1ip7oqB51cy3O05f6QSfQtYPGhSNEA2ZqPBA1xpfnl80pQm0qT0o5WC_wlM-eeFxfwX2M97dzZ-CN7Sf0Go_15CAZ0elwsN-5LMfvLoUgJaSHbaQd-eSUp-DM51kwyhV90aHZVVPRz-0H3MBghlEwizhhMTvjPHtXJjK3WPPva_-bbYG78"/>
+<div class="absolute inset-0 bg-secondary/10 mix-blend-overlay"></div>
+</div>
+<!-- Title & Role -->
+<div class="flex-1 flex flex-col justify-center">
+<h2 class="font-headline-sm text-headline-sm text-secondary tracking-wide uppercase">FİL</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase mt-1">AĞIR KUŞATMA BİRİMİ</p>
+</div>
+<!-- Mythology Icon -->
+<div class="shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-secondary/20 text-secondary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0;">psychology</span>
+</div>
+</div>
+<!-- Main Info Section -->
+<div class="flex gap-4 items-center">
+<!-- Movement Grid -->
+<div class="w-20 h-20 bg-surface-container-lowest border border-secondary/30 grid grid-cols-5 grid-rows-5 gap-[1px] p-1 shrink-0">
+<!-- Row 1 -->
+<div class="bg-surface-variant/20"></div>
+<div class="bg-surface-variant/20"></div>
+<div class="bg-secondary/40 relative"><div class="absolute inset-1 border border-secondary/60"></div></div>
+<div class="bg-surface-variant/20"></div>
+<div class="bg-surface-variant/20"></div>
+<!-- Row 2 -->
+<div class="bg-surface-variant/20"></div>
+<div class="bg-surface-variant/20"></div>
+<div class="bg-surface-variant/20"></div>
+<div class="bg-surface-variant/20"></div>
+<div class="bg-surface-variant/20"></div>
+<!-- Row 3 -->
+<div class="bg-secondary/40 relative"><div class="absolute inset-1 border border-secondary/60"></div></div>
+<div class="bg-surface-variant/20"></div>
+<div class="bg-secondary/80 flex items-center justify-center"><div class="w-1.5 h-1.5 bg-background rounded-full"></div></div>
+<div class="bg-surface-variant/20"></div>
+<div class="bg-secondary/40 relative"><div class="absolute inset-1 border border-secondary/60"></div></div>
+<!-- Row 4 -->
+<div class="bg-surface-variant/20"></div>
+<div class="bg-surface-variant/20"></div>
+<div class="bg-surface-variant/20"></div>
+<div class="bg-surface-variant/20"></div>
+<div class="bg-surface-variant/20"></div>
+<!-- Row 5 -->
+<div class="bg-surface-variant/20"></div>
+<div class="bg-surface-variant/20"></div>
+<div class="bg-secondary/40 relative"><div class="absolute inset-1 border border-secondary/60"></div></div>
+<div class="bg-surface-variant/20"></div>
+<div class="bg-surface-variant/20"></div>
+</div>
+<!-- Danger Indicator -->
+<div class="flex-1 flex flex-col justify-center">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant mb-2">TEHLİKE SEVİYESİ</span>
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rotate-45 bg-primary border border-primary/50 shadow-[0_0_8px_rgba(255,180,172,0.6)]"></div>
+<div class="w-3 h-3 rotate-45 bg-primary border border-primary/50 shadow-[0_0_8px_rgba(255,180,172,0.6)]"></div>
+<div class="w-3 h-3 rotate-45 bg-primary border border-primary/50 shadow-[0_0_8px_rgba(255,180,172,0.6)]"></div>
+<div class="w-3 h-3 rotate-45 bg-primary border border-primary/50 shadow-[0_0_8px_rgba(255,180,172,0.6)]"></div>
+<div class="w-3 h-3 rotate-45 bg-surface-variant border border-secondary/20"></div>
+</div>
+</div>
+</div>
+<!-- Footer Note -->
+<div class="mt-2 pt-3 border-t border-secondary/10 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary/60 text-sm" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+<p class="font-data-tabular text-[10px] text-on-surface-variant/80 italic">Bozkırın hafızası, imparatorluğun merkezi.</p>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Live Spectator Panel - Imperial Chess Championship</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-primary-container": "#ffafa7",
+                        "tertiary-fixed": "#d8e3fa",
+                        "surface-container-high": "#2a2a2d",
+                        "on-tertiary-container": "#b9c4da",
+                        "on-surface-variant": "#e1bebb",
+                        "surface-variant": "#353438",
+                        "surface": "#131316",
+                        "surface-bright": "#39393c",
+                        "surface-container-lowest": "#0e0e11",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "primary-container": "#9e1b1b",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "on-tertiary-fixed": "#111c2c",
+                        "primary": "#ffb4ac",
+                        "background": "#131316",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "on-secondary": "#412d00",
+                        "on-primary-fixed": "#410002",
+                        "surface-container-highest": "#353438",
+                        "error-container": "#93000a",
+                        "secondary-container": "#604403",
+                        "secondary": "#e9c176",
+                        "secondary-fixed-dim": "#e9c176",
+                        "on-secondary-fixed": "#261900",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "inverse-primary": "#b22a27",
+                        "tertiary-container": "#465164",
+                        "on-secondary-container": "#dab36a",
+                        "secondary-fixed": "#ffdea5",
+                        "surface-container-low": "#1b1b1e",
+                        "surface-dim": "#131316",
+                        "tertiary": "#bcc7dd",
+                        "inverse-on-surface": "#303033",
+                        "surface-tint": "#ffb4ac",
+                        "outline-variant": "#59413e",
+                        "on-tertiary": "#263142",
+                        "inverse-surface": "#e4e1e6",
+                        "primary-fixed": "#ffdad6",
+                        "on-error-container": "#ffdad6",
+                        "on-primary": "#690006",
+                        "surface-container": "#1f1f22",
+                        "outline": "#a98986",
+                        "on-surface": "#e4e1e6",
+                        "on-background": "#e4e1e6",
+                        "on-primary-fixed-variant": "#8f0e12"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "panel-gap": "8px",
+                        "margin-safe": "32px",
+                        "data-density": "tight",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "data-tabular": ["'JetBrains Mono'", "monospace"],
+                        "label-caps": ["'JetBrains Mono'", "monospace"],
+                        "display-lg": ["'EB Garamond'", "serif"],
+                        "headline-sm": ["'EB Garamond'", "serif"],
+                        "body-md": ["'JetBrains Mono'", "monospace"],
+                        "body-lg": ["'JetBrains Mono'", "monospace"],
+                        "headline-md": ["'EB Garamond'", "serif"]
+                    },
+                    "fontSize": {
+                        "data-tabular": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0e0e11; /* surface-container-lowest */
+            color: #e4e1e6; /* on-surface */
+            background-image: radial-gradient(circle at 50% 0%, #1f1f22 0%, #0e0e11 100%);
+        }
+        .brutal-border {
+            border: 1px solid #59413e; /* outline-variant */
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+        }
+        .gold-glow {
+            box-shadow: 0 0 8px rgba(233, 193, 118, 0.4);
+            border-color: #e9c176;
+        }
+        .crimson-glow {
+            box-shadow: 0 0 8px rgba(158, 27, 27, 0.5);
+            border-color: #9e1b1b;
+        }
+        .scan-line {
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased pb-24 min-h-screen flex flex-col relative md:hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary font-headline-sm text-headline-sm w-full top-0 border-b border-outline-variant bg-surface-container-low transition-colors duration-200 flex justify-between items-center px-gutter h-16 sticky z-40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<h1 class="font-display-lg text-headline-sm uppercase tracking-tighter text-primary truncate max-w-[200px]">IMPERIAL CHESS CHAMPIONSHIP</h1>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="font-data-tabular text-data-tabular">SPECTATORS: 4,208</span>
+</div>
+</header>
+<main class="flex-grow flex flex-col p-gutter gap-gutter max-w-full overflow-hidden">
+<!-- Match Status / Tension Indicator -->
+<div class="w-full bg-surface-container border border-outline-variant rounded p-unit relative overflow-hidden brutal-border">
+<div class="absolute inset-0 scan-line opacity-20 pointer-events-none"></div>
+<div class="flex justify-between items-center px-2 py-1 relative z-10">
+<span class="font-label-caps text-label-caps text-secondary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse shadow-[0_0_8px_#ffb4ab]"></span>
+                    LIVE ENGAGEMENT
+                </span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">MOVE 42 • PHASE II</span>
+</div>
+<div class="mt-2 text-center">
+<p class="font-headline-sm text-headline-sm text-on-surface">THE FRONT IS TENSE</p>
+<p class="font-data-tabular text-data-tabular text-secondary opacity-80">WIN PROBABILITY SHIFT: +2.4% IMPERIAL</p>
+</div>
+<!-- Tactical Evaluation Bar -->
+<div class="mt-4 h-2 w-full bg-surface-variant rounded-full overflow-hidden flex">
+<div class="h-full bg-primary-container" style="width: 52%;"></div>
+<div class="h-full bg-tertiary-container" style="width: 48%;"></div>
+</div>
+<div class="flex justify-between mt-1 px-1">
+<span class="font-data-tabular text-[10px] text-primary">52%</span>
+<span class="font-data-tabular text-[10px] text-tertiary">48%</span>
+</div>
+</div>
+<!-- Player Comparison -->
+<div class="grid grid-cols-2 gap-panel-gap">
+<!-- Player 1 (Red/Imperial) -->
+<div class="bg-surface-container-high border border-primary-container rounded p-2 flex flex-col items-center crimson-glow relative overflow-hidden">
+<div class="absolute top-0 left-0 px-1 py-0.5 bg-primary-container text-on-primary-container font-label-caps text-[8px]">COMMANDER</div>
+<div class="w-16 h-16 rounded-full border-2 border-primary-container mt-4 overflow-hidden bg-surface-lowest">
+<img alt="Grand Vizier Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1U5erurVPIRX52v3lf6YIBDq8m1Y54sMrHdlfadAs-8u4qoAbWM64w0YtOC2o7A8ps2hYDtKjiwNcridX8xkSYN6G4wfvUTCJDJLwy9IV6-kvIA5FHBriXwQj2C6FeREFivYnGcmK1QkJqduSpF9yIsyoY2yomDIR2Aoepdw_mmLkMzqRIvHySJb7khmxu8rXuNJeOvoqEONL_mL6YXhtjwO_7mistDlFMJrB3PhsiZdqhS_lrksJhw46CHqWgya_ts0mWTjYnzAy"/>
+</div>
+<h2 class="font-headline-sm text-lg mt-2 text-primary text-center leading-tight">LORD<br/>VANE</h2>
+<div class="w-full mt-3 space-y-1">
+<div class="flex justify-between font-data-tabular text-[10px] text-on-surface-variant">
+<span>MORALE</span>
+<span>88%</span>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 88%;"></div>
+</div>
+</div>
+</div>
+<!-- Player 2 (Gold/Vizier) -->
+<div class="bg-surface-container-high border border-outline-variant rounded p-2 flex flex-col items-center brutal-border relative overflow-hidden">
+<div class="absolute top-0 right-0 px-1 py-0.5 bg-surface-variant text-on-surface-variant font-label-caps text-[8px]">CHALLENGER</div>
+<div class="w-16 h-16 rounded-full border-2 border-outline-variant mt-4 overflow-hidden bg-surface-lowest flex items-center justify-center">
+<img alt="Imperial Commander Avatar" class="w-full h-full object-contain filter invert opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7pU9JA4BBaqfv-9-kkgk2dtmUh2ztDBUCB8T12kA_YJa3S4ZQJVBBTpYXCfWMehTC4PzGE5S1cjF41hVtfuyEsSqjjR1WROUq6We1AmvvRBd9LVeYddi6szei_e5dIOCqbvOd0XZsXQCg2lBZZL2CPfYKNzldwEKkeTTM3zjVPwmG_0sp-UB22Y8W-SgqVZO7IG1pIXnvkv9r1uYvcR14HsVs6uwYOujTP48w6VUxyUOYQH7Wmlcd-Q4A2ltBQCtn0TvctEOaSvkp"/>
+</div>
+<h2 class="font-headline-sm text-lg mt-2 text-on-surface text-center leading-tight">GRAND<br/>VIZIER</h2>
+<div class="w-full mt-3 space-y-1">
+<div class="flex justify-between font-data-tabular text-[10px] text-on-surface-variant">
+<span>MORALE</span>
+<span>74%</span>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded-full">
+<div class="h-full bg-tertiary rounded-full" style="width: 74%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Move Feed -->
+<div class="flex-grow flex flex-col bg-surface-container brutal-border rounded overflow-hidden">
+<div class="bg-surface-container-high border-b border-outline-variant p-2 flex justify-between items-center">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant">TACTICAL LOG</h3>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="history">history</span>
+</div>
+<div class="flex-grow overflow-y-auto p-2 space-y-2">
+<!-- Most Recent Move -->
+<div class="flex items-center bg-surface-container-highest border border-secondary p-2 rounded gold-glow relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<span class="font-data-tabular text-data-tabular text-secondary mr-3 w-8">[M-42]</span>
+<span class="font-body-md text-body-md text-on-surface flex-grow">Dabbaba to E4</span>
+<span class="material-symbols-outlined text-secondary" data-icon="warning">warning</span>
+</div>
+<!-- Previous Moves -->
+<div class="flex items-center p-2 border-b border-outline-variant border-dashed opacity-80">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant mr-3 w-8">[M-41]</span>
+<span class="font-body-md text-body-md text-on-surface flex-grow">Knight retreats D6</span>
+</div>
+<div class="flex items-center p-2 border-b border-outline-variant border-dashed opacity-70">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant mr-3 w-8">[M-40]</span>
+<span class="font-body-md text-body-md text-on-surface flex-grow">Pawn advance F5</span>
+</div>
+<div class="flex items-center p-2 border-b border-outline-variant border-dashed opacity-60">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant mr-3 w-8">[M-39]</span>
+<span class="font-body-md text-body-md text-on-surface flex-grow">Bishop flanks C4</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-highest dark:bg-surface-container-highest text-secondary dark:text-secondary font-label-caps text-label-caps fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 border-t border-outline-variant bg-surface-container-highest transition-transform">
+<!-- TACTICAL (Active) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg p-unit shadow-[0_0_8px_rgba(158,27,27,0.5)] scale-95 transition-transform w-16">
+<span class="material-symbols-outlined mb-1" data-icon="query_stats" style="font-variation-settings: 'FILL' 1;">query_stats</span>
+<span>TACTICAL</span>
+</button>
+<!-- ANALYSIS (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 p-unit hover:opacity-100 hover:bg-surface-variant transition-colors w-16">
+<span class="material-symbols-outlined mb-1" data-icon="analytics">analytics</span>
+<span>ANALYSIS</span>
+</button>
+<!-- HISTORY (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 p-unit hover:opacity-100 hover:bg-surface-variant transition-colors w-16">
+<span class="material-symbols-outlined mb-1" data-icon="history_edu">history_edu</span>
+<span>HISTORY</span>
+</button>
+<!-- CHANNELS (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 p-unit hover:opacity-100 hover:bg-surface-variant transition-colors w-16">
+<span class="material-symbols-outlined mb-1" data-icon="hub">hub</span>
+<span>CHANNELS</span>
+</button>
+</nav>
+</body></html>

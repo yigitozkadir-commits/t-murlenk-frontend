@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MÜTTEFİKLER VE DÜELLOCULAR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#ffafa7",
+                        "secondary-container": "#604403",
+                        "on-tertiary-fixed": "#111c2c",
+                        "surface-dim": "#131316",
+                        "on-secondary-fixed": "#261900",
+                        "outline-variant": "#59413e",
+                        "on-surface": "#e4e1e6",
+                        "surface-container-lowest": "#0e0e11",
+                        "inverse-surface": "#e4e1e6",
+                        "outline": "#a98986",
+                        "background": "#131316",
+                        "tertiary-fixed": "#d8e3fa",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "on-secondary-container": "#dab36a",
+                        "secondary": "#e9c176",
+                        "inverse-primary": "#b22a27",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#e9c176",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#353438",
+                        "on-primary-fixed": "#410002",
+                        "surface-container-high": "#2a2a2d",
+                        "primary": "#ffb4ac",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container": "#1f1f22",
+                        "surface-tint": "#ffb4ac",
+                        "primary-fixed": "#ffdad6",
+                        "tertiary-container": "#465164",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "surface": "#131316",
+                        "on-surface-variant": "#e1bebb",
+                        "on-tertiary": "#263142",
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#bcc7dd",
+                        "on-primary": "#690006",
+                        "secondary-fixed": "#ffdea5",
+                        "on-primary-fixed-variant": "#8f0e12",
+                        "on-background": "#e4e1e6",
+                        "on-secondary": "#412d00",
+                        "surface-variant": "#353438",
+                        "primary-container": "#9e1b1b",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#303033",
+                        "surface-bright": "#39393c",
+                        "on-tertiary-container": "#b9c4da",
+                        "surface-container-low": "#1b1b1e",
+                        "on-tertiary-fixed-variant": "#3c475a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "panel-gap": "8px",
+                        "data-density": "tight",
+                        "margin-safe": "32px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["ebGaramond"],
+                        "headline-sm": ["ebGaramond"],
+                        "display-lg": ["ebGaramond"],
+                        "data-tabular": ["jetbrainsMono"],
+                        "label-caps": ["jetbrainsMono"],
+                        "body-lg": ["jetbrainsMono"],
+                        "body-md": ["jetbrainsMono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "data-tabular": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-caps": ["10px", {"lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #131316;
+            color: #e4e1e6;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Imperial textures */
+        .marble-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background marble-bg min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-safe h-24 bg-surface dark:bg-surface border-b-2 border-outline-variant docked full-width top-0 z-40 relative shadow-[0_2px_0_0_#e9c176]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary text-2xl" data-icon="shield">shield</span>
+<h1 class="font-headline-md text-headline-md tracking-[0.2em] text-secondary uppercase">IMPERIAL ARCHIVE</h1>
+</div>
+<div>
+<div class="w-12 h-12 border-2 border-secondary bg-surface-container-high overflow-hidden" title="Grand Commander Portrait">
+<img alt="Commander Profile" class="w-full h-full object-cover grayscale brightness-75 contrast-125" data-alt="A stark, high-contrast black and white portrait of a formidable military commander. The lighting is dramatic, casting deep shadows across a weathered face. The aesthetic aligns with a dark, imperial brutalist design language, emphasizing authority and unyielding resolve. The subject wears dark, structured attire typical of a high-ranking officer in a grim, futuristic setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQLRT8fGfK2oYn9Z_ta1kgKhzZx1Eo7Bhd7X7qNitK9AlvyXYoyY1cl-QyhIE09uqDhfIzqQRP-cyhO8klNTdWLxV33SXM5W2B2Dn5ps7Jfb9bU6Z7JsRsU1-pbYnIgiyuzSau1rfVCmQ9JQ3F98bkSMiNZgB13LcoM7TywOIJSWs1MPvZ8srgAvvJPiNH5yvZUFAz22Xu7v1hogVb4I23eft_PIdfT0dxL2h3JiJq11HmFvO-PvEq21tSKaJJglr6M1ObmQwwqElp"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-gutter py-8 flex flex-col gap-8 pb-24 md:pb-8">
+<!-- Header Section -->
+<section class="border-b-2 border-outline-variant pb-4 flex flex-col gap-2">
+<h2 class="font-display-lg text-display-lg text-on-surface uppercase">MÜTTEFİKLER VE DÜELLOCULAR</h2>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant">[SYS_LOG: NETWORK_STATUS_SECURE]</p>
+</section>
+<!-- Search / Invite Section -->
+<section class="bg-surface-container border border-outline-variant p-6 relative overflow-hidden">
+<!-- Decorative corner elements -->
+<div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-secondary"></div>
+<div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-secondary"></div>
+<div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-secondary"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-secondary"></div>
+<div class="flex flex-col md:flex-row gap-6 items-end">
+<div class="flex-grow w-full flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-secondary uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">person_add</span>
+                        Müttefik Davet Et (Invite Ally)
+                    </label>
+<div class="relative w-full">
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant text-on-surface font-data-tabular text-data-tabular py-3 pl-10 pr-4 focus:outline-none focus:border-secondary focus:bg-surface-dim transition-colors placeholder:text-on-surface-variant/50" placeholder="KOMUTAN_KİMLİĞİ_GİRİN..." type="text"/>
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+</div>
+</div>
+<button class="bg-primary-container text-white border border-outline-variant px-6 py-3 font-label-caps text-label-caps uppercase tracking-widest hover:bg-inverse-primary hover:border-primary transition-all flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">send</span>
+                    Protokol Gönder
+                </button>
+</div>
+</section>
+<!-- Split Layout for Lists -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Active Front List -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<h3 class="font-headline-sm text-headline-sm text-secondary uppercase flex items-center gap-2">
+<span class="material-symbols-outlined filled-icon text-error">trip_origin</span>
+                        Cephede Aktif
+                    </h3>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">[03 AKTİF]</span>
+</div>
+<div class="flex flex-col gap-panel-gap">
+<!-- Active User Card 1 -->
+<div class="bg-surface-container border border-outline-variant hover:border-secondary transition-colors p-4 relative group flex flex-col gap-3">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 border border-secondary bg-surface-container-low overflow-hidden">
+<img alt="Ally" class="w-full h-full object-cover grayscale contrast-125" data-alt="A stark monochrome portrait of a rugged male face, styled to look like an old military ID photo. The image is gritty, highly textured, and aligns with a brutalist, dark imperial aesthetic. Sharp lighting emphasizes serious features against a dark, featureless background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPfp3YznRYk0We0CixiS5zLlb9l2Z8y9f753VzFDG6_8mr4L3ftpLUJ8QWpQqPXOelhB0OLpUhdXDW7hI3cF2G0PPtHMzeU2qVr_5ZA9wnOop9CWicnae313afjWZFwzRmror4daqa34iOxNNtjDmfXH-bBoJnCAn716kxtFvXY9kkE8nK9UELHqhXFF8J7HgBZsLXLs7KQARwkA3r6p3DTvWB_8sWTEVaxhFIYQZMq1Bk5Fr2EEzMsgte8Uwbj6LoeJkfK8CNvMci"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[18px] text-on-surface leading-tight uppercase">Valerius K.</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">[ID: VLR-889]</span>
+</div>
+</div>
+<span class="font-data-tabular text-data-tabular text-error border border-error/30 px-2 py-0.5 bg-error/10 uppercase">Savaş Odasında</span>
+</div>
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant border-dashed">
+<button class="flex-1 bg-surface-container-high border border-outline-variant hover:border-secondary hover:text-secondary py-2 flex items-center justify-center gap-2 font-label-caps text-label-caps transition-colors">
+<span class="material-symbols-outlined text-[16px]">swords</span>
+                                Düello
+                            </button>
+<button class="flex-1 bg-surface-container-high border border-outline-variant hover:border-secondary hover:text-secondary py-2 flex items-center justify-center gap-2 font-label-caps text-label-caps transition-colors">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+                                Mesaj
+                            </button>
+</div>
+</div>
+<!-- Active User Card 2 -->
+<div class="bg-surface-container border border-outline-variant hover:border-secondary transition-colors p-4 relative group flex flex-col gap-3">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 border border-secondary bg-surface-container-low overflow-hidden">
+<img alt="Ally" class="w-full h-full object-cover grayscale contrast-125" data-alt="A grim, high-contrast black and white portrait of a female officer. She has a stern expression, fit for a dark, militaristic imperial setting. The aesthetic is raw and heavily shadowed, looking like a dossier photo retrieved from an old, secure archive." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0tZ2V0_0X0s_mFBq7Dlg-laGNLvUcsD65EGu2jTt8rPrEJx99oqhXLiLXI8V5Q7l8jc3UWi5AUZu0MU8BOgDdJy2Qsen8VcfWxQYINFG4V0dxwBDahbA2aOVAedipD-1xp9e0x6xu-0HmvYB65Z7jtrSJU0QyBqkKpwrlcg0F5ARqcI05zUj93QFR4ubvP7KOEG_gV6UbuFWEwj7hkcxBX4QcrW0PmC-Y_qBsljKQ6sEA0iRwhXjxubEk5Kno7vKnTiDbJSpmrPdP"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[18px] text-on-surface leading-tight uppercase">Aurelia T.</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">[ID: ARL-442]</span>
+</div>
+</div>
+<span class="font-data-tabular text-data-tabular text-error border border-error/30 px-2 py-0.5 bg-error/10 uppercase">Kuşatma Planlıyor</span>
+</div>
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant border-dashed">
+<button class="flex-1 bg-surface-container-high border border-outline-variant hover:border-secondary hover:text-secondary py-2 flex items-center justify-center gap-2 font-label-caps text-label-caps transition-colors">
+<span class="material-symbols-outlined text-[16px]">swords</span>
+                                Düello
+                            </button>
+<button class="flex-1 bg-surface-container-high border border-outline-variant hover:border-secondary hover:text-secondary py-2 flex items-center justify-center gap-2 font-label-caps text-label-caps transition-colors">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+                                Mesaj
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Resting List -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<h3 class="font-headline-sm text-headline-sm text-outline-variant uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-outline-variant">radio_button_unchecked</span>
+                        İstirahat
+                    </h3>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">[02 ÇEVRİMDIŞI]</span>
+</div>
+<div class="flex flex-col gap-panel-gap opacity-80">
+<!-- Resting User Card 1 -->
+<div class="bg-surface-container-low border border-outline-variant/50 p-4 relative group flex flex-col gap-3">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-outline-variant"></div>
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 border border-outline-variant bg-surface-container-lowest overflow-hidden opacity-50">
+<img alt="Resting Ally" class="w-full h-full object-cover grayscale" data-alt="A faded, low-contrast black and white photograph of a male soldier's face. The image looks old and slightly degraded, fitting an inactive profile in a brutalist, dark-themed imperial interface. Shadows are heavy, obscuring fine details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnxPdYoDJ184_DMAMbgMEQdqdAxWnrCO02q5A7lI-F5MydGGuVd8gfnCbC5Fl7Y5CsZKfJnQ2wPc318ddqk2BYyrKAzasznDHCi177ZTGWJp76r4cc6AgUPqo7UND90FwtVtwIsoX-oubL-jZWXGOTOjsNZhQbAHiedRDzhMHS1QpfWkpOR0zdtsFNQonr5i36qu15-LF3IyeTGCF2zm7p9ownT23106MAbmuwPXJYKsdecCROyXrbXvHjirdc_LmkiKk1IMKoRHsR"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[18px] text-on-surface-variant leading-tight uppercase">Tiberius M.</span>
+<span class="font-data-tabular text-data-tabular text-outline-variant">[ID: TBR-110]</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-tabular text-data-tabular text-outline-variant uppercase">Son Görülme</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">T-04:00:00</span>
+</div>
+</div>
+</div>
+<!-- Resting User Card 2 -->
+<div class="bg-surface-container-low border border-outline-variant/50 p-4 relative group flex flex-col gap-3">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-outline-variant"></div>
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 border border-outline-variant bg-surface-container-lowest overflow-hidden opacity-50">
+<img alt="Resting Ally" class="w-full h-full object-cover grayscale" data-alt="A dim, monochrome portrait of a female face, appearing as an offline status image in a militaristic UI. The contrast is muted, giving the impression of an inactive terminal screen. The aesthetic is dark, serious, and stripped of all vibrant color." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4NwqwMqmKuuV5p0AXMTmZcb0T17LFHd1yocmUiuQzkmr94szN99K5kLzRr4r-WpO80IpA2pTGumBaRcj3BJhnQnNt0sePTKgON_7J_LXzX9OgwPpEsSS7LpyT47gldAQAYfhc9IqAKHMRiM33OnSebzMabI1Bzrv2rzSy02jButNWVCPO2mrB9IbfiohRhMw-330GYfBGvrOeggZZWgJQedw0xu9X1-xpXsxiN05b-AdlT4ZnyVyw2oNLOqcTga8FLcZgoqTZRUi4"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[18px] text-on-surface-variant leading-tight uppercase">Cassia D.</span>
+<span class="font-data-tabular text-data-tabular text-outline-variant">[ID: CSD-902]</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-data-tabular text-data-tabular text-outline-variant uppercase">Son Görülme</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">T-24:00:00+</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden flex justify-around items-stretch w-full h-20 bg-surface-container-highest bg-surface-container-highest dark:bg-surface-container-highest fixed bottom-0 w-full z-50 border-t-2 border-outline-variant flat no shadows with hard structural line border-t border-outline-variant bg-surface-container-highest text-on-secondary-container dark:text-on-secondary-container">
+<button class="flex flex-col items-center justify-center text-secondary bg-secondary-container/20 border-t-2 border-secondary pt-2 h-full w-full hover:bg-surface-container-high hover:text-on-surface transition-colors Active: scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined mb-1" data-icon="group">group</span>
+<span class="font-label-caps text-label-caps tracking-widest">ALLIES</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline-variant pt-2 h-full w-full hover:bg-surface-container-high hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="history_edu">history_edu</span>
+<span class="font-label-caps text-label-caps tracking-widest">DIPLOMACY</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline-variant pt-2 h-full w-full hover:bg-surface-container-high hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="swords">swords</span>
+<span class="font-label-caps text-label-caps tracking-widest">WAR ROOM</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline-variant pt-2 h-full w-full hover:bg-surface-container-high hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="menu_book">menu_book</span>
+<span class="font-label-caps text-label-caps tracking-widest">CHRONICLE</span>
+</button>
+</nav>
+</body></html>

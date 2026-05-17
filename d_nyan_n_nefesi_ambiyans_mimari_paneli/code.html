@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ambient Sound Layer UI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#ffb4ac",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "surface-container": "#1f1f22",
+                        "tertiary-container": "#465164",
+                        "secondary-container": "#604403",
+                        "on-tertiary-container": "#b9c4da",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-tertiary-fixed": "#111c2c",
+                        "secondary-fixed-dim": "#e9c176",
+                        "secondary": "#e9c176",
+                        "on-background": "#e4e1e6",
+                        "tertiary": "#bcc7dd",
+                        "surface-container-low": "#1b1b1e",
+                        "inverse-on-surface": "#303033",
+                        "outline": "#a98986",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdea5",
+                        "on-primary": "#690006",
+                        "on-secondary": "#412d00",
+                        "inverse-surface": "#e4e1e6",
+                        "surface-container-lowest": "#0e0e11",
+                        "on-secondary-container": "#dab36a",
+                        "outline-variant": "#59413e",
+                        "primary-fixed": "#ffdad6",
+                        "on-tertiary": "#263142",
+                        "on-primary-fixed": "#410002",
+                        "on-surface": "#e4e1e6",
+                        "on-primary-container": "#ffafa7",
+                        "on-primary-fixed-variant": "#8f0e12",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "error-container": "#93000a",
+                        "surface": "#131316",
+                        "surface-tint": "#ffb4ac",
+                        "tertiary-fixed": "#d8e3fa",
+                        "on-surface-variant": "#e1bebb",
+                        "primary-container": "#9e1b1b",
+                        "surface-bright": "#39393c",
+                        "surface-variant": "#353438",
+                        "surface-container-highest": "#353438",
+                        "surface-container-high": "#2a2a2d",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#131316",
+                        "primary": "#ffb4ac",
+                        "on-secondary-fixed": "#261900",
+                        "inverse-primary": "#b22a27",
+                        "on-error": "#690005",
+                        "background": "#131316"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "data-density": "tight",
+                        "gutter": "16px",
+                        "margin-safe": "32px",
+                        "panel-gap": "8px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "body-lg": ["JetBrains Mono", "monospace"],
+                        "headline-sm": ["EB Garamond", "serif"],
+                        "body-md": ["JetBrains Mono", "monospace"],
+                        "data-tabular": ["JetBrains Mono", "monospace"],
+                        "headline-md": ["EB Garamond", "serif"],
+                        "display-lg": ["EB Garamond", "serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "data-tabular": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #131316;
+            color: #e4e1e6;
+            background-image: radial-gradient(circle at center, rgba(31,31,34,0.8) 0%, rgba(14,14,17,1) 100%);
+        }
+        
+        /* Tactical Grid Overlay */
+        .tactical-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(89, 65, 62, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(89, 65, 62, 0.1) 1px, transparent 1px);
+        }
+
+        /* Scanline Effect */
+        .scanline {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanline::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        /* Resonance Line Style (Slider alternative) */
+        .resonance-bar-container {
+            width: 8px;
+            height: 200px;
+            background-color: rgba(53, 52, 56, 0.5);
+            border-left: 1px solid #59413e;
+            border-right: 1px solid #59413e;
+            position: relative;
+        }
+        .resonance-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #e9c176;
+            box-shadow: 0 0 8px rgba(233, 193, 118, 0.5);
+        }
+        
+        .resonance-fill.crimson-glow {
+            background-color: #ffb4ac;
+            box-shadow: 0 0 12px rgba(255, 180, 172, 0.6);
+        }
+
+        .rune-container {
+            position: relative;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            border: 1px dashed #59413e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .rune-inner {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 2px solid #e9c176;
+            box-shadow: 0 0 20px rgba(233, 193, 118, 0.2) inset, 0 0 20px rgba(233, 193, 118, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sacred-seal {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid #ffb4ac;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(255, 180, 172, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .sacred-seal:hover {
+            box-shadow: 0 0 25px rgba(255, 180, 172, 0.8);
+            background-color: rgba(158, 27, 27, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col font-body-md bg-background text-on-background tactical-grid scanline antialiased selection:bg-secondary selection:text-on-secondary">
+<!-- Top Navigation Shell -->
+<header class="flex justify-between items-center w-full px-gutter h-16 bg-surface dark:bg-surface border-b border-outline-variant z-50 fixed top-0 left-0">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary dark:text-secondary cursor-pointer hover:text-primary transition-colors" data-icon="menu">menu</span>
+<h1 class="font-headline-sm text-headline-sm text-secondary tracking-widest uppercase">SACRED RESONANCE</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary dark:text-secondary cursor-pointer hover:text-primary transition-colors" data-icon="settings_input_component">settings_input_component</span>
+</div>
+</header>
+<!-- Navigation Drawer (Hidden on mobile by default, semantic shell mapping) -->
+<nav class="hidden md:flex flex-col h-full w-80 fixed left-0 top-0 pt-20 bg-surface-container dark:bg-surface-container border-r border-outline shadow-2xl z-40">
+<div class="px-6 py-4 border-b border-outline-variant mb-4">
+<h2 class="font-headline-sm text-headline-sm text-secondary tracking-widest">ARCHIVE OF SOUND</h2>
+</div>
+<div class="flex flex-col flex-1 overflow-y-auto">
+<!-- Inactive items -->
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container-high hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="graphic_eq">graphic_eq</span>
+<span class="font-body-md text-body-md uppercase">BATTLEFIELD ECHOES</span>
+</a>
+<!-- Active item based on semantic intent (Ambient Layers) -->
+<a class="flex items-center gap-4 px-6 py-4 bg-secondary-container text-on-secondary-container border-l-4 border-secondary shadow-[inset_0_0_12px_rgba(233,193,118,0.1)]" href="#">
+<span class="material-symbols-outlined drop-shadow-[0_0_8px_rgba(233,193,118,0.5)]" data-icon="air">air</span>
+<span class="font-body-md text-body-md uppercase font-bold tracking-wider">WIND AMBIENCE</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container-high hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="noise_aware">noise_aware</span>
+<span class="font-body-md text-body-md uppercase">WAR DRUMS</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container-high hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="temple_hindu">temple_hindu</span>
+<span class="font-body-md text-body-md uppercase">MARBLE RESONANCE</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-on-surface-variant hover:bg-surface-container-high hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="mic_external_on">mic_external_on</span>
+<span class="font-body-md text-body-md uppercase">THROAT SINGING</span>
+</a>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-1 w-full md:pl-80 pt-16 pb-24 md:pb-8 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] relative z-10 overflow-hidden">
+<!-- Subtle Ambient Background Image Map -->
+<div class="absolute inset-0 z-0 opacity-10 pointer-events-none mix-blend-overlay" data-alt="A dark, atmospheric landscape of jagged mountains partially obscured by swirling, thick fog. The lighting is low-key, emphasizing deep shadows and sharp silhouettes against a muted, moody sky. The color palette is dominated by dark gunmetal greys, black, and subtle, desaturated bronze highlights on the mountain peaks. The overall aesthetic feels like a gritty, cinematic establishing shot for an epic, high-stakes military operation in a desolate, sacred region." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJgfvgOys0cr-QqvaNn0HXasH_AqMKE2Gxveg-9tA0qnl0uwY8wTBf0jyNxGjiAhi2zICI5fqKZ9uTzAS5MKBrShgY6bk3Wr7wrxixSAQLPw0Qh9THvGy_OoiyhPhnOWfgqAtt8wDnwUH8TR_D0cOMbQCh_V-YSLzFiCHFEkTiA77Kr3woO4XXqVoExVYrx4vkNwngOXujTvSEJz8PJtUXMgs_YfvJA34FAkfET05NnuwZ3RxzEFKpdxIrfP9oZ3lyrYykVWKbT_Sj'); background-size: cover; background-position: center;">
+</div>
+<div class="w-full max-w-7xl px-gutter md:px-margin-safe py-8 flex flex-col items-center relative z-10">
+<!-- Title Header -->
+<div class="text-center mb-12 border-b-2 border-outline-variant pb-4 w-full max-w-2xl relative">
+<div class="absolute -bottom-1 left-0 w-8 h-2 bg-secondary shadow-[0_0_8px_rgba(233,193,118,0.5)]"></div>
+<div class="absolute -bottom-1 right-0 w-8 h-2 bg-secondary shadow-[0_0_8px_rgba(233,193,118,0.5)]"></div>
+<h2 class="font-display-lg text-display-lg text-secondary uppercase tracking-widest text-shadow-sm">DÜNYANIN NEFESİ: AMBİYANS MİMARİSİ</h2>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant mt-2 tracking-widest">[ COORD-SYS: ACTIVE | LAYER-SYNC: STABLE ]</p>
+</div>
+<!-- Central Rune & Layers Layout -->
+<div class="w-full flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 mb-16">
+<!-- Left Controls -->
+<div class="flex gap-8 lg:gap-12 justify-center">
+<!-- Layer 1 -->
+<div class="flex flex-col items-center gap-4">
+<div class="h-8 flex items-end">
+<span class="material-symbols-outlined text-secondary" data-icon="air" style="font-variation-settings: 'FILL' 1;">air</span>
+</div>
+<div class="font-label-caps text-label-caps text-on-tertiary-container uppercase text-center w-24">Rüzgar Uğultusu</div>
+<div class="resonance-bar-container">
+<div class="resonance-fill" style="height: 65%;"></div>
+</div>
+<div class="font-data-tabular text-data-tabular text-secondary">DB: -12</div>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant opacity-70">FREQ: MID</div>
+</div>
+<!-- Layer 2 -->
+<div class="flex flex-col items-center gap-4">
+<div class="h-8 flex items-end">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div class="font-label-caps text-label-caps text-on-tertiary-container uppercase text-center w-24">Meşale Çıtırtısı</div>
+<div class="resonance-bar-container">
+<div class="resonance-fill crimson-glow" style="height: 40%;"></div>
+</div>
+<div class="font-data-tabular text-data-tabular text-primary-fixed-dim">DB: -24</div>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant opacity-70">FREQ: HIGH</div>
+</div>
+<!-- Layer 3 -->
+<div class="flex flex-col items-center gap-4">
+<div class="h-8 flex items-end">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="noise_aware" style="font-variation-settings: 'FILL' 1;">noise_aware</span>
+</div>
+<div class="font-label-caps text-label-caps text-on-tertiary-container uppercase text-center w-24">Uzak Savaş Davulları</div>
+<div class="resonance-bar-container">
+<div class="resonance-fill" style="height: 20%; background-color: #e1bebb; box-shadow: none;"></div>
+</div>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant">DB: -40</div>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant opacity-70">FREQ: LOW</div>
+</div>
+</div>
+<!-- Central Focus: The World Breathing Rune -->
+<div class="flex flex-col items-center justify-center relative p-8">
+<!-- Concentric Rings mimicking radar/resonance -->
+<div class="absolute w-[400px] h-[400px] border border-outline-variant rounded-full opacity-20 hidden md:block"></div>
+<div class="absolute w-[300px] h-[300px] border border-secondary rounded-full opacity-10 hidden md:block"></div>
+<div class="rune-container bg-surface-container-low shadow-2xl">
+<div class="rune-inner bg-surface">
+<span class="material-symbols-outlined text-secondary" data-icon="all_inclusive" style="font-size: 64px; font-variation-settings: 'wght' 200, 'FILL' 0; filter: drop-shadow(0 0 10px rgba(233, 193, 118, 0.6));">all_inclusive</span>
+</div>
+<!-- Status Indicators around rune -->
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 px-2 bg-surface text-[10px] font-data-tabular text-secondary border border-secondary">SYNC: ON</div>
+<div class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-2 bg-surface text-[10px] font-data-tabular text-primary border border-primary">CORE: STABLE</div>
+</div>
+</div>
+<!-- Right Controls -->
+<div class="flex gap-8 lg:gap-12 justify-center">
+<!-- Layer 4 -->
+<div class="flex flex-col items-center gap-4">
+<div class="h-8 flex items-end">
+<span class="material-symbols-outlined text-secondary" data-icon="record_voice_over" style="font-variation-settings: 'FILL' 1;">record_voice_over</span>
+</div>
+<div class="font-label-caps text-label-caps text-on-tertiary-container uppercase text-center w-24">Gırtlak Müziği Katmanları</div>
+<div class="resonance-bar-container">
+<div class="resonance-fill" style="height: 80%;"></div>
+</div>
+<div class="font-data-tabular text-data-tabular text-secondary">DB: -08</div>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant opacity-70">FREQ: DEEP</div>
+</div>
+<!-- Layer 5 -->
+<div class="flex flex-col items-center gap-4">
+<div class="h-8 flex items-end">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="temple_hindu" style="font-variation-settings: 'FILL' 1;">temple_hindu</span>
+</div>
+<div class="font-label-caps text-label-caps text-on-tertiary-container uppercase text-center w-24">Mermer Yankısı</div>
+<div class="resonance-bar-container">
+<div class="resonance-fill" style="height: 55%; background-color: #e1bebb; box-shadow: none;"></div>
+</div>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant">DB: -18</div>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant opacity-70">FREQ: MID</div>
+</div>
+<!-- Layer 6 -->
+<div class="flex flex-col items-center gap-4">
+<div class="h-8 flex items-end">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="swords" style="font-variation-settings: 'FILL' 1;">swords</span>
+</div>
+<div class="font-label-caps text-label-caps text-on-tertiary-container uppercase text-center w-24">Savaş Meydanı Yankıları</div>
+<div class="resonance-bar-container">
+<div class="resonance-fill crimson-glow" style="height: 30%;"></div>
+</div>
+<div class="font-data-tabular text-data-tabular text-primary-fixed-dim">DB: -32</div>
+<div class="font-data-tabular text-data-tabular text-on-surface-variant opacity-70">FREQ: COMP</div>
+</div>
+</div>
+</div>
+<!-- Master Silence Button -->
+<div class="mt-8 flex flex-col items-center justify-center">
+<div class="font-label-caps text-label-caps text-outline mb-4 tracking-widest">[ OVERRIDE PROTOCOL ]</div>
+<button class="sacred-seal bg-surface-container-low group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary-fixed-dim mb-1 group-hover:scale-110 transition-transform" data-icon="volume_off" style="font-size: 32px;">volume_off</span>
+<span class="font-label-caps text-label-caps text-primary-fixed-dim tracking-widest">MUTE ALL</span>
+</div>
+</button>
+<div class="font-headline-sm text-headline-sm text-primary-fixed-dim mt-4 tracking-widest uppercase">Kutsal Sessizlik</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface-container-lowest border-t border-outline-variant shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-4 opacity-60 hover:opacity-100 hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="castle">castle</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary border-t-2 border-secondary p-4 drop-shadow-[0_0_8px_rgba(233,193,118,0.5)]" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-4 opacity-60 hover:opacity-100 hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="architecture">architecture</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-4 opacity-60 hover:opacity-100 hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+</a>
+</nav>
+</body></html>

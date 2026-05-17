@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Imperial Command - King Threat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "primary": "#ffb4ac",
+                        "on-secondary": "#412d00",
+                        "surface-container-lowest": "#0e0e11",
+                        "primary-container": "#9e1b1b",
+                        "tertiary": "#bcc7dd",
+                        "secondary": "#e9c176",
+                        "secondary-fixed-dim": "#e9c176",
+                        "on-tertiary-container": "#b9c4da",
+                        "on-surface": "#e4e1e6",
+                        "surface-container-low": "#1b1b1e",
+                        "on-background": "#e4e1e6",
+                        "inverse-primary": "#b22a27",
+                        "primary-fixed": "#ffdad6",
+                        "on-primary-fixed": "#410002",
+                        "inverse-surface": "#e4e1e6",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "error-container": "#93000a",
+                        "outline-variant": "#59413e",
+                        "error": "#ffb4ab",
+                        "outline": "#a98986",
+                        "surface": "#131316",
+                        "on-secondary-fixed": "#261900",
+                        "on-tertiary-fixed": "#111c2c",
+                        "secondary-container": "#604403",
+                        "surface-tint": "#ffb4ac",
+                        "surface-dim": "#131316",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "tertiary-container": "#465164",
+                        "tertiary-fixed": "#d8e3fa",
+                        "surface-container-high": "#2a2a2d",
+                        "on-primary-fixed-variant": "#8f0e12",
+                        "inverse-on-surface": "#303033",
+                        "surface-variant": "#353438",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-primary": "#690006",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#ffafa7",
+                        "background": "#131316",
+                        "secondary-fixed": "#ffdea5",
+                        "on-surface-variant": "#e1bebb",
+                        "on-secondary-container": "#dab36a",
+                        "on-tertiary": "#263142",
+                        "surface-container-highest": "#353438",
+                        "surface-bright": "#39393c",
+                        "surface-container": "#1f1f22"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "unit": "4px",
+                        "margin-safe": "32px",
+                        "panel-gap": "8px",
+                        "gutter": "16px",
+                        "data-density": "tight"
+                    },
+                    fontFamily: {
+                        "headline-sm": ["EB Garamond", "serif"],
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "display-lg": ["EB Garamond", "serif"],
+                        "body-md": ["JetBrains Mono", "monospace"],
+                        "data-tabular": ["JetBrains Mono", "monospace"],
+                        "headline-md": ["EB Garamond", "serif"],
+                        "body-lg": ["JetBrains Mono", "monospace"]
+                    },
+                    fontSize: {
+                        "headline-sm": ["24px", { lineHeight: "32px", fontWeight: "500" }],
+                        "label-caps": ["10px", { lineHeight: "12px", letterSpacing: "0.1em", fontWeight: "700" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+                        "data-tabular": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "headline-md": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+                        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .metallic-border {
+            border: 1px solid #a98986; /* outline */
+            box-shadow: inset 0 0 5px rgba(169, 137, 134, 0.2);
+        }
+        .gold-border {
+            border: 1px solid #e9c176; /* secondary */
+            box-shadow: inset 0 0 8px rgba(233, 193, 118, 0.3);
+        }
+        .crimson-glow {
+            box-shadow: 0 0 15px rgba(255, 180, 172, 0.5), inset 0 0 10px rgba(158, 27, 27, 0.8);
+        }
+        .scanline-overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.1)
+            );
+            background-size: 100% 4px;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(circle at center, rgba(30,30,30,0.8) 0%, rgba(10,10,10,1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md overflow-x-hidden antialiased bg-pattern">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface-dim dark:bg-surface-dim border-b border-outline-variant bg-surface-container-high flat no-shadows border-b border-outline">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full border border-secondary overflow-hidden">
+<img alt="Commander Portrait" class="w-full h-full object-cover" data-alt="A small, circular avatar portrait of a stern military commander in dark, ornate armor, lit by harsh, dramatic lighting in a dark, high-stakes war room setting. Colors are muted with strong contrasts." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdPiL_uf_kMqa0SF9eG0-_yNfq3nkFsFfgsVYPPpt5KY9LOf01mEyweaAvFoGL4lW4Q-G0_IZh9-VOolsMQCrUTjFrMFKYyjXdb666GvJnyiI9i9oPNxBZV6ddwhtsMT6zkQYFBgRENsWDxtp4WFAi96tlK3KPtaM0f5ex6tBOw2NTPlsS8CIpch1fwyJRa81_5UFewVoEKrZBUe6Gcd4yBSHVXCt0SZEJ2G28jdRsl6Q48-0YQjnG_lWIxoceFQbJ9OkSjYOVFN5H"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tighter">IMPERIAL COMMAND</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-DEFAULT text-on-surface-variant hover:bg-surface-bright hover:text-secondary-fixed transition-colors duration-200 metallic-border">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings_input_component</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow pt-20 pb-28 px-gutter flex flex-col items-center justify-start relative w-full max-w-4xl mx-auto">
+<!-- Emergency Pulse Background -->
+<div class="absolute inset-0 pointer-events-none opacity-30 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-error-container via-background to-background animate-pulse mix-blend-screen z-0"></div>
+<!-- Tactical Status Bar -->
+<div class="w-full max-w-lg mb-6 relative z-10">
+<div class="border-y-2 border-primary bg-surface-container-low px-4 py-3 flex items-center justify-center gap-3 crimson-glow scanline-overlay">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase tracking-widest text-center shadow-sm">ŞAH TEHDİT ALTINDA</h2>
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex justify-between px-2 mt-1 opacity-70">
+<span class="font-label-caps text-label-caps text-on-surface-variant">[SYS-ERR-01]</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant text-error animate-pulse">CRITICAL</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">LOC: SEC-7</span>
+</div>
+</div>
+<!-- Central Display Area -->
+<div class="relative w-full max-w-md aspect-[3/4] flex items-center justify-center z-10 mb-8">
+<!-- Runic Compass/Threat Indicators (Background Layer) -->
+<div class="absolute inset-0 flex items-center justify-center opacity-80 pointer-events-none">
+<div class="w-[120%] h-[120%] border border-dashed border-error/40 rounded-full animate-[spin_60s_linear_infinite] relative">
+<!-- Directional Arrows -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary font-bold text-2xl filter drop-shadow-[0_0_5px_rgba(255,180,172,0.8)]">▼</div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 text-outline-variant font-bold text-xl">▲</div>
+<div class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 text-primary font-bold text-2xl filter drop-shadow-[0_0_5px_rgba(255,180,172,0.8)] rotate-[-90deg]">▼</div>
+<div class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 text-outline-variant font-bold text-xl rotate-90">▲</div>
+</div>
+</div>
+<!-- The King Portrait -->
+<div class="relative z-20 w-[85%] h-[90%] rounded-t-full rounded-b-lg overflow-hidden gold-border bg-surface-container shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent z-10 pointer-events-none"></div>
+<img alt="King Piece Portrait" class="w-full h-full object-cover object-top mix-blend-luminosity opacity-90 contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1kjHQvMv0u5jcdMNBrjEYfFIwJhmBdqxtNlGwfczuzIoKAif0RXL9SKsday9Vmu6fhnBwnxlDtmuJABPfHBzig0InjtNZqoBZ5Tn4BoFkX4xc4imAHtC897b5LJfQR_D3xNtn429pL8HAhk8QweHl6dXGGWphVUlypyFwhVsp386bqoT_Um0cWQ6lSJnbKVvTn9pOqu-1szFylSP9KltB_wdKm4cX4p5ajt7ToseJt6_FYQIULnW81ci2wM21A8qZjQD3kWdiQCCd"/>
+<!-- Overlay Grids/Data -->
+<div class="absolute inset-0 z-20 p-4 flex flex-col justify-between pointer-events-none">
+<div class="flex justify-between items-start w-full">
+<div class="font-data-tabular text-data-tabular text-secondary/80 bg-surface/50 px-2 py-1 rounded border border-secondary/30">ID: SHAH-01</div>
+<div class="font-data-tabular text-data-tabular text-error bg-surface/50 px-2 py-1 rounded border border-error/50 animate-pulse">LOCK-ON</div>
+</div>
+<div class="w-full border-t border-dashed border-secondary/50 pt-2 backdrop-blur-sm bg-surface/30">
+<div class="flex justify-between items-end mb-1">
+<span class="font-label-caps text-label-caps text-on-surface">STRUCTURAL INTEGRITY</span>
+<span class="font-data-tabular text-data-tabular text-error font-bold">12%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest border border-outline-variant flex">
+<div class="h-full bg-error w-[12%] crimson-glow"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Data Chips -->
+<div class="absolute -right-4 top-1/4 z-30 flex flex-col gap-2">
+<div class="bg-surface-container-high border border-outline px-3 py-1 text-right shadow-lg">
+<div class="font-label-caps text-label-caps text-on-surface-variant">VECTOR</div>
+<div class="font-data-tabular text-data-tabular text-secondary">N-NW 44°</div>
+</div>
+<div class="bg-surface-container-high border border-outline px-3 py-1 text-right shadow-lg">
+<div class="font-label-caps text-label-caps text-on-surface-variant">THREAT TYPE</div>
+<div class="font-data-tabular text-data-tabular text-error">CAVALRY</div>
+</div>
+</div>
+</div>
+<!-- Tactical Action Panel -->
+<div class="w-full max-w-lg grid grid-cols-2 gap-panel-gap z-10">
+<button class="col-span-2 bg-primary-container text-on-primary-container border border-primary py-4 font-headline-sm text-headline-sm uppercase tracking-wide hover:bg-error hover:text-surface transition-colors crimson-glow relative overflow-hidden group">
+<div class="absolute inset-0 scanline-overlay opacity-50"></div>
+<span class="relative z-10 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield</span>
+                    DEPLOY GUARD
+                </span>
+</button>
+<button class="bg-surface-container border border-outline-variant text-on-surface py-3 font-body-md hover:bg-surface-bright hover:border-secondary transition-colors metallic-border flex flex-col items-center justify-center gap-1">
+<span class="material-symbols-outlined text-secondary text-xl">emergency</span>
+<span class="font-label-caps text-label-caps">EVACUATE</span>
+</button>
+<button class="bg-surface-container border border-outline-variant text-on-surface py-3 font-body-md hover:bg-surface-bright hover:border-secondary transition-colors metallic-border flex flex-col items-center justify-center gap-1 opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-outline text-xl">countertops</span>
+<span class="font-label-caps text-label-caps">COUNTER-STRIKE</span>
+<span class="text-[8px] text-error uppercase mt-1">Unavailable</span>
+</button>
+</div>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-stretch h-20 bg-surface-container-high dark:bg-surface-container-high border-t border-outline-variant bg-surface-container-highest flat no-shadows shadow-[0_-2px_10px_rgba(0,0,0,0.5)] md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 opacity-80 hover:bg-surface-bright hover:text-secondary transition-all duration-300 w-full" href="#">
+<span class="material-symbols-outlined text-xl mb-1">deployed_code</span>
+<span class="font-label-caps text-label-caps">DEPLOY</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container border-x border-primary px-6 py-2 shadow-[inset_0_0_8px_rgba(255,180,172,0.4)] animate-pulse-subtle scale-105 w-full" href="#">
+<span class="material-symbols-outlined text-xl mb-1" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="font-label-caps text-label-caps">DEFENSE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 opacity-80 hover:bg-surface-bright hover:text-secondary transition-all duration-300 w-full" href="#">
+<span class="material-symbols-outlined text-xl mb-1">insights</span>
+<span class="font-label-caps text-label-caps">INTEL</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 opacity-80 hover:bg-surface-bright hover:text-secondary transition-all duration-300 w-full" href="#">
+<span class="material-symbols-outlined text-xl mb-1">groups</span>
+<span class="font-label-caps text-label-caps">LEGION</span>
+</a>
+</nav>
+<!-- Desktop Side Nav Spacer (hidden on mobile, just to show intent if it were a desktop layout) -->
+<div class="hidden md:flex fixed left-0 top-16 bottom-0 w-20 border-r border-outline-variant bg-surface-container-high flex-col items-center py-8 gap-8">
+<a class="p-3 text-on-surface-variant hover:text-secondary metallic-border rounded" href="#"><span class="material-symbols-outlined">deployed_code</span></a>
+<a class="p-3 bg-primary-container text-on-primary-container border border-primary shadow-[inset_0_0_8px_rgba(255,180,172,0.4)] rounded" href="#"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield</span></a>
+<a class="p-3 text-on-surface-variant hover:text-secondary metallic-border rounded" href="#"><span class="material-symbols-outlined">insights</span></a>
+<a class="p-3 text-on-surface-variant hover:text-secondary metallic-border rounded" href="#"><span class="material-symbols-outlined">groups</span></a>
+</div>
+</body></html>

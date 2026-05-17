@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Taş Hover Aura System - Imperial Command</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface-container": "#1f1f22",
+                            "surface-container-highest": "#353438",
+                            "surface-bright": "#39393c",
+                            "on-surface-variant": "#e1bebb",
+                            "on-secondary-container": "#dab36a",
+                            "on-tertiary": "#263142",
+                            "on-error-container": "#ffdad6",
+                            "on-primary-container": "#ffafa7",
+                            "background": "#131316",
+                            "secondary-fixed": "#ffdea5",
+                            "surface-variant": "#353438",
+                            "on-secondary-fixed-variant": "#5d4201",
+                            "on-primary": "#690006",
+                            "tertiary-fixed": "#d8e3fa",
+                            "surface-container-high": "#2a2a2d",
+                            "on-primary-fixed-variant": "#8f0e12",
+                            "inverse-on-surface": "#303033",
+                            "surface-tint": "#ffb4ac",
+                            "surface-dim": "#131316",
+                            "primary-fixed-dim": "#ffb4ac",
+                            "tertiary-container": "#465164",
+                            "on-tertiary-fixed": "#111c2c",
+                            "secondary-container": "#604403",
+                            "outline": "#a98986",
+                            "surface": "#131316",
+                            "on-secondary-fixed": "#261900",
+                            "error": "#ffb4ab",
+                            "primary-fixed": "#ffdad6",
+                            "on-primary-fixed": "#410002",
+                            "inverse-surface": "#e4e1e6",
+                            "on-tertiary-fixed-variant": "#3c475a",
+                            "error-container": "#93000a",
+                            "outline-variant": "#59413e",
+                            "inverse-primary": "#b22a27",
+                            "on-surface": "#e4e1e6",
+                            "surface-container-low": "#1b1b1e",
+                            "on-background": "#e4e1e6",
+                            "on-tertiary-container": "#b9c4da",
+                            "surface-container-lowest": "#0e0e11",
+                            "primary-container": "#9e1b1b",
+                            "tertiary": "#bcc7dd",
+                            "secondary": "#e9c176",
+                            "secondary-fixed-dim": "#e9c176",
+                            "on-error": "#690005",
+                            "tertiary-fixed-dim": "#bcc7dd",
+                            "primary": "#ffb4ac",
+                            "on-secondary": "#412d00"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "panel-gap": "8px",
+                            "gutter": "16px",
+                            "data-density": "tight",
+                            "unit": "4px",
+                            "margin-safe": "32px"
+                    },
+                    "fontFamily": {
+                            "headline-sm": ["EB Garamond", "serif"],
+                            "label-caps": ["JetBrains Mono", "monospace"],
+                            "display-lg": ["EB Garamond", "serif"],
+                            "body-md": ["JetBrains Mono", "monospace"],
+                            "data-tabular": ["JetBrains Mono", "monospace"],
+                            "headline-md": ["EB Garamond", "serif"],
+                            "body-lg": ["JetBrains Mono", "monospace"]
+                    },
+                    "fontSize": {
+                            "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                            "label-caps": ["10px", {"lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                            "data-tabular": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                            "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased h-screen w-screen overflow-hidden flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface-dim dark:bg-surface-dim border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<div aria-label="Commander portrait" class="h-8 w-8 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tighter">IMPERIAL COMMAND</h1>
+</div>
+<div class="hidden md:flex items-center gap-8 px-8 flex-1 justify-center">
+<nav class="flex gap-6">
+<a class="text-on-surface-variant hover:bg-surface-bright hover:text-secondary-fixed transition-colors duration-200 px-3 py-2 flex flex-col items-center group" href="#">
+<span class="font-label-caps text-label-caps uppercase tracking-wider">DEPLOY</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-bright hover:text-secondary-fixed transition-colors duration-200 px-3 py-2 flex flex-col items-center group" href="#">
+<span class="font-label-caps text-label-caps uppercase tracking-wider">DEFENSE</span>
+</a>
+<a class="text-secondary font-bold hover:bg-surface-bright hover:text-secondary-fixed transition-colors duration-200 px-3 py-2 flex flex-col items-center border-b-2 border-primary scale-[0.99] group" href="#">
+<span class="font-label-caps text-label-caps uppercase tracking-wider">INTEL</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-bright hover:text-secondary-fixed transition-colors duration-200 px-3 py-2 flex flex-col items-center group" href="#">
+<span class="font-label-caps text-label-caps uppercase tracking-wider">LEGION</span>
+</a>
+</nav>
+</div>
+<button aria-label="Settings" class="text-on-surface-variant hover:text-secondary-fixed transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings_input_component</span>
+</button>
+</header>
+<!-- Main Tactical Canvas -->
+<main class="flex-1 w-full h-full pt-16 pb-20 md:pb-0 relative flex items-center justify-center overflow-hidden bg-[#0A0A0C]">
+<!-- Board Texture / Background -->
+<div class="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=1920&amp;q=80')] bg-cover bg-center opacity-20 mix-blend-overlay" data-alt="A macro shot of dark, heavily textured slate or basalt stone, resembling an ancient tactical map board. The stone is nearly pitch black with deep crevices and rough, granular surfaces that catch subtle highlights. The lighting is low and raking, emphasizing the rugged terrain-like quality of the material. The overall aesthetic is gritty, militaristic, and dark."></div>
+<div class="absolute inset-0 z-0 bg-gradient-to-t from-background via-transparent to-background/50"></div>
+<!-- Central Hover Presentation Area -->
+<div class="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl mx-auto h-full px-gutter">
+<!-- Aura Visualization Container -->
+<div class="relative w-[500px] h-[600px] flex items-center justify-center group">
+<!-- 1. Gold Aura Glow -->
+<div class="absolute bottom-10 w-[300px] h-[100px] bg-secondary/30 rounded-[100%] blur-[40px] mix-blend-screen opacity-80 group-hover:opacity-100 transition-opacity duration-1000"></div>
+<div class="absolute bottom-10 w-[150px] h-[50px] bg-secondary/50 rounded-[100%] blur-[20px] mix-blend-screen"></div>
+<!-- 3. Strategic Highlight Rings -->
+<div class="absolute bottom-[30px] w-[400px] h-[160px] border border-secondary/40 rounded-[100%] transform -rotate-12 pointer-events-none opacity-60"></div>
+<div class="absolute bottom-[40px] w-[300px] h-[120px] border border-secondary/60 rounded-[100%] transform -rotate-12 pointer-events-none opacity-80"></div>
+<div class="absolute bottom-[50px] w-[200px] h-[80px] border-2 border-secondary rounded-[100%] transform -rotate-12 pointer-events-none"></div>
+<!-- 2. Danger Pulse (Enemy Threat Zones) -->
+<div class="absolute bottom-[80px] -left-[40px] w-[100px] h-[40px] border border-error/50 bg-error/10 rounded-[100%] transform -rotate-12 flex items-center justify-center">
+<span class="font-data-tabular text-data-tabular text-error opacity-70">X-01</span>
+</div>
+<div class="absolute bottom-[20px] right-[20px] w-[100px] h-[40px] border border-error/50 bg-error/10 rounded-[100%] transform -rotate-12 flex items-center justify-center">
+<span class="font-data-tabular text-data-tabular text-error opacity-70">X-02</span>
+</div>
+<!-- 4. Legal Move Illumination (Distant Tiles) -->
+<div class="absolute top-[100px] right-[60px] w-[80px] h-[30px] border border-on-surface/30 bg-on-surface/5 rounded-[100%] transform -rotate-12 flex items-center justify-center backdrop-blur-sm">
+<span class="material-symbols-outlined text-on-surface/60 text-[16px]">location_searching</span>
+</div>
+<div class="absolute top-[150px] -left-[20px] w-[80px] h-[30px] border border-on-surface/30 bg-on-surface/5 rounded-[100%] transform -rotate-12 flex items-center justify-center backdrop-blur-sm">
+<span class="material-symbols-outlined text-on-surface/60 text-[16px]">location_searching</span>
+</div>
+<!-- Central Piece -->
+<div class="relative z-20 h-full flex items-center justify-center pb-12">
+<img alt="White marble elephant chess piece" class="h-full w-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.8)] filter brightness-110 contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz9WfTTqbeIYjdeGSThST6QnlGEsG0KCOxtczuQJQh13b-zvLjlY01AAUYoBNJ1L6hggMLfHZwx0Taq9u7NCMRzk2iKEPd58SExhk_2Aw82JCZ8UrKfVXJni2M4AImyE4CapvhWR08SnnVi5556Vjx_4sxe2NP1TCiOAFb0YyRI3eUAIDQa_CLfsJmRHfSFpdl9X2aN4c8hT6ugEacdo9g4AIrI6wTaPZl84DO0tVnmCSbL1Sn9dZ9-t5_NaklJhOHgOQByoVltGtH"/>
+</div>
+<!-- 5. Cinematic Fog Shimmer -->
+<div class="absolute bottom-0 w-[600px] h-[200px] bg-gradient-to-t from-background/90 via-background/40 to-transparent pointer-events-none z-30"></div>
+<div class="absolute bottom-0 w-[500px] h-[150px] bg-[url('https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=800&amp;q=80')] bg-cover opacity-20 mix-blend-screen pointer-events-none z-30 filter blur-sm" data-alt="Swirling, low-lying mist and fog rolling across a dark surface. The fog catches light faintly, creating soft, ethereal wisps. The colors are muted, mostly deep blacks and soft greys, giving a mysterious and cinematic atmospheric effect reminiscent of dry ice on a stage."></div>
+</div>
+<!-- Tactical Overlay: Aura Status -->
+<div class="absolute bottom-24 right-8 z-40 bg-surface-container/80 backdrop-blur-md border border-outline-variant p-4 w-64">
+<div class="flex justify-between items-center border-b border-outline-variant pb-2 mb-3">
+<span class="font-headline-sm text-headline-sm text-on-surface">UNIT STATUS</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">[001-A]</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">DESIGNATION</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">ELEPHANT.V2</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">AURA STATUS</span>
+<div class="flex items-center gap-2 bg-primary-container/20 px-2 py-1 border border-primary/30">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(255,180,172,0.8)]"></div>
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">ACTIVE</span>
+</div>
+</div>
+<div class="mt-2 border-t border-dashed border-outline-variant/50 pt-2">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">THREAT RADIUS</span>
+<div class="flex h-1 bg-surface-container-highest w-full border border-outline-variant/30">
+<div class="w-3/4 bg-secondary h-full relative">
+<div class="absolute right-0 top-0 bottom-0 w-1 bg-white opacity-50"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-stretch h-20 bg-surface-container-high dark:bg-surface-container-high border-t border-outline-variant shadow-[0_-2px_10px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 opacity-80 hover:bg-surface-bright hover:text-secondary transition-all duration-300 flex-1" href="#">
+<span class="material-symbols-outlined text-xl mb-1">deployed_code</span>
+<span class="font-label-caps text-label-caps uppercase">DEPLOY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 opacity-80 hover:bg-surface-bright hover:text-secondary transition-all duration-300 flex-1" href="#">
+<span class="material-symbols-outlined text-xl mb-1">shield</span>
+<span class="font-label-caps text-label-caps uppercase">DEFENSE</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container border-x border-primary px-6 py-2 shadow-[inset_0_0_8px_rgba(255,180,172,0.4)] hover:bg-surface-bright hover:text-secondary transition-all duration-300 animate-pulse-subtle scale-105 flex-1" href="#">
+<span class="material-symbols-outlined text-xl mb-1" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="font-label-caps text-label-caps uppercase">INTEL</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 opacity-80 hover:bg-surface-bright hover:text-secondary transition-all duration-300 flex-1" href="#">
+<span class="material-symbols-outlined text-xl mb-1">groups</span>
+<span class="font-label-caps text-label-caps uppercase">LEGION</span>
+</a>
+</nav>
+</body></html>

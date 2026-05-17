@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hamle Geçmişi Paneli</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#263142",
+                      "on-secondary": "#412d00",
+                      "on-primary-fixed-variant": "#8f0e12",
+                      "surface-container": "#1f1f22",
+                      "primary": "#ffb4ac",
+                      "surface-container-lowest": "#0e0e11",
+                      "tertiary": "#bcc7dd",
+                      "on-tertiary-fixed-variant": "#3c475a",
+                      "on-primary-container": "#ffafa7",
+                      "error-container": "#93000a",
+                      "error": "#ffb4ab",
+                      "surface-container-high": "#2a2a2d",
+                      "outline": "#a98986",
+                      "on-primary": "#690006",
+                      "inverse-on-surface": "#303033",
+                      "secondary": "#e9c176",
+                      "tertiary-fixed": "#d8e3fa",
+                      "secondary-fixed-dim": "#e9c176",
+                      "tertiary-container": "#465164",
+                      "surface-container-low": "#1b1b1e",
+                      "surface-container-highest": "#353438",
+                      "on-surface": "#e4e1e6",
+                      "on-secondary-fixed-variant": "#5d4201",
+                      "surface-dim": "#131316",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#e4e1e6",
+                      "primary-fixed": "#ffdad6",
+                      "on-tertiary-container": "#b9c4da",
+                      "surface-bright": "#39393c",
+                      "on-secondary-container": "#dab36a",
+                      "inverse-primary": "#b22a27",
+                      "secondary-container": "#604403",
+                      "on-surface-variant": "#e1bebb",
+                      "on-primary-fixed": "#410002",
+                      "on-error": "#690005",
+                      "surface-tint": "#ffb4ac",
+                      "on-tertiary-fixed": "#111c2c",
+                      "surface": "#131316",
+                      "tertiary-fixed-dim": "#bcc7dd",
+                      "outline-variant": "#59413e",
+                      "inverse-surface": "#e4e1e6",
+                      "background": "#131316",
+                      "primary-fixed-dim": "#ffb4ac",
+                      "secondary-fixed": "#ffdea5",
+                      "surface-variant": "#353438",
+                      "primary-container": "#9e1b1b",
+                      "on-secondary-fixed": "#261900"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "unit": "4px",
+                      "panel-gap": "8px",
+                      "margin-safe": "32px",
+                      "data-density": "tight"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "EB Garamond"
+                      ],
+                      "display-lg": [
+                              "EB Garamond"
+                      ],
+                      "data-tabular": [
+                              "JetBrains Mono"
+                      ],
+                      "body-lg": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-sm": [
+                              "EB Garamond"
+                      ],
+                      "body-md": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "data-tabular": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .parchment-texture {
+            background-image: radial-gradient(rgba(233, 193, 118, 0.03) 1px, transparent 1px);
+            background-size: 4px 4px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md h-screen w-full overflow-hidden flex flex-col relative parchment-texture">
+<!-- TopAppBar (Transactional - Hidden Nav Shell Context) -->
+<header class="flex justify-between items-center w-full px-gutter h-20 bg-surface-container dark:bg-surface-container docked full-width top-0 border-b border-secondary/30 border-b border-secondary/50 bg-surface-dim flat with 1px inner-glow border-secondary shrink-0 z-10">
+<button class="text-secondary dark:text-secondary hover:bg-surface-bright transition-colors p-2 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md uppercase tracking-widest text-secondary dark:text-secondary text-center">HAMLE KAYITLARI</h1>
+<button class="text-secondary dark:text-secondary hover:bg-surface-bright transition-colors p-2 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto px-gutter py-6 flex flex-col gap-6">
+<!-- Summary Header Block -->
+<section class="bg-surface-container-high border border-secondary/30 p-4 rounded-DEFAULT shadow-[inset_0_0_0_1px_rgba(233,193,118,0.2)]">
+<h2 class="font-headline-sm text-headline-sm text-secondary mb-4 border-b border-secondary/20 pb-2">ARCHIVE STATUS</h2>
+<div class="grid grid-cols-3 gap-4 text-center">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">TOTAL MOVES</span>
+<span class="font-data-tabular text-data-tabular text-on-background">048</span>
+</div>
+<div class="flex flex-col border-x border-secondary/20">
+<span class="font-label-caps text-label-caps text-secondary uppercase mb-1">CURRENT TURN</span>
+<span class="font-data-tabular text-data-tabular text-secondary font-bold">BLACK</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-1">LAST MOVE</span>
+<span class="font-data-tabular text-data-tabular text-on-background">G7 -&gt; F6</span>
+</div>
+</div>
+</section>
+<!-- Move List Container -->
+<section class="flex flex-col flex-1 pb-24">
+<!-- List Header -->
+<div class="flex justify-between items-center mb-2 px-2 border-b-2 border-surface-variant pb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant w-12">TURN</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant flex-1 text-left pl-2">NOTATION</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant w-20 text-right">EVAL/TIME</span>
+</div>
+<!-- List Items -->
+<div class="flex flex-col">
+<!-- Normal Move -->
+<div class="flex items-center justify-between py-3 border-b border-surface-variant border-dashed px-2 hover:bg-surface-bright transition-colors">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant w-12">[048]</span>
+<div class="flex-1 flex items-center gap-3 pl-2">
+<span class="material-symbols-outlined text-secondary text-lg" data-icon="chess_pawn">chess_pawn</span>
+<span class="font-data-tabular text-data-tabular text-on-background">PİYON: G7 -&gt; F6</span>
+</div>
+<div class="flex flex-col items-end justify-center w-20 gap-1">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="check">check</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">14:28:12</span>
+</div>
+</div>
+<!-- Mistake Move (Enemy) -->
+<div class="flex items-center justify-between py-3 border-b border-surface-variant border-dashed px-2 bg-error-container/10 hover:bg-error-container/20 transition-colors">
+<span class="font-data-tabular text-data-tabular text-error w-12">[047]</span>
+<div class="flex-1 flex items-center gap-3 pl-2">
+<span class="material-symbols-outlined text-error text-lg" data-icon="chess_knight">chess_knight</span>
+<span class="font-data-tabular text-data-tabular text-error">AT: E4 -&gt; D2</span>
+</div>
+<div class="flex flex-col items-end justify-center w-20 gap-1">
+<span class="material-symbols-outlined text-error text-sm" data-icon="warning">warning</span>
+<span class="font-label-caps text-label-caps text-error opacity-70">14:25:05</span>
+</div>
+</div>
+<!-- Critical Brilliant Move (Highlighted) -->
+<div class="flex items-center justify-between py-3 px-2 my-2 border border-secondary shadow-[inset_0_0_8px_rgba(233,193,118,0.2)] bg-surface-container-highest rounded-DEFAULT relative overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-10 rotate-12">
+<span class="material-symbols-outlined text-6xl text-secondary" data-icon="military_tech">military_tech</span>
+</div>
+<span class="font-data-tabular text-data-tabular text-secondary font-bold w-12 z-10">[046]</span>
+<div class="flex-1 flex items-center gap-3 pl-2 z-10">
+<span class="material-symbols-outlined text-secondary text-lg" data-icon="chess_bishop">chess_bishop</span>
+<span class="font-data-tabular text-data-tabular text-secondary font-bold">FİL: C3 -&gt; G7</span>
+<span class="px-1.5 py-0.5 bg-secondary text-on-secondary font-label-caps text-label-caps rounded-sm ml-2">CRITICAL</span>
+</div>
+<div class="flex flex-col items-end justify-center w-20 gap-1 z-10">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="auto_awesome" data-weight="fill" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-caps text-label-caps text-secondary opacity-70">14:22:05</span>
+</div>
+</div>
+<!-- Normal Move -->
+<div class="flex items-center justify-between py-3 border-b border-surface-variant border-dashed px-2 hover:bg-surface-bright transition-colors">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant w-12">[045]</span>
+<div class="flex-1 flex items-center gap-3 pl-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="chess_rook">chess_rook</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">KALE: A8 -&gt; D8</span>
+</div>
+<div class="flex flex-col items-end justify-center w-20 gap-1">
+<span class="material-symbols-outlined text-on-surface-variant text-sm opacity-0" data-icon="check">check</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant opacity-50">14:18:33</span>
+</div>
+</div>
+<!-- Check Move -->
+<div class="flex items-center justify-between py-3 border-b border-surface-variant border-dashed px-2 hover:bg-surface-bright transition-colors">
+<span class="font-data-tabular text-data-tabular text-primary w-12">[044]</span>
+<div class="flex-1 flex items-center gap-3 pl-2">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="chess_queen">chess_queen</span>
+<span class="font-data-tabular text-data-tabular text-primary">VEZİR: D1 -&gt; H5 +</span>
+</div>
+<div class="flex flex-col items-end justify-center w-20 gap-1">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="swords">swords</span>
+<span class="font-label-caps text-label-caps text-primary opacity-70">14:15:10</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Suppressed due to contextual flow rule for archival/transactional views, but requested by prompt. Rendering per prompt request but acknowledging conflict resolution hierarchy usually suppresses this on deep views.) -->
+<nav class="fixed bottom-0 w-full z-50 border-t-2 border-secondary/20 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-secondary/40 flat no shadows flex justify-around items-center h-24 px-margin-safe pb-4 md:hidden">
+<button class="text-on-surface-variant flex flex-col items-center opacity-70 hover:bg-surface-variant/50 transition-colors p-2 rounded-DEFAULT w-16">
+<span class="material-symbols-outlined mb-1 text-2xl" data-icon="swords">swords</span>
+<span class="font-label-caps text-label-caps">DEPLOY</span>
+</button>
+<button class="text-on-surface-variant flex flex-col items-center opacity-70 hover:bg-surface-variant/50 transition-colors p-2 rounded-DEFAULT w-16">
+<span class="material-symbols-outlined mb-1 text-2xl" data-icon="shield">shield</span>
+<span class="font-label-caps text-label-caps">DEFEND</span>
+</button>
+<!-- Active Tab assumed to be INTEL for a history/archive panel -->
+<button class="bg-primary-container text-on-primary-container border-t-2 border-primary px-6 py-2 flex flex-col items-center hover:bg-surface-variant/50 transition-colors w-20 relative overflow-hidden group">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjEiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9zdmc+')] opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined mb-1 text-2xl z-10" data-icon="radar">radar</span>
+<span class="font-label-caps text-label-caps z-10">INTEL</span>
+</button>
+<button class="text-on-surface-variant flex flex-col items-center opacity-70 hover:bg-surface-variant/50 transition-colors p-2 rounded-DEFAULT w-16">
+<span class="material-symbols-outlined mb-1 text-2xl" data-icon="groups">groups</span>
+<span class="font-label-caps text-label-caps">LEGION</span>
+</button>
+<button class="text-on-surface-variant flex flex-col items-center opacity-70 hover:bg-surface-variant/50 transition-colors p-2 rounded-DEFAULT w-16">
+<span class="material-symbols-outlined mb-1 text-2xl" data-icon="terminal">terminal</span>
+<span class="font-label-caps text-label-caps">SYSTEM</span>
+</button>
+</nav>
+</body></html>

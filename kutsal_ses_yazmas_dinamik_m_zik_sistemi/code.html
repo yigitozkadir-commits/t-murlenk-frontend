@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sacred Sound Manuscript - Timurlenk Chess</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdea5",
+                        "on-secondary-fixed": "#261900",
+                        "surface-container-high": "#2a2a2d",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container-highest": "#353438",
+                        "on-primary-container": "#ffafa7",
+                        "error-container": "#93000a",
+                        "on-secondary": "#412d00",
+                        "surface": "#131316",
+                        "secondary-container": "#604403",
+                        "secondary": "#e9c176",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "on-tertiary": "#263142",
+                        "inverse-surface": "#e4e1e6",
+                        "surface-container-low": "#1b1b1e",
+                        "tertiary": "#bcc7dd",
+                        "surface-bright": "#39393c",
+                        "surface-container-lowest": "#0e0e11",
+                        "on-surface": "#e4e1e6",
+                        "on-primary-fixed-variant": "#8f0e12",
+                        "on-tertiary-fixed": "#111c2c",
+                        "primary-fixed": "#ffdad6",
+                        "surface-tint": "#ffb4ac",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "on-surface-variant": "#e1bebb",
+                        "tertiary-fixed": "#d8e3fa",
+                        "surface-dim": "#131316",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#303033",
+                        "background": "#131316",
+                        "outline": "#a98986",
+                        "on-secondary-container": "#dab36a",
+                        "on-primary-fixed": "#410002",
+                        "on-background": "#e4e1e6",
+                        "on-error": "#690005",
+                        "primary": "#ffb4ac",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1f1f22",
+                        "tertiary-container": "#465164",
+                        "outline-variant": "#59413e",
+                        "primary-container": "#9e1b1b",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "surface-variant": "#353438",
+                        "inverse-primary": "#b22a27",
+                        "secondary-fixed-dim": "#e9c176",
+                        "on-tertiary-container": "#b9c4da",
+                        "on-primary": "#690006"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "data-density": "tight",
+                        "gutter": "16px",
+                        "panel-gap": "8px",
+                        "unit": "4px",
+                        "margin-safe": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["EB Garamond", "serif"],
+                        "display-lg": ["EB Garamond", "serif"],
+                        "body-md": ["JetBrains Mono", "monospace"],
+                        "body-lg": ["JetBrains Mono", "monospace"],
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "data-tabular": ["JetBrains Mono", "monospace"],
+                        "headline-sm": ["EB Garamond", "serif"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "data-tabular": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.surface'); color: theme('colors.on-surface'); }
+        /* Custom scrollbar for manuscript feel */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: theme('colors.surface-container'); }
+        ::-webkit-scrollbar-thumb { background: theme('colors.secondary-container'); border-radius: 0; }
+        
+        .scanline-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(233, 193, 118, 0.05) 50%, rgba(233, 193, 118, 0.05));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 10;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-secondary">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 border-b border-secondary/30 bg-surface-container-high flex justify-between items-center w-full px-gutter h-16 z-40 sticky">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">menu_book</span>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary tracking-widest uppercase truncate max-w-[200px] md:max-w-none">SACRED SOUND MANUSCRIPT</h1>
+</div>
+<button class="hover:bg-secondary-container/20 transition-colors p-2 rounded-DEFAULT flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">settings_input_component</span>
+</button>
+</header>
+<div class="flex flex-1 relative">
+<!-- NavigationDrawer (Web) -->
+<nav class="hidden md:flex flex-col h-full py-margin-safe docked left-0 h-[calc(100vh-4rem)] w-64 border-r border-secondary/20 bg-surface-dim sticky top-16">
+<div class="px-6 mb-8">
+<h2 class="font-headline-sm text-headline-sm text-secondary">CEREMONIAL CHAPTERS</h2>
+</div>
+<ul class="flex-1 flex flex-col gap-2 px-2">
+<li>
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container border-l-4 border-secondary hover:bg-surface-container-highest transition-all group relative overflow-hidden" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">temple_hindu</span>
+<span class="font-label-caps text-label-caps">Opening Ritual</span>
+<div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)_50%,rgba(255,255,255,0.05)_50%,rgba(255,255,255,0.05))] bg-[length:100%_4px] pointer-events-none transition-opacity duration-300"></div>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all group relative overflow-hidden" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_tree</span>
+<span class="font-label-caps text-label-caps">Middlegame Strata</span>
+<div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)_50%,rgba(255,255,255,0.05)_50%,rgba(255,255,255,0.05))] bg-[length:100%_4px] pointer-events-none transition-opacity duration-300"></div>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all group relative overflow-hidden" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">church</span>
+<span class="font-label-caps text-label-caps">Endgame Requiem</span>
+<div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)_50%,rgba(255,255,255,0.05)_50%,rgba(255,255,255,0.05))] bg-[length:100%_4px] pointer-events-none transition-opacity duration-300"></div>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all group relative overflow-hidden" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">warning</span>
+<span class="font-label-caps text-label-caps">Shah Threat</span>
+<div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)_50%,rgba(255,255,255,0.05)_50%,rgba(255,255,255,0.05))] bg-[length:100%_4px] pointer-events-none transition-opacity duration-300"></div>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col md:flex-row gap-panel-gap p-gutter pb-24 md:pb-gutter bg-background overflow-y-auto">
+<!-- Central Manuscript Scroll -->
+<section class="flex-[2] min-h-[500px] border border-secondary/20 bg-surface-container-low relative flex flex-col p-6 overflow-hidden">
+<div class="scanline-overlay"></div>
+<header class="flex justify-between items-center border-b border-secondary/40 pb-4 mb-6 z-20">
+<h2 class="font-headline-sm text-headline-sm text-secondary">Açılış Ritüeli <span class="font-data-tabular text-data-tabular text-on-surface-variant ml-2 opacity-60">[PHASE-01]</span></h2>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-none bg-primary animate-pulse border border-primary-container shadow-[0_0_8px_rgba(255,180,172,0.6)]"></span>
+<span class="font-data-tabular text-data-tabular text-primary">LIVE RESONANCE</span>
+</div>
+</header>
+<div class="flex-1 relative z-20 flex flex-col justify-center items-center">
+<!-- Placeholder for Waveform Canvas -->
+<div class="w-full h-full min-h-[300px] flex items-center justify-center relative">
+<!-- Abstract Waveform Representation -->
+<div class="absolute inset-0 flex items-center justify-center opacity-80" style="background-image: repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(233, 193, 118, 0.05) 10px, rgba(233, 193, 118, 0.05) 12px);">
+<img alt="Abstract generative waveform visualization in a dark room. Deep charcoal background with pulsing bronze and gold lines simulating sound frequencies. Militaristic, high-stakes atmosphere with sharp, brutalist geometries overlaying the fluid organic sound patterns." class="w-full h-full object-cover mix-blend-screen opacity-40 grayscale sepia brightness-75 contrast-125" data-alt="Abstract generative waveform visualization in a dark room. Deep charcoal background with pulsing bronze and gold lines simulating sound frequencies. Militaristic, high-stakes atmosphere with sharp, brutalist geometries overlaying the fluid organic sound patterns." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiRU4JoCpVp2_jYtLG9L6FgdXT7TzU4yRo_V46d5ap0h0kA7fGl4pJkAJpHvK-DWInmZpwR0M-18rDDoT-_J7cvfBoir3iVE9LuqCViFJFE5Qd25QnXe_7EXp33V3TZEhqAaohkdrHuP0i6KHnSj47BYuuUABNZaT9qHBe9owvaKNhgHQrA8rQGdaXCjbnoptcLJyJ1nbU2IFu8rGlj8ODKC0kXWECvTv8zbMK46m-TCxvMHSs1X5bTBisAC_j7FD800Dhm9MKyTtc"/>
+</div>
+<!-- Symbolic Center -->
+<div class="relative w-48 h-48 border border-secondary/30 rounded-full flex items-center justify-center shadow-[inset_0_0_40px_rgba(233,193,118,0.1)]">
+<div class="w-32 h-32 border border-secondary/50 rounded-full flex items-center justify-center animate-[spin_60s_linear_infinite]">
+<span class="material-symbols-outlined text-secondary text-5xl opacity-50" style="font-variation-settings: 'FILL' 0;">album</span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-data-tabular text-data-tabular text-secondary/80">FREQ: 432HZ</span>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-6 pt-4 border-t border-secondary/20 flex justify-between items-center z-20 text-on-surface-variant font-data-tabular text-data-tabular">
+<span>SIG_STR: <span class="text-secondary">OPTIMAL</span></span>
+<span>COORDS: [TR-01-A]</span>
+</footer>
+</section>
+<!-- Right Tactical Panel -->
+<aside class="flex-[1] flex flex-col gap-panel-gap min-w-[300px]">
+<!-- Tension Intensity Scale -->
+<div class="border border-secondary/20 bg-surface-container p-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface border-b border-secondary/20 pb-2 mb-4">Battle Fever</h3>
+<div class="flex items-center gap-4">
+<div class="flex-1 h-8 border border-secondary/40 relative overflow-hidden bg-surface-container-lowest">
+<!-- Segmented Progress -->
+<div class="absolute inset-y-0 left-0 w-3/4 bg-primary-container/30 border-r-2 border-primary flex items-center justify-end pr-1">
+<div class="w-full h-full" style="background-image: repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(255, 180, 172, 0.4) 4px, rgba(255, 180, 172, 0.4) 8px);"></div>
+</div>
+</div>
+<span class="font-data-tabular text-data-tabular text-primary w-12 text-right">75%</span>
+</div>
+<div class="mt-2 text-right font-label-caps text-label-caps text-on-surface-variant">INTENSITY LVL: CRITICAL</div>
+</div>
+<!-- Soundtrack Layers -->
+<div class="border border-secondary/20 bg-surface-container p-4 flex-1 flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface border-b border-secondary/20 pb-2 mb-4">Acoustic Strata</h3>
+<div class="flex flex-col gap-3 flex-1">
+<!-- Layer 1 -->
+<div class="flex justify-between items-center p-2 border border-secondary/10 hover:border-secondary/30 bg-surface-container-lowest group cursor-pointer transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary" style="font-variation-settings: 'FILL' 0;">music_note</span>
+<span class="font-data-tabular text-data-tabular text-on-surface">Percussion (Kös/Davul)</span>
+</div>
+<div class="w-8 h-4 border border-secondary flex items-center p-[1px] bg-secondary-container/20">
+<div class="w-3 h-full bg-secondary ml-auto shadow-[0_0_4px_rgba(233,193,118,0.8)]"></div>
+</div>
+</div>
+<!-- Layer 2 -->
+<div class="flex justify-between items-center p-2 border border-secondary/10 hover:border-secondary/30 bg-surface-container-lowest group cursor-pointer transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary" style="font-variation-settings: 'FILL' 0;">queue_music</span>
+<span class="font-data-tabular text-data-tabular text-on-surface">Strings (Kopuz)</span>
+</div>
+<div class="w-8 h-4 border border-secondary flex items-center p-[1px] bg-secondary-container/20">
+<div class="w-3 h-full bg-secondary ml-auto shadow-[0_0_4px_rgba(233,193,118,0.8)]"></div>
+</div>
+</div>
+<!-- Layer 3 -->
+<div class="flex justify-between items-center p-2 border border-outline-variant hover:border-outline bg-surface-container-lowest group cursor-pointer transition-colors opacity-60">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">record_voice_over</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">Choir (Hakanların Sesi)</span>
+</div>
+<div class="w-8 h-4 border border-outline-variant flex items-center p-[1px]">
+<div class="w-3 h-full bg-outline-variant mr-auto"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Ritual Cues -->
+<div class="border border-secondary/20 bg-surface-container p-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface border-b border-secondary/20 pb-2 mb-4">Ritual Triggers</h3>
+<div class="grid grid-cols-2 gap-2">
+<button class="border border-primary-container bg-surface-container-lowest p-2 flex flex-col items-center justify-center gap-2 hover:bg-primary-container/20 hover:border-primary transition-all group relative overflow-hidden">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">notifications_active</span>
+<span class="font-label-caps text-label-caps text-on-surface group-hover:text-primary text-center">Kritik Hamle<br/>Çanları</span>
+<div class="absolute bottom-0 left-0 h-[2px] w-full bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+</button>
+<button class="border border-secondary/30 bg-surface-container-lowest p-2 flex flex-col items-center justify-center gap-2 hover:bg-secondary-container/20 hover:border-secondary transition-all group relative overflow-hidden">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">emoji_events</span>
+<span class="font-label-caps text-label-caps text-on-surface group-hover:text-secondary text-center">Zafer<br/>Yankıları</span>
+<div class="absolute bottom-0 left-0 h-[2px] w-full bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+</button>
+</div>
+</div>
+</aside>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 border-t border-secondary/40 bg-surface-container-low fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4">
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 border-t-2 border-primary pt-1 w-1/4 h-full hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="font-label-caps text-label-caps mt-1">Manuscript</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant pt-2 w-1/4 h-full hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">equalizer</span>
+<span class="font-label-caps text-label-caps mt-1">Layers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant pt-2 w-1/4 h-full hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications_active</span>
+<span class="font-label-caps text-label-caps mt-1">Cues</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-secondary-fixed-variant pt-2 w-1/4 h-full hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">history_edu</span>
+<span class="font-label-caps text-label-caps mt-1">Archives</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seferberlik Merkezi - Imperial Command</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#e4e1e6",
+                        "background": "#131316",
+                        "on-secondary": "#412d00",
+                        "secondary-fixed": "#ffdea5",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "secondary": "#e9c176",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "on-primary": "#690006",
+                        "surface": "#131316",
+                        "inverse-primary": "#b22a27",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#ffafa7",
+                        "on-primary-fixed": "#410002",
+                        "tertiary-container": "#465164",
+                        "on-background": "#e4e1e6",
+                        "primary-container": "#9e1b1b",
+                        "on-tertiary": "#263142",
+                        "tertiary": "#bcc7dd",
+                        "on-secondary-container": "#dab36a",
+                        "on-primary-fixed-variant": "#8f0e12",
+                        "on-secondary-fixed": "#261900",
+                        "surface-bright": "#39393c",
+                        "surface-tint": "#ffb4ac",
+                        "secondary-fixed-dim": "#e9c176",
+                        "inverse-on-surface": "#303033",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container": "#1f1f22",
+                        "outline": "#a98986",
+                        "on-tertiary-fixed": "#111c2c",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#d8e3fa",
+                        "surface-container-low": "#1b1b1e",
+                        "on-tertiary-container": "#b9c4da",
+                        "surface-dim": "#131316",
+                        "surface-container-lowest": "#0e0e11",
+                        "primary-fixed": "#ffdad6",
+                        "on-error": "#690005",
+                        "surface-container-high": "#2a2a2d",
+                        "surface-variant": "#353438",
+                        "outline-variant": "#59413e",
+                        "inverse-surface": "#e4e1e6",
+                        "on-surface-variant": "#e1bebb",
+                        "primary": "#ffb4ac",
+                        "surface-container-highest": "#353438",
+                        "secondary-container": "#604403"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-safe": "32px",
+                        "unit": "4px",
+                        "panel-gap": "8px",
+                        "gutter": "16px",
+                        "data-density": "tight"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["JetBrains Mono"],
+                        "headline-sm": ["EB Garamond"],
+                        "headline-md": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"],
+                        "data-tabular": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-tabular": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .radar-scan {
+            background: conic-gradient(from 0deg, transparent 70%, rgba(255, 180, 172, 0.2) 90%, #ffb4ac 100%);
+            border-radius: 50%;
+            /* Animation removed per instructions, static representation */
+        }
+        .metal-border {
+            border: 1px solid theme('colors.secondary');
+        }
+        .slate-border {
+            border: 1px solid theme('colors.outline-variant');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface h-screen flex flex-col overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface-container flex justify-between items-center px-gutter w-full h-16 border-b border-outline-variant shrink-0 z-10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="shield">shield</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tighter uppercase truncate">SEFERBERLİK MERKEZİ</h1>
+<button class="flex items-center justify-center h-10 w-10 text-on-surface-variant hover:bg-primary-container/20 transition-colors duration-150 ease-in-out rounded">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto px-gutter py-6 flex flex-col gap-6 items-center w-full max-w-lg mx-auto relative pb-24">
+<!-- Radar Scan Area -->
+<div class="relative w-64 h-64 flex items-center justify-center shrink-0 mt-4">
+<!-- Outer Ring -->
+<div class="absolute inset-0 border border-primary/30 rounded-full"></div>
+<div class="absolute inset-2 border border-primary/20 rounded-full border-dashed"></div>
+<!-- Inner Ring -->
+<div class="absolute inset-8 border border-primary/40 rounded-full"></div>
+<div class="absolute inset-16 border border-primary/50 rounded-full flex items-center justify-center bg-primary-container/10">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="satellite_alt">satellite_alt</span>
+</div>
+<!-- Crosshairs -->
+<div class="absolute inset-0 flex items-center justify-center opacity-20">
+<div class="w-full h-[1px] bg-primary"></div>
+<div class="h-full w-[1px] bg-primary absolute"></div>
+</div>
+<!-- Scan Sweep (Static visual) -->
+<div class="absolute inset-0 radar-scan clip-circle opacity-50" style="clip-path: circle(50% at 50% 50%); transform: rotate(45deg);"></div>
+</div>
+<!-- Status Text -->
+<div class="text-center flex flex-col gap-2 w-full mt-2">
+<h2 class="font-headline-sm text-headline-sm text-primary uppercase tracking-widest">RAKİP ARANIYOR...</h2>
+<div class="bg-surface-container-high py-3 px-4 slate-border rounded shadow-inner flex flex-col gap-1 mx-auto min-w-[240px]">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-label-caps text-label-caps opacity-70">TAHMİNİ BEKLEME</span>
+<span class="font-data-tabular text-data-tabular text-secondary">00:42</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-label-caps text-label-caps opacity-70">BÖLGE</span>
+<span class="font-data-tabular text-data-tabular text-primary">Kuzey Cephesi [001-A]</span>
+</div>
+</div>
+</div>
+<!-- Skill Balancing Bar -->
+<div class="w-full mt-4 bg-surface-container-low slate-border rounded p-4 flex flex-col gap-3">
+<h3 class="font-label-caps text-label-caps text-secondary uppercase tracking-widest border-b border-outline-variant pb-2">Güç Dengesi</h3>
+<div class="flex justify-between text-on-surface-variant font-data-tabular text-data-tabular mb-1">
+<span>SİZİN GÜCÜNÜZ</span>
+<span>HEDEF GÜÇ</span>
+</div>
+<div class="flex h-4 w-full bg-surface-container-highest rounded overflow-hidden shadow-inner border border-outline-variant">
+<div class="bg-primary-container h-full flex items-center justify-end px-1 border-r border-background" style="width: 55%;">
+<div class="w-1 h-2 bg-on-primary-container opacity-50 mr-1"></div>
+</div>
+<div class="bg-tertiary-container h-full flex items-center justify-start px-1" style="width: 45%;">
+<div class="w-1 h-2 bg-on-tertiary-container opacity-50 ml-1"></div>
+</div>
+</div>
+<div class="flex justify-between text-on-surface-variant font-label-caps text-label-caps opacity-50 mt-1">
+<span>[LVL 42]</span>
+<span>[SCANNING]</span>
+</div>
+</div>
+<!-- Region Selection Horizontal List -->
+<div class="w-full mt-4 flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Sektör Seçimi</h3>
+<span class="font-data-tabular text-data-tabular text-secondary opacity-50">/ 03</span>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory hide-scrollbar" style="scrollbar-width: none;">
+<!-- Card 1 Active -->
+<div class="snap-start shrink-0 w-48 bg-surface-container metal-border rounded flex flex-col relative overflow-hidden shadow-[0_0_15px_rgba(233,193,118,0.15)]">
+<div class="h-20 bg-surface-container-highest relative bg-cover bg-center" data-alt="A tactical map interface displaying a rugged northern mountain range. The map is rendered in high-contrast dark mode with glowing red contour lines and sharp metallic borders. The lighting is dim and strategic, emphasizing the brutalist, war-room aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDyDCh4KE8cAQ-sj4qel944TEriMWuY-71JpZzuRAxRsr7DXBcCS5po4eOAgXgiaem0JBKzoxHETbUrd5NSzoLpSjc5P_HvAXiWB-ldClA5Tph44J6YAuAoZ1OkJRWm3GdLrUvCdT7P0jNKqQPOH16PdsdZISAdqux1I49ChLz94_robVzjFrU3ySbkMcPnqEOZOfQs4GHdZsAnzml2OTumbE2_VBGq9BF6ym1JMHIfOwKJ835csKnkvbeqijCw8GRcrwbopVdXiMb6');">
+<div class="absolute inset-0 bg-background/50"></div>
+<div class="absolute top-2 left-2 px-1 bg-secondary text-on-secondary font-label-caps text-label-caps rounded-sm">AKTİF</div>
+</div>
+<div class="p-3 flex flex-col gap-1 bg-surface-container">
+<h4 class="font-headline-sm text-[16px] leading-[20px] font-semibold text-secondary truncate">Kuzey Sınırı</h4>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant opacity-70">[SEC-001-A]</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="snap-start shrink-0 w-48 bg-surface-container-low slate-border rounded flex flex-col relative overflow-hidden opacity-70 hover:opacity-100 transition-opacity">
+<div class="h-20 bg-surface-container-highest relative bg-cover bg-center" data-alt="A top-down schematic view of a fortified sun citadel in a desert environment. The interface uses dark gunmetal backgrounds with faint slate blue grid lines and architectural footprints. The style is strictly military intelligence, stark and functional." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZZOn0o2GRJikI20dSm-v6vDb7WwAbLPPruxHdjz3vCpu21vUZJBTpskeTVWt7HAdRxee2FbgDuAt7xE-FvROaHyab3GmmomqvOPrQI9SplTKN4_BkMiTAU3_LFsK8GrxreL7m6UNnuVAe9n3NXKJg1UkmqnU6pmhPydpvA-jocwhZbuppQIBvcqfUA1kjhYxlcmfBQp39LixKHwlJh3U4JGaDTXizRiDIDp2ihzLrRfqM_nvP2aaHRvAd5oiY2IANCRI8NoWlqck8');">
+<div class="absolute inset-0 bg-background/70"></div>
+</div>
+<div class="p-3 flex flex-col gap-1 bg-surface-container-low">
+<h4 class="font-headline-sm text-[16px] leading-[20px] font-medium text-on-surface truncate">Güneş Kalesi</h4>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant opacity-70">[SEC-042-C]</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="snap-start shrink-0 w-48 bg-surface-container-low slate-border rounded flex flex-col relative overflow-hidden opacity-70 hover:opacity-100 transition-opacity">
+<div class="h-20 bg-surface-container-highest relative bg-cover bg-center" data-alt="A deep underground architectural scan showing ancient vault structures. The visual is entirely composed of stark geometric lines on a deep black background, resembling a ground-penetrating radar feed in a high-tech brutalist command center." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD2deJ1cQQu_W7IlMpyIp8IShj2Dt_DTBw8ODgYtcNkCOOOeilCtghBexjDuy36Z4JviEltvtoDPOdqbu1udeqw-k8Uz6Baa1tabSgCKSHOsZzvu9EQrw9xQKt9OVLe432UERJ-IPAHZMiUQORL_S2yMyx3UNZ-zqOkDaFJdhgCQL8T4pkPvg1t7pIo2BaQSoWKmiDJrNBGQ-qmO_DrrUTjp1jjWusmQ98ydpoKV2OASGNWgspnbWmBMeknE-6v4qEw2Z7zMW3GW8fV');">
+<div class="absolute inset-0 bg-background/70"></div>
+</div>
+<div class="p-3 flex flex-col gap-1 bg-surface-container-low">
+<h4 class="font-headline-sm text-[16px] leading-[20px] font-medium text-on-surface truncate">Antik Arşiv</h4>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant opacity-70">[SEC-089-X]</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full mt-2 bg-primary-container text-on-primary-container slate-border font-headline-sm text-[18px] uppercase tracking-widest py-3 px-4 flex justify-center items-center gap-2 hover:bg-inverse-primary transition-colors active:scale-[0.98] relative overflow-hidden group">
+<span class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] opacity-50 group-hover:opacity-100"></span>
+            İPTAL ET
+        </button>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-margin-safe bg-surface-container-highest border-t border-secondary md:hidden">
+<!-- WAR ROOM - Active -->
+<button class="flex flex-col items-center justify-center bg-secondary-container text-secondary-fixed p-2 border border-secondary shadow-[0_0_10px_rgba(233,193,118,0.3)] transition-all duration-200 active:scale-95 w-16 h-16 shrink-0">
+<span class="material-symbols-outlined text-[24px]" data-icon="grid_view" data-weight="fill" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-label-caps text-[9px] mt-1 truncate w-full text-center">WAR ROOM</span>
+</button>
+<!-- ARSENAL - Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 opacity-70 hover:text-secondary hover:bg-surface-variant transition-all duration-200 active:scale-95 w-16 h-16 shrink-0">
+<span class="material-symbols-outlined text-[24px]" data-icon="swords">swords</span>
+<span class="font-label-caps text-[9px] mt-1 truncate w-full text-center">ARSENAL</span>
+</button>
+<!-- DIPLOMACY - Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 opacity-70 hover:text-secondary hover:bg-surface-variant transition-all duration-200 active:scale-95 w-16 h-16 shrink-0">
+<span class="material-symbols-outlined text-[24px]" data-icon="account_balance">account_balance</span>
+<span class="font-label-caps text-[9px] mt-1 truncate w-full text-center">DIPLOMACY</span>
+</button>
+<!-- RECORDS - Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 opacity-70 hover:text-secondary hover:bg-surface-variant transition-all duration-200 active:scale-95 w-16 h-16 shrink-0">
+<span class="material-symbols-outlined text-[24px]" data-icon="history_edu">history_edu</span>
+<span class="font-label-caps text-[9px] mt-1 truncate w-full text-center">RECORDS</span>
+</button>
+</nav>
+<style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .hide-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</body></html>

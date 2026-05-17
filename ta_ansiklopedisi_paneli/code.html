@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kadim Yadigar Arşivi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#dab36a",
+                        "surface-container-high": "#2a2a2d",
+                        "outline-variant": "#59413e",
+                        "on-error": "#690005",
+                        "secondary": "#e9c176",
+                        "on-surface": "#e4e1e6",
+                        "error-container": "#93000a",
+                        "surface-bright": "#39393c",
+                        "on-secondary-fixed": "#261900",
+                        "secondary-container": "#604403",
+                        "on-primary-fixed": "#410002",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "inverse-on-surface": "#303033",
+                        "inverse-surface": "#e4e1e6",
+                        "on-surface-variant": "#e1bebb",
+                        "on-tertiary": "#263142",
+                        "on-tertiary-fixed": "#111c2c",
+                        "surface": "#131316",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "on-background": "#e4e1e6",
+                        "on-primary-container": "#ffafa7",
+                        "tertiary": "#bcc7dd",
+                        "surface-dim": "#131316",
+                        "surface-container-low": "#1b1b1e",
+                        "primary-fixed": "#ffdad6",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "inverse-primary": "#b22a27",
+                        "secondary-fixed": "#ffdea5",
+                        "on-primary": "#690006",
+                        "surface-tint": "#ffb4ac",
+                        "on-tertiary-container": "#b9c4da",
+                        "on-primary-fixed-variant": "#8f0e12",
+                        "tertiary-fixed": "#d8e3fa",
+                        "surface-container-highest": "#353438",
+                        "surface-container": "#1f1f22",
+                        "secondary-fixed-dim": "#e9c176",
+                        "surface-container-lowest": "#0e0e11",
+                        "on-secondary": "#412d00",
+                        "surface-variant": "#353438",
+                        "primary-container": "#9e1b1b",
+                        "primary": "#ffb4ac",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "outline": "#a98986",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "background": "#131316",
+                        "tertiary-container": "#465164"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-safe": "32px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "panel-gap": "8px",
+                        "data-density": "tight"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["EB Garamond", "serif"],
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "headline-md": ["EB Garamond", "serif"],
+                        "data-tabular": ["JetBrains Mono", "monospace"],
+                        "body-md": ["JetBrains Mono", "monospace"],
+                        "body-lg": ["JetBrains Mono", "monospace"],
+                        "headline-sm": ["EB Garamond", "serif"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "data-tabular": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131316;
+            color: #e4e1e6;
+        }
+        /* Grid background pattern */
+        .grid-pattern {
+            background-image: 
+                linear-gradient(to right, rgba(233, 193, 118, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(233, 193, 118, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .inner-glow-border {
+            box-shadow: inset 0 0 0 1px rgba(233, 193, 118, 0.3);
+        }
+        .scan-line {
+            background: linear-gradient(to bottom, transparent 50%, rgba(255, 180, 172, 0.1) 51%, transparent 51%);
+            background-size: 100% 4px;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md grid-pattern">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-gutter h-20 bg-surface-container border-b border-secondary/50 bg-surface-dim flat with 1px inner-glow border-secondary sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-secondary/50 flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-secondary">account_circle</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md uppercase tracking-widest text-secondary">KADİM YADİGAR ARŞİVİ</h1>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant uppercase">İmparatorluk Bilgi Bankası</p>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-bright transition-colors rounded">
+<span class="material-symbols-outlined text-secondary">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-gutter py-6 pb-32 flex flex-col gap-8">
+<!-- Search & Filter Bar -->
+<section class="flex gap-4 items-center">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary/50">search</span>
+<input class="w-full bg-surface-container-low border-b-2 border-outline-variant text-on-surface placeholder:text-on-surface-variant font-data-tabular text-data-tabular py-3 pl-10 pr-4 focus:outline-none focus:border-secondary transition-colors" placeholder="Engraved Rune Database'de Ara..." type="text"/>
+</div>
+<button class="flex items-center gap-2 border border-secondary/30 text-secondary px-4 py-3 hover:bg-surface-bright transition-colors font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+                FİLTRE
+            </button>
+</section>
+<!-- MUHAFIZLAR (Guardians) Section -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center gap-4 border-b border-secondary/20 pb-2">
+<h2 class="font-headline-sm text-headline-sm text-secondary uppercase tracking-widest">MUHAFIZLAR</h2>
+<div class="flex-1 h-px bg-secondary/10"></div>
+<span class="font-data-tabular text-data-tabular text-secondary/50">[ CLS-GRD ]</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-panel-gap">
+<!-- Card 1 -->
+<article class="bg-surface-container-low border border-secondary/20 inner-glow-border flex flex-col md:flex-row relative overflow-hidden group hover:bg-surface-bright transition-colors cursor-pointer">
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-low via-transparent to-transparent z-10 hidden md:block"></div>
+<div class="w-full md:w-2/5 aspect-[4/3] md:aspect-auto bg-surface relative">
+<img alt="At Taşı" class="w-full h-full object-cover object-center mix-blend-luminosity opacity-80 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvSlpP0el_KaQNMEIU8-Ve6wDn-O_NXilmJcIp99duFpgOOXZyym8M3STMvaI7liiLkg5eN-3utSQQPi4XC27aqPgolvq2bPjvAu9D1z6TJs3tKeNwC_X5Zat0JIAEYuonY_bRLXFNbYlUVn6jXqRbzUY1nqebM3kw61S7L6-fzxmh73xJnueERCNZH36Z-KP1LrpI2i3zvVvzRUu0Vk6O3XB22lh1OWYHE97wteMx6d1rtz9YFvLLfZR9wbr_1QNz-rW42Vous2uW"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent md:hidden"></div>
+</div>
+<div class="p-6 flex-1 flex flex-col gap-4 relative z-20">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-secondary">At Taşı</h3>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant">Süvari Sınıfı</p>
+</div>
+<span class="material-symbols-outlined text-secondary icon-fill">pets</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface line-clamp-3">Bozkırın kalbi, hızın ve manevranın simgesi. Düşman hatlarını yarmak ve kanatlardan vurmak için tasarlanmış kadim taktiklerin taşıyıcısı.</p>
+<div class="mt-auto pt-4 border-t border-secondary/10 flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-secondary/70">KÖKEN: GÖK TÜRK MİRASI</span>
+<span class="font-data-tabular text-data-tabular text-secondary">R-001</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- KUŞATMA BİRİMLERİ (Siege Units) Section -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center gap-4 border-b border-secondary/20 pb-2">
+<h2 class="font-headline-sm text-headline-sm text-secondary uppercase tracking-widest">KUŞATMA BİRİMLERİ</h2>
+<div class="flex-1 h-px bg-secondary/10"></div>
+<span class="font-data-tabular text-data-tabular text-secondary/50">[ CLS-SGE ]</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-panel-gap">
+<!-- Card 2 -->
+<article class="bg-surface-container-low border border-secondary/20 inner-glow-border flex flex-col relative overflow-hidden group hover:bg-surface-bright transition-colors cursor-pointer">
+<div class="w-full aspect-square bg-surface relative p-4 flex items-center justify-center">
+<img alt="Dabbaba" class="h-full object-contain mix-blend-luminosity opacity-80 group-hover:opacity-100 transition-opacity drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIRyZfZ1hvC81LfMHy77XSudyRwMujjwZHf9FsLuVf_Kos5PXPIHYezwvAp5ku63xtqzEyGz8BURsiOs748TYlMbyEvR0sZuOscDdECx92802ZSW-izq9slY3oK2mB2BZHsCIEBz9EUH_38KX_qfr33tDLraxiDNaldBe2JRhsC9CaAUMTZe4Ljc_WDJwiKYEysxSBxxNM8QTDhs0gWEcfZtrmpqW0efhOXxfNVzPyQYp8yMvgg-ARiqyvNI3SasrhiP6aUcSckqtE"/>
+<div class="absolute bottom-4 right-4 bg-surface-container-high border border-secondary/30 px-2 py-1">
+<span class="font-data-tabular text-data-tabular text-secondary">DAB</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-2 border-t border-secondary/20 bg-surface-container">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-secondary">Dabbaba</h3>
+<span class="material-symbols-outlined text-secondary/70 text-[20px]">castle</span>
+</div>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant">Ağır Kuşatma Silahı</p>
+<p class="font-label-caps text-label-caps text-secondary/50 mt-2">Sembol: Surları Yıkan Güç</p>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-low border border-secondary/20 inner-glow-border flex flex-col relative overflow-hidden group hover:bg-surface-bright transition-colors cursor-pointer">
+<div class="w-full aspect-square bg-surface relative p-4 flex items-center justify-center">
+<img alt="Deve Taşı" class="h-full object-contain mix-blend-luminosity opacity-80 group-hover:opacity-100 transition-opacity drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVdtpGLWSgb38uCgTUWdyyDo1Au3C_RyIcaXnulvSQHZy4pDTXwF-h46Is16Zo-6bzdxsBfBJQXiMhtTTZdIkvI6zZx_DUtbznMIUMwWebwF_vQEWNrpO6io35Lb7KWRVGrYxRtxu3qxuw6Gy-sis-9Cq3RyHuVSzG2hn-2PYyqjDiti2tXe1BXQo7F7g6yFkSrestjyq4sCFCWEY3goZJNGjUOvTNcd8H9Wb2wVwPGyd64gMAT1wdWnqCwHmiYc8BZT2HRWR3ndS7"/>
+<div class="absolute bottom-4 right-4 bg-surface-container-high border border-secondary/30 px-2 py-1">
+<span class="font-data-tabular text-data-tabular text-secondary">CML</span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-2 border-t border-secondary/20 bg-surface-container">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-secondary">Deve Taşı</h3>
+<span class="material-symbols-outlined text-secondary/70 text-[20px]">landscape</span>
+</div>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant">Lojistik ve Dayanıklılık</p>
+<p class="font-label-caps text-label-caps text-secondary/50 mt-2">Sembol: Çölün Efendisi</p>
+</div>
+</article>
+</div>
+</section>
+<!-- Detailed Info Modal / Preview Section (Static implementation for design) -->
+<section class="mt-8 border border-secondary p-6 bg-surface-container-low relative inner-glow-border overflow-hidden">
+<div class="absolute inset-0 scan-line pointer-events-none opacity-50"></div>
+<div class="flex flex-col md:flex-row gap-8 relative z-10">
+<div class="w-full md:w-1/3 border-r border-secondary/30 pr-8">
+<h4 class="font-headline-sm text-headline-sm text-secondary mb-4 border-b border-secondary/20 pb-2">MİTOLOJİK BAĞLAM</h4>
+<p class="font-body-md text-body-md text-on-surface">İmparatorluk taşlarının her biri, sadece bir satranç figürü değil, aynı zamanda evrenin üç katmanlı (Gök, Orta, Yeraltı) modelini temsil eden kozmik birer aktördür. Şah, Kut'u taşıyan eksendir; diğer taşlar ise bu ekseni korumakla yükümlü kadim güçlerin tezahürüdür.</p>
+</div>
+<div class="flex-1 grid grid-cols-2 gap-4">
+<div class="border border-secondary/20 p-4 bg-surface-container text-center">
+<span class="material-symbols-outlined text-secondary text-3xl mb-2 icon-fill">wb_sunny</span>
+<h5 class="font-data-tabular text-data-tabular text-secondary mb-1">GÜNEŞ DİSKİ</h5>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Kut, ışık, ilahi güç.</p>
+</div>
+<div class="border border-secondary/20 p-4 bg-surface-container text-center">
+<span class="material-symbols-outlined text-secondary text-3xl mb-2 icon-fill">token</span>
+<h5 class="font-data-tabular text-data-tabular text-secondary mb-1">ORHUN YAZITI</h5>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Hafıza ve kimlik.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden bg-surface-container-lowest dark:bg-surface-container-lowest fixed bottom-0 w-full z-50 border-t-2 border-secondary/20 bg-surface-container-lowest border-t border-secondary/40 flex justify-around items-center h-24 px-margin-safe pb-4">
+<button class="text-on-surface-variant flex flex-col items-center opacity-70 hover:bg-surface-variant/50 w-full h-full justify-center">
+<span class="material-symbols-outlined mb-1">swords</span>
+<span class="font-label-caps text-label-caps">DEPLOY</span>
+</button>
+<button class="text-on-surface-variant flex flex-col items-center opacity-70 hover:bg-surface-variant/50 w-full h-full justify-center">
+<span class="material-symbols-outlined mb-1">shield</span>
+<span class="font-label-caps text-label-caps">DEFEND</span>
+</button>
+<button class="bg-primary-container text-on-primary-container border-t-2 border-primary px-6 py-2 flex flex-col items-center w-full h-full justify-center relative overflow-hidden">
+<div class="absolute inset-0 scan-line opacity-50"></div>
+<span class="material-symbols-outlined mb-1 relative z-10">radar</span>
+<span class="font-label-caps text-label-caps relative z-10">INTEL</span>
+</button>
+<button class="text-on-surface-variant flex flex-col items-center opacity-70 hover:bg-surface-variant/50 w-full h-full justify-center">
+<span class="material-symbols-outlined mb-1">groups</span>
+<span class="font-label-caps text-label-caps">LEGION</span>
+</button>
+<button class="text-on-surface-variant flex flex-col items-center opacity-70 hover:bg-surface-variant/50 w-full h-full justify-center">
+<span class="material-symbols-outlined mb-1">terminal</span>
+<span class="font-label-caps text-label-caps">SYSTEM</span>
+</button>
+</nav>
+<!-- Desktop Navigation (Hidden on mobile) -->
+<nav class="hidden md:flex fixed left-0 top-20 h-[calc(100vh-5rem)] w-20 flex-col items-center bg-surface-container border-r border-secondary/30 py-8 gap-8 z-40">
+<button class="w-12 h-12 flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-bright rounded transition-colors group relative" title="DEPLOY">
+<span class="material-symbols-outlined">swords</span>
+</button>
+<button class="w-12 h-12 flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-bright rounded transition-colors group relative" title="DEFEND">
+<span class="material-symbols-outlined">shield</span>
+</button>
+<button class="w-12 h-12 flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container border-l-2 border-secondary relative overflow-hidden" title="INTEL">
+<div class="absolute inset-0 scan-line opacity-50"></div>
+<span class="material-symbols-outlined relative z-10">radar</span>
+</button>
+<button class="w-12 h-12 flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-bright rounded transition-colors group relative" title="LEGION">
+<span class="material-symbols-outlined">groups</span>
+</button>
+<button class="w-12 h-12 flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary hover:bg-surface-bright rounded transition-colors group relative mt-auto" title="SYSTEM">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+</nav>
+</body></html>

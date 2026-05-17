@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Harp Tarihçesi - Imperial Chronicle</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#3c475a",
+                      "primary-fixed-dim": "#ffb4ac",
+                      "tertiary-container": "#465164",
+                      "surface-container": "#1f1f22",
+                      "secondary-container": "#604403",
+                      "on-tertiary-container": "#b9c4da",
+                      "on-secondary-fixed-variant": "#5d4201",
+                      "secondary": "#e9c176",
+                      "on-background": "#e4e1e6",
+                      "secondary-fixed-dim": "#e9c176",
+                      "on-tertiary-fixed": "#111c2c",
+                      "tertiary": "#bcc7dd",
+                      "surface-container-low": "#1b1b1e",
+                      "outline": "#a98986",
+                      "on-error-container": "#ffdad6",
+                      "inverse-on-surface": "#303033",
+                      "on-secondary": "#412d00",
+                      "inverse-surface": "#e4e1e6",
+                      "secondary-fixed": "#ffdea5",
+                      "on-primary": "#690006",
+                      "surface-container-lowest": "#0e0e11",
+                      "on-secondary-container": "#dab36a",
+                      "on-primary-container": "#ffafa7",
+                      "on-surface": "#e4e1e6",
+                      "primary-fixed": "#ffdad6",
+                      "on-tertiary": "#263142",
+                      "on-primary-fixed": "#410002",
+                      "outline-variant": "#59413e",
+                      "surface": "#131316",
+                      "tertiary-fixed-dim": "#bcc7dd",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#8f0e12",
+                      "primary-container": "#9e1b1b",
+                      "tertiary-fixed": "#d8e3fa",
+                      "on-surface-variant": "#e1bebb",
+                      "surface-tint": "#ffb4ac",
+                      "surface-bright": "#39393c",
+                      "surface-dim": "#131316",
+                      "error": "#ffb4ab",
+                      "surface-container-highest": "#353438",
+                      "surface-container-high": "#2a2a2d",
+                      "surface-variant": "#353438",
+                      "on-secondary-fixed": "#261900",
+                      "primary": "#ffb4ac",
+                      "background": "#131316",
+                      "on-error": "#690005",
+                      "inverse-primary": "#b22a27"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "data-density": "tight",
+                      "gutter": "16px",
+                      "margin-safe": "32px",
+                      "panel-gap": "8px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "EB Garamond"
+                      ],
+                      "display-lg": [
+                              "EB Garamond"
+                      ],
+                      "headline-sm": [
+                              "EB Garamond"
+                      ],
+                      "body-md": [
+                              "JetBrains Mono"
+                      ],
+                      "data-tabular": [
+                              "JetBrains Mono"
+                      ],
+                      "body-lg": [
+                              "JetBrains Mono"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-tabular": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pt-16 pb-32 md:pb-16 flex flex-col items-center">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface dark:bg-surface text-secondary dark:text-secondary font-headline-sm text-headline-sm font-headline-md text-headline-md font-bold tracking-tighter border-b border-outline-variant">
+<button class="hover:text-primary transition-colors duration-150 flex items-center justify-center p-2 rounded-full hover:bg-surface-container-high focus:outline-none focus:ring-2 focus:ring-secondary">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-secondary uppercase tracking-widest text-center truncate px-4">HARP TARİHÇESİ</h1>
+<button class="hover:text-primary transition-colors duration-150 flex items-center justify-center p-2 rounded-full hover:bg-surface-container-high focus:outline-none focus:ring-2 focus:ring-secondary">
+<span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span>
+</button>
+</header>
+<main class="w-full max-w-4xl px-gutter py-margin-safe flex flex-col gap-margin-safe flex-grow">
+<!-- Strategic Summary -->
+<section class="bg-surface-container-low border border-secondary/30 rounded-DEFAULT p-6 flex flex-col md:flex-row gap-6 relative overflow-hidden">
+<!-- Wax Seal Decoration -->
+<div class="absolute -top-4 -right-4 w-24 h-24 bg-primary-container rounded-full opacity-20 blur-xl"></div>
+<div class="absolute top-4 right-4 text-primary flex items-center justify-center w-12 h-12 rounded-full bg-surface-container border border-primary/50 shadow-[0_0_15px_rgba(158,27,27,0.5)]">
+<span class="material-symbols-outlined text-3xl" data-icon="history_edu">history_edu</span>
+</div>
+<div class="flex-1 z-10">
+<h2 class="font-headline-md text-headline-md text-secondary mb-2 flex items-center gap-3">
+<span class="w-1 h-8 bg-secondary block"></span>
+                    Stratejik Özet
+                </h2>
+<div class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+<p class="mb-4 text-secondary-fixed font-bold text-lg">Bozkır Seferi - Kesin Zafer</p>
+<p>Düşman merkezine yapılan ani bir süvari hücumu ile savunma hatları yarıldı. Kanatlardaki oyalama taktikleri ana kuvvetlerin sızmasını sağladı. İmparatorluk kuvvetleri sahaya mutlak bir hakimiyet kurdu.</p>
+</div>
+<div class="mt-6 flex flex-wrap gap-4 font-data-tabular text-data-tabular text-tertiary">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">schedule</span> SÜRE: 42 DÖNGÜ</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> SEKTÖR: KUZEY OVALARI</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">group</span> KUVVET: III. LEJYON</div>
+</div>
+</div>
+</section>
+<!-- Main Content Area: Layout for Logs and Variations -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Battle Records (Move List) -->
+<section class="md:col-span-2 flex flex-col gap-4">
+<h3 class="font-headline-sm text-headline-sm text-secondary border-b border-outline-variant pb-2 mb-2">Harp Kayıtları</h3>
+<div class="flex flex-col gap-2">
+<!-- Move Item -->
+<div class="flex items-start gap-4 p-4 bg-surface-container border border-surface-variant hover:border-outline-variant transition-colors group">
+<div class="w-12 h-12 rounded flex items-center justify-center bg-surface-container-high border border-surface-bright shrink-0 group-hover:bg-secondary/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary" data-icon="swords">swords</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-data-tabular text-data-tabular text-secondary font-bold text-sm tracking-widest">01. e4 - d5</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant opacity-50 text-[10px]">[001-A]</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Merkezde ilk temas. Piyade birlikleri ileri sürüldü.</p>
+</div>
+</div>
+<!-- Move Item - Critical -->
+<div class="flex items-start gap-4 p-4 bg-surface-container border border-primary/40 relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary shadow-[0_0_10px_rgba(255,180,172,0.8)]"></div>
+<div class="w-12 h-12 rounded flex items-center justify-center bg-primary-container/20 border border-primary/30 shrink-0">
+<span class="material-symbols-outlined text-primary shadow-sm" data-icon="visibility" style="font-variation-settings: 'FILL' 1;">visibility</span>
+</div>
+<div class="flex-1 z-10">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-data-tabular text-data-tabular text-primary font-bold text-sm tracking-widest">12. Af3 - Fg4</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant opacity-50 text-[10px]">[012-C]</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Kritik Gözlem: Düşman kanat savunmasında zafiyet tespit edildi.</p>
+</div>
+</div>
+<!-- Move Item -->
+<div class="flex items-start gap-4 p-4 bg-surface-container border border-surface-variant hover:border-outline-variant transition-colors group">
+<div class="w-12 h-12 rounded flex items-center justify-center bg-surface-container-high border border-surface-bright shrink-0 group-hover:bg-secondary/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary" data-icon="shield">shield</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-data-tabular text-data-tabular text-secondary font-bold text-sm tracking-widest">15. O-O - c6</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant opacity-50 text-[10px]">[015-B]</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Karargah güvene alındı. Savunma tahkimatı tamamlandı.</p>
+</div>
+</div>
+<!-- Move Item - Attack -->
+<div class="flex items-start gap-4 p-4 bg-surface-container border border-surface-variant hover:border-secondary/50 transition-colors group">
+<div class="w-12 h-12 rounded flex items-center justify-center bg-secondary-container/20 border border-secondary/30 shrink-0">
+<span class="material-symbols-outlined text-secondary" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-baseline mb-1">
+<span class="font-data-tabular text-data-tabular text-secondary font-bold text-sm tracking-widest">22. Vxh7+ - Sxh7</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant opacity-50 text-[10px]">[022-X]</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Şok Baskını: Süvari kanadı yarıldı. Merkez kontrolü tamamen sağlandı.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Tactical Variations -->
+<aside class="flex flex-col gap-4">
+<h3 class="font-headline-sm text-headline-sm text-secondary border-b border-outline-variant pb-2 mb-2">Taktiksel Varyasyonlar</h3>
+<div class="bg-surface-container-low border border-surface-variant p-4 flex flex-col gap-6">
+<div class="relative pl-6">
+<!-- Vertical line -->
+<div class="absolute left-2 top-2 bottom-0 w-px bg-outline-variant border-dashed"></div>
+<!-- Main Path -->
+<div class="relative mb-6">
+<div class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-secondary border-2 border-surface-container-low z-10"></div>
+<div class="font-data-tabular text-data-tabular text-secondary mb-1">Ana Hat [Gözlemci Raporu]</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-sm">Savunma pozisyonu korunarak yıpratma savaşına devam edildi.</div>
+</div>
+<!-- Branch 1 -->
+<div class="relative mb-6">
+<div class="absolute -left-[1.35rem] top-2 w-4 h-px bg-outline-variant"></div>
+<div class="absolute -left-[1.35rem] top-1 w-2 h-2 rounded-full bg-tertiary border-2 border-surface-container-low z-10"></div>
+<div class="pl-2 border-l-2 border-tertiary/30">
+<div class="font-data-tabular text-data-tabular text-tertiary mb-1">Alternatif A [Teorik]</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-sm">22. Axe5 hamlesi ile agresif kanat saldırısı. (Risk: Yüksek, Ödül: Orta)</div>
+</div>
+</div>
+<!-- Branch 2 -->
+<div class="relative">
+<div class="absolute -left-[1.35rem] top-2 w-4 h-px bg-outline-variant"></div>
+<div class="absolute -left-[1.35rem] top-1 w-2 h-2 rounded-full bg-primary border-2 border-surface-container-low z-10 shadow-[0_0_5px_rgba(255,180,172,0.8)]"></div>
+<div class="pl-2 border-l-2 border-primary/30 bg-primary-container/5 p-2 -ml-2 rounded-r">
+<div class="font-data-tabular text-data-tabular text-primary mb-1">Alternatif B [Felaket Senaryosu]</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-sm">Eğer düşman 23... Kg8 yapsaydı, merkez savunmamız çökecekti.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Status Panel -->
+<div class="bg-surface border border-outline-variant p-4">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2 tracking-widest">SİSTEM DURUMU</div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-data-tabular text-data-tabular text-sm">Analiz Motoru</span>
+<span class="w-2 h-2 bg-secondary rounded-full shadow-[0_0_5px_rgba(233,193,118,0.8)]"></span>
+</div>
+<div class="w-full bg-surface-container-high h-1 mb-1">
+<div class="bg-secondary h-1 w-[85%]"></div>
+</div>
+<div class="text-right font-data-tabular text-data-tabular text-xs text-on-surface-variant">Derinlik: 24 Hamle</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Timeline Navigation -->
+<div class="fixed bottom-20 md:bottom-0 left-0 w-full bg-surface-container-highest border-t border-outline-variant p-4 z-40 hidden md:block">
+<div class="max-w-4xl mx-auto flex items-center gap-4">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-secondary border border-outline-variant hover:border-secondary bg-surface transition-colors">
+<span class="material-symbols-outlined text-sm">fast_rewind</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-secondary border border-outline-variant hover:border-secondary bg-surface transition-colors">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+</button>
+<div class="flex-1 relative h-6 flex items-center group cursor-pointer">
+<!-- Track -->
+<div class="absolute left-0 right-0 h-1 bg-surface border border-outline-variant"></div>
+<!-- Progress -->
+<div class="absolute left-0 h-1 bg-secondary w-[60%] shadow-[0_0_8px_rgba(233,193,118,0.5)]"></div>
+<!-- Nodes -->
+<div class="absolute w-full flex justify-between px-1">
+<div class="w-2 h-2 bg-surface border border-outline-variant rounded-full"></div>
+<div class="w-2 h-2 bg-primary border border-primary rounded-full shadow-[0_0_5px_rgba(255,180,172,0.8)]"></div>
+<div class="w-2 h-2 bg-surface border border-outline-variant rounded-full"></div>
+<div class="w-2 h-2 bg-secondary border border-secondary rounded-full shadow-[0_0_5px_rgba(233,193,118,0.8)]" style="left: 60%; position: absolute; transform: translateX(-50%);"></div>
+<div class="w-2 h-2 bg-surface border border-outline-variant rounded-full"></div>
+</div>
+</div>
+<div class="font-data-tabular text-data-tabular text-secondary text-sm bg-surface px-2 py-1 border border-outline-variant">
+                HAMLE 22/42
+            </div>
+</div>
+</div>
+<!-- BottomNavBar (Mobile Only per Layout rules in some interpretations, but prompt asks for it with ARCHIVES active. Applying semantic shell rules: Render if destination. Archies is active.) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-margin-safe pb-safe bg-surface-container dark:bg-surface-container text-secondary dark:text-secondary font-label-caps text-label-caps border-t border-outline-variant md:hidden">
+<button class="flex flex-col items-center justify-center text-on-surface-variant pt-2 w-full h-full hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined mb-1 text-xl" data-icon="grid_view">grid_view</span>
+<span>TACTICS</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary border-t-2 border-secondary pt-2 bg-secondary-container/20 w-full h-full brightness-125 scale-105 transition-all">
+<span class="material-symbols-outlined mb-1 text-xl" data-icon="history_edu">history_edu</span>
+<span>ARCHIVES</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant pt-2 w-full h-full hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined mb-1 text-xl" data-icon="swords">swords</span>
+<span>BATTLE</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant pt-2 w-full h-full hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined mb-1 text-xl" data-icon="account_balance">account_balance</span>
+<span>COMMAND</span>
+</button>
+</nav>
+</body></html>

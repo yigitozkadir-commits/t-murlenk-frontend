@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Match Review System - Imperial Archives</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#e4e1e6",
+                        "surface-container-low": "#1b1b1e",
+                        "on-background": "#e4e1e6",
+                        "on-tertiary-container": "#b9c4da",
+                        "primary-container": "#9e1b1b",
+                        "surface-container-lowest": "#0e0e11",
+                        "secondary-fixed-dim": "#e9c176",
+                        "tertiary": "#bcc7dd",
+                        "secondary": "#e9c176",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "on-error": "#690005",
+                        "primary": "#ffb4ac",
+                        "on-secondary": "#412d00",
+                        "outline": "#a98986",
+                        "surface": "#131316",
+                        "on-secondary-fixed": "#261900",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "primary-fixed": "#ffdad6",
+                        "on-primary-fixed": "#410002",
+                        "inverse-surface": "#e4e1e6",
+                        "outline-variant": "#59413e",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#b22a27",
+                        "surface-variant": "#353438",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-primary": "#690006",
+                        "inverse-on-surface": "#303033",
+                        "tertiary-fixed": "#d8e3fa",
+                        "surface-container-high": "#2a2a2d",
+                        "on-primary-fixed-variant": "#8f0e12",
+                        "surface-tint": "#ffb4ac",
+                        "surface-dim": "#131316",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "tertiary-container": "#465164",
+                        "on-tertiary-fixed": "#111c2c",
+                        "secondary-container": "#604403",
+                        "surface-container": "#1f1f22",
+                        "surface-container-highest": "#353438",
+                        "surface-bright": "#39393c",
+                        "on-tertiary": "#263142",
+                        "on-surface-variant": "#e1bebb",
+                        "on-secondary-container": "#dab36a",
+                        "on-primary-container": "#ffafa7",
+                        "background": "#131316",
+                        "on-error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdea5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "unit": "4px",
+                        "margin-safe": "32px",
+                        "panel-gap": "8px",
+                        "gutter": "16px",
+                        "data-density": "tight"
+                    },
+                    fontFamily: {
+                        "headline-sm": ["EB Garamond", "serif"],
+                        "data-tabular": ["JetBrains Mono", "monospace"],
+                        "label-caps": ["JetBrains Mono", "monospace"],
+                        "display-lg": ["EB Garamond", "serif"],
+                        "body-md": ["JetBrains Mono", "monospace"],
+                        "body-lg": ["JetBrains Mono", "monospace"],
+                        "headline-md": ["EB Garamond", "serif"]
+                    },
+                    fontSize: {
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "data-tabular": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Scanline effect for tactical displays */
+        .scanline-bg {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.2) 50%,
+                rgba(0,0,0,0.2)
+            );
+            background-size: 100% 4px;
+        }
+        
+        /* Custom scrollbar for data density */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131316;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #59413e;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen overflow-hidden flex font-body-md selection:bg-secondary/30">
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col p-gutter fixed left-0 top-0 h-full z-[100] w-80 border-r border-secondary/50 bg-surface-container-high backdrop-blur-md">
+<div class="mb-8 px-4 mt-6">
+<h2 class="font-headline-md text-headline-md text-secondary tracking-wide uppercase">IMPERIAL ARCHIVES</h2>
+<div class="h-[1px] w-full bg-secondary/30 mt-4"></div>
+</div>
+<ul class="flex flex-col gap-2 w-full flex-1">
+<li>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all duration-150" href="#">
+<span class="material-symbols-outlined">fort</span>
+<span class="font-body-md text-body-md tracking-wider">WAR ROOM</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all duration-150" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-body-md text-body-md tracking-wider">MAP ARCHIVE</span>
+</a>
+</li>
+<!-- Active State -->
+<li>
+<a class="flex items-center gap-4 px-4 py-3 text-primary font-bold bg-primary-container/10 border-l-4 border-primary bg-secondary/10" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-md text-body-md tracking-wider">PHASE LOGS</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all duration-150" href="#">
+<span class="material-symbols-outlined">music_note</span>
+<span class="font-body-md text-body-md tracking-wider">MUSIC SETTINGS</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto pt-4 border-t border-secondary/30">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all duration-150" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md tracking-wider">EXIT GAME</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-80 h-screen w-full relative">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-safe h-20 border-b border-secondary/30 bg-surface-container shadow-sm z-40">
+<div class="flex items-center gap-4 text-primary dark:text-primary">
+<button class="md:hidden p-2 hover:bg-surface-bright transition-colors rounded">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary dark:text-secondary tracking-widest uppercase">STRATEGIC COMMAND</h1>
+</div>
+<button class="p-2 text-outline dark:text-outline hover:bg-surface-bright dark:hover:bg-surface-bright transition-colors rounded">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<!-- Content Canvas -->
+<main class="flex-1 overflow-y-auto p-4 md:p-gutter flex flex-col gap-gutter bg-surface-lowest pb-24 md:pb-4">
+<!-- Context Header -->
+<div class="flex items-end justify-between border-b border-secondary/20 pb-2">
+<div>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant uppercase tracking-widest mb-1">[ARCHIVE_ID: 994-OMEGA]</p>
+<h2 class="font-display-lg text-display-lg text-secondary">SEFER KAYITLARI: ARŞİV REKONSTRÜKSİYONU</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">ANALYSIS OVERLAY</span>
+<button class="w-10 h-5 rounded-full bg-secondary-container relative flex items-center p-1 border border-secondary/50">
+<div class="w-3 h-3 rounded-full bg-secondary absolute right-1 shadow-[0_0_8px_#e9c176]"></div>
+</button>
+</div>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter flex-1 min-h-0">
+<!-- Left/Center: Main Board & Scrubber (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-gutter h-full">
+<!-- Tactical Map Display -->
+<div class="flex-1 relative border border-secondary/30 bg-surface-container flex items-center justify-center overflow-hidden">
+<!-- Corner accents -->
+<div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-secondary"></div>
+<div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-secondary"></div>
+<div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-secondary"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-secondary"></div>
+<!-- Map Image Placeholder -->
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity" data-alt="A highly detailed top-down view of an ancient strategic war map resting on a heavy gunmetal table. The map features glowing gold geometric grids and crimson threat vectors typical of a brutalist, advanced military command center. High-contrast dramatic lighting emphasizes the metallic textures and deep blacks of the surrounding environment, creating an atmosphere of intense historical analysis and calculated warfare." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3bfYAWBHu-sUXWKkUW-IA0lzyl0mbq6aEKFIos9UVqprqa9gqbZCRQeo2Z4hzADON5gEb5x_zqAKYjBxmVGat4yaSsZ_AvthBTkxfBVNJ1CB72zZXnfngA7ogUAZDBh_oFuMHnWhrYiYPjtpomf4KEsLxS6lFzQcesXQ_7bEVYH5diLoBqAlOPFQ6wNPFGDS-hrTeWU77LpuDQdM_9M09iHmUHbdKhvm95GxNZsr0NglNgAmCj04IN48jFAjJsOSTqUXePMM0hD-j"/>
+<div class="absolute inset-0 scanline-bg pointer-events-none"></div>
+<!-- Center Focus Reticle -->
+<div class="relative z-10 w-64 h-64 border border-primary/20 rounded-full flex items-center justify-center pointer-events-none">
+<div class="w-full h-[1px] bg-primary/20 absolute"></div>
+<div class="h-full w-[1px] bg-primary/20 absolute"></div>
+<div class="w-16 h-16 border border-secondary/50 flex items-center justify-center shadow-[0_0_15px_rgba(233,193,118,0.2)]">
+<span class="material-symbols-outlined text-secondary opacity-80">crossword</span>
+</div>
+</div>
+<!-- Floating Threat Vector Data -->
+<div class="absolute top-4 left-4 bg-surface/80 border border-secondary/30 p-2 backdrop-blur-sm">
+<p class="font-data-tabular text-data-tabular text-primary">SEC: ALPHA_QUADRANT</p>
+<p class="font-data-tabular text-data-tabular text-on-surface-variant">TENSION: CRITICAL</p>
+</div>
+</div>
+<!-- Cinematic Controls & Scrubber Container -->
+<div class="border border-secondary/30 bg-surface-container-high p-4 flex flex-col gap-4">
+<!-- Controls Row -->
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant">PLAYBACK_RATE</span>
+<div class="flex border border-secondary/40 rounded-sm overflow-hidden">
+<button class="px-3 py-1 font-data-tabular text-data-tabular bg-secondary/20 text-secondary border-r border-secondary/40">1x</button>
+<button class="px-3 py-1 font-data-tabular text-data-tabular text-on-surface-variant hover:text-secondary hover:bg-surface-bright transition-colors border-r border-secondary/40">2x</button>
+<button class="px-3 py-1 font-data-tabular text-data-tabular text-on-surface-variant hover:text-secondary hover:bg-surface-bright transition-colors">4x</button>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-secondary transition-colors group relative">
+<span class="material-symbols-outlined text-[28px]">skip_previous</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-secondary flex items-center justify-center text-secondary hover:bg-secondary/10 transition-colors shadow-[0_0_10px_rgba(233,193,118,0.2)] relative">
+<div class="absolute inset-[-4px] border border-secondary/30 rounded-full animate-[spin_10s_linear_infinite] border-t-transparent"></div>
+<span class="material-symbols-outlined fill text-[32px]">play_arrow</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors group relative">
+<span class="material-symbols-outlined text-[28px]">skip_next</span>
+</button>
+</div>
+<div class="flex items-center gap-4">
+<p class="font-data-tabular text-data-tabular text-secondary">TURN: 042 / 128</p>
+</div>
+</div>
+<!-- Timeline Scrubber -->
+<div class="relative w-full h-12 flex flex-col justify-end pb-2">
+<!-- Phase Markers -->
+<div class="absolute top-0 w-full flex justify-between px-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">AÇILIŞ</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">OYUN ORTASI</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">OYUN SONU</span>
+</div>
+<!-- Track -->
+<div class="w-full h-2 bg-surface-container-lowest border-y border-outline-variant/50 relative flex items-center">
+<!-- Progress Fill -->
+<div class="absolute left-0 h-full bg-secondary/40 border-r border-secondary w-[35%]"></div>
+<!-- Segments (visual only) -->
+<div class="absolute inset-0 flex justify-between pointer-events-none opacity-20">
+<div class="w-[1px] h-full bg-on-surface"></div>
+<div class="w-[1px] h-full bg-on-surface"></div>
+<div class="w-[1px] h-full bg-on-surface"></div>
+<div class="w-[1px] h-full bg-on-surface"></div>
+<div class="w-[1px] h-full bg-on-surface"></div>
+</div>
+<!-- Scrubber Handle -->
+<div class="absolute left-[35%] w-3 h-6 bg-secondary shadow-[0_0_12px_#e9c176] -translate-x-1/2 cursor-pointer flex items-center justify-center">
+<div class="w-[1px] h-3 bg-surface-container"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Annotations & Move List (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-gutter h-full">
+<!-- Strategic Annotation Panel -->
+<div class="border border-secondary bg-surface-container relative p-4 flex flex-col gap-3 min-h-[200px]">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary/50 to-transparent"></div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary">history_edu</span>
+<h3 class="font-headline-sm text-headline-sm text-secondary uppercase tracking-widest">IMPERIAL ANALYSIS</h3>
+</div>
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant p-4 text-on-surface-variant font-body-md leading-relaxed relative">
+<!-- Parchment texture feel via subtle noise or color adjustment -->
+<div class="absolute inset-0 bg-[#e9c176] opacity-[0.02] pointer-events-none"></div>
+<span class="text-primary font-bold inline-block border border-primary/40 px-2 py-0.5 text-xs mb-2 bg-primary/10">KRİTİK HATA</span>
+<p class="mb-2">Komutanın sağ kanadı erken zayıflatması, düşman süvarilerine geçit verdi. <span class="text-secondary font-bold">[Koordinat: E7]</span> hattındaki savunma çöküşü kaçınılmazdı.</p>
+<p class="text-data-tabular opacity-70 border-t border-outline-variant/50 pt-2 mt-4">Analist: Başstratejist Vael</p>
+</div>
+</div>
+<!-- Move Navigation List -->
+<div class="flex-1 border border-secondary/30 bg-surface-container flex flex-col overflow-hidden">
+<div class="bg-surface-container-high border-b border-secondary/30 p-2 px-4 flex justify-between items-center">
+<span class="font-label-caps text-label-caps text-on-surface">KAYITLI HAMLELER</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">filter_list</span>
+</div>
+<div class="flex-1 overflow-y-auto p-2 flex flex-col gap-1">
+<!-- Move Item -->
+<div class="flex items-center gap-3 p-2 border-b border-dashed border-outline-variant/40 hover:bg-surface-bright cursor-pointer">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant w-8">039</span>
+<span class="font-data-tabular text-data-tabular text-primary">ᚲᚱ</span>
+<span class="font-body-md text-body-md text-on-surface flex-1">Sol Kanat İleri</span>
+</div>
+<!-- Move Item -->
+<div class="flex items-center gap-3 p-2 border-b border-dashed border-outline-variant/40 hover:bg-surface-bright cursor-pointer">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant w-8">040</span>
+<span class="font-data-tabular text-data-tabular text-tertiary">ᛗᚢ</span>
+<span class="font-body-md text-body-md text-on-surface flex-1">Kalkan Duvarı</span>
+</div>
+<!-- Move Item -->
+<div class="flex items-center gap-3 p-2 border-b border-dashed border-outline-variant/40 hover:bg-surface-bright cursor-pointer">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant w-8">041</span>
+<span class="font-data-tabular text-data-tabular text-tertiary">ᚺᚨ</span>
+<span class="font-body-md text-body-md text-on-surface flex-1">Geri Çekilme (Taktik)</span>
+</div>
+<!-- Active Move Item -->
+<div class="flex items-center gap-3 p-2 border border-secondary bg-secondary/10 shadow-[inset_0_0_10px_rgba(233,193,118,0.2)] cursor-pointer relative">
+<div class="absolute left-0 top-0 h-full w-1 bg-secondary"></div>
+<span class="font-data-tabular text-data-tabular text-secondary w-8 pl-1">042</span>
+<span class="font-data-tabular text-data-tabular text-primary">ᚦᚢ</span>
+<span class="font-body-md text-body-md text-secondary flex-1 font-bold">Sağ Kanat Açığı</span>
+<span class="material-symbols-outlined text-secondary text-sm">visibility</span>
+</div>
+<!-- Move Item -->
+<div class="flex items-center gap-3 p-2 border-b border-dashed border-outline-variant/40 hover:bg-surface-bright cursor-pointer opacity-50">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant w-8">043</span>
+<span class="font-data-tabular text-data-tabular text-tertiary">ᚨᚾ</span>
+<span class="font-body-md text-body-md text-on-surface flex-1">Düşman Karşı Saldırısı</span>
+</div>
+<!-- Move Item -->
+<div class="flex items-center gap-3 p-2 border-b border-dashed border-outline-variant/40 hover:bg-surface-bright cursor-pointer opacity-50">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant w-8">044</span>
+<span class="font-data-tabular text-data-tabular text-tertiary">ᚱᛁ</span>
+<span class="font-body-md text-body-md text-on-surface flex-1">Merkez Çöküşü</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-16 border-t border-secondary bg-surface-container-lowest">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 px-6 py-2 hover:text-secondary dark:hover:text-secondary hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-caps text-label-caps mt-1">TACTICAL</span>
+</a>
+<!-- Active State -->
+<a class="flex flex-col items-center justify-center text-secondary bg-secondary-container/20 rounded-none border-x border-secondary/40 px-6 py-2 shadow-[0_0_10px_rgba(233,193,118,0.2)] scale-95 brightness-125 transition-all hover:text-secondary dark:hover:text-secondary hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-caps text-label-caps mt-1">CHRONICLE</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 px-6 py-2 hover:text-secondary dark:hover:text-secondary hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-caps text-label-caps mt-1">PHASES</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 px-6 py-2 hover:text-secondary dark:hover:text-secondary hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="font-label-caps text-label-caps mt-1">SYSTEMS</span>
+</a>
+</nav>
+</div>
+</body></html>

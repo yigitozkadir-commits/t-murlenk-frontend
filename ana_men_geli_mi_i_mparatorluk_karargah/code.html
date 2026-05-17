@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Timurlenk Satrancı - Ana Menü</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'garamond': ['"EB Garamond"', 'serif'],
+          },
+          colors: {
+            'brand-gold': '#D4AF37',
+            'brand-gold-dark': '#9A7B4F',
+            'brand-gold-light': '#F3E5AB',
+            'brand-yellow': '#D9A036',
+            'brand-dark': '#1A1410',
+            'brand-panel': 'rgba(30, 20, 10, 0.65)',
+            'brand-border': '#4A3B2C',
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-styles">
+    body {
+      background-color: #110d0a;
+      color: #e5e7eb;
+      font-family: 'Inter', sans-serif; /* Fallback for UI elements if needed */
+    }
+
+    /* Custom Radio Button Styling */
+    .radio-custom {
+      appearance: none;
+      width: 1.25rem;
+      height: 1.25rem;
+      border: 2px solid #9A7B4F;
+      border-radius: 50%;
+      background-color: transparent;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+    
+    .radio-custom:checked::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0.6rem;
+      height: 0.6rem;
+      background-color: #D9A036;
+      border-radius: 50%;
+    }
+
+    .radio-custom:checked {
+      border-color: #D9A036;
+    }
+
+    /* Cinematic Background effect over images */
+    .bg-overlay {
+      background: linear-gradient(to bottom, rgba(17, 13, 10, 0.4) 0%, rgba(17, 13, 10, 0.8) 50%, rgba(17, 13, 10, 0.95) 100%);
+    }
+
+    .glass-panel {
+      background-color: rgba(26, 20, 16, 0.7);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(74, 59, 44, 0.8);
+    }
+    
+    .btn-outline {
+      border: 1px solid #4A3B2C;
+      background-color: rgba(0,0,0,0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(74, 59, 44, 0.4);
+      border-color: #9A7B4F;
+    }
+
+    .btn-outline.active {
+      border-color: #D9A036;
+      color: #D9A036;
+    }
+  </style>
+</head>
+<body class="min-h-screen relative overflow-hidden flex flex-col items-center justify-center">
+<!-- BEGIN: Cinematic Background -->
+<!-- We create a layered background with some of the provided chess piece images to simulate the imperial war room -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none flex justify-center items-center opacity-40">
+<div class="relative w-full h-full max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-10 opacity-30 blur-[2px]">
+<img alt="Şah Taşı" class="h-3/4 object-contain opacity-50 transform -scale-x-100 mix-blend-screen brightness-75" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtOFU26vj_p2FItsPqLt4MlnnO-MexSmB0RobRs1GJvRWV1tTnntvbrq6ws3RYQJPOme_IzZAgNHJiSkAroVXSFV3mTMP50eF7vRlJqJaU5KYioZmIvkt__4Q8WwxTWrA3z56KmyjVvdrtGAK-tUyoLjOVYudE-xAtI2dlDaX74bDvXwkdwhUPcAaVOSaX-ctOx4N-Q0sThsolxjLPBqsn-lEK2oNO9bNv21JBDM-K0MThuSkLqcGxhJel2nNdhS9c99WoTYuWqMAp" style="filter: sepia(0.6) hue-rotate(-20deg) saturate(1.5);"/>
+<img alt="Camel Taşı" class="h-2/3 object-contain opacity-40 mix-blend-screen brightness-75" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCQDkvf1dE53-JZtTWtlzPzeUTHgICqDD96f1JpZ8P2DRRkiYSJKNfWKHpL3gp-0-G0OwyxBJRyjYIJVgaPKyUM50yYOWYlvhBUm22gCFcd3S7YOTw0ISEsAQobao8EawoaZXlztYKf_CWmvl90KmUAB8SJxlfWkWLsJpF-sP4ygjCv3E6QwYVRhk642fhHyHv7Q0KCG2P98Pqcf6x-qEIrbDyrJ2kTeYeXYzZEiYv24oimfZi0BrJ-X0pTDihO1vzF4ChTpmyqaxh" style="filter: sepia(0.6) hue-rotate(-20deg) saturate(1.5);"/>
+</div>
+<!-- Ambient glowing torches/lighting effect -->
+<div class="absolute inset-0 bg-gradient-radial from-orange-900/20 via-transparent to-transparent opacity-60 mix-blend-overlay"></div>
+<div class="absolute inset-0 bg-overlay z-10"></div>
+</div>
+<!-- END: Cinematic Background -->
+<!-- BEGIN: Main Content Container -->
+<main class="relative z-10 w-full max-w-2xl px-6 py-8 flex flex-col items-center">
+<!-- Title Section -->
+<div class="text-center mb-12">
+<h1 class="font-garamond text-5xl md:text-6xl text-brand-gold-light tracking-wide leading-tight mb-4 drop-shadow-lg" style="text-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);">
+        TİMURLENK<br/>SATRANCI
+      </h1>
+<div class="relative inline-block mt-2">
+<div class="absolute inset-0 border-t border-b border-brand-border opacity-50 scale-x-110"></div>
+<p class="font-garamond italic text-brand-gold-dark text-lg py-2 tracking-widest px-8">
+          "ZEKÂ GÖKTEN İNER, TOPRAĞA KÖK SALAR."
+        </p>
+</div>
+</div>
+<!-- Difficulty Selectors -->
+<div class="w-full flex justify-center space-x-2 md:space-x-4 mb-8">
+<button class="btn-outline text-gray-300 px-6 py-2 rounded-sm text-sm tracking-wider uppercase font-medium flex-1 max-w-[140px]">
+        ÇAYLAK
+      </button>
+<button class="btn-outline active px-6 py-2 rounded-sm text-sm tracking-wider uppercase font-medium flex-1 max-w-[140px]">
+        NORMAL
+      </button>
+<button class="btn-outline text-gray-300 px-6 py-2 rounded-sm text-sm tracking-wider uppercase font-medium flex-1 max-w-[140px]">
+        USTA GM
+      </button>
+</div>
+<!-- Game Mode Radios -->
+<div class="flex flex-wrap justify-center items-center gap-6 mb-10 text-gray-300 font-medium text-sm">
+<label class="flex items-center cursor-pointer group">
+<input checked="" class="radio-custom" name="gameMode" type="radio"/>
+<span class="ml-2 group-hover:text-brand-gold-light transition-colors">İnsan vs Bot</span>
+</label>
+<label class="flex items-center cursor-pointer group">
+<input class="radio-custom" name="gameMode" type="radio"/>
+<span class="ml-2 group-hover:text-brand-gold-light transition-colors">İnsan vs İnsan</span>
+</label>
+<label class="flex items-center cursor-pointer group">
+<input class="radio-custom" name="gameMode" type="radio"/>
+<span class="ml-2 group-hover:text-brand-gold-light transition-colors">Bot vs Bot</span>
+</label>
+</div>
+<!-- Primary Actions -->
+<div class="w-full max-w-md flex flex-col space-y-3 mb-12">
+<!-- Play Button -->
+<button class="w-full bg-gradient-to-b from-[#e5b746] to-[#c08d23] text-black font-bold text-lg tracking-widest py-4 rounded-sm flex items-center justify-center space-x-3 hover:brightness-110 transition-all shadow-[0_0_20px_rgba(217,160,54,0.3)] border border-[#f5c756]/50">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2C10.9 2 10 2.9 10 4C10 4.8 10.5 5.5 11.2 5.8L10 9H14L12.8 5.8C13.5 5.5 14 4.8 14 4C14 2.9 13.1 2 12 2ZM7 11V13H17V11H7ZM7 15V17H17V15H7ZM5 19V22H19V19H5Z"></path>
+</svg>
+<span>YENİ OYUN</span>
+</button>
+<!-- Secondary Row -->
+<div class="flex space-x-3 w-full">
+<button class="flex-1 glass-panel text-gray-300 py-3 rounded-sm flex justify-center items-center space-x-2 text-sm tracking-wider hover:bg-white/5 transition-colors">
+<span class="text-lg">📚</span>
+<span>ÖĞRETİCİ</span>
+</button>
+<button class="flex-1 glass-panel text-gray-300 py-3 rounded-sm flex justify-center items-center space-x-2 text-sm tracking-wider hover:bg-white/5 transition-colors">
+<svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>AYARLAR</span>
+</button>
+</div>
+</div>
+<!-- Navigation Grid -->
+<div class="w-full grid grid-cols-2 md:grid-cols-3 gap-3 mb-10 max-w-2xl">
+<button class="glass-panel text-gray-300 py-3 rounded-sm text-xs tracking-widest hover:bg-white/5 transition-colors">
+        AÇILIŞLAR
+      </button>
+<button class="glass-panel text-gray-300 py-3 rounded-sm text-xs tracking-widest hover:bg-white/5 transition-colors">
+        PROFİL
+      </button>
+<button class="glass-panel text-gray-300 py-3 rounded-sm text-xs tracking-widest hover:bg-white/5 transition-colors md:col-span-1 col-span-2">
+        TURNUVA
+      </button>
+<button class="glass-panel text-gray-300 py-3 rounded-sm text-xs tracking-widest hover:bg-white/5 transition-colors">
+        ONLİNE
+      </button>
+<button class="glass-panel text-gray-300 py-3 rounded-sm text-xs tracking-widest hover:bg-white/5 transition-colors">
+        FEN/PGN
+      </button>
+<button class="glass-panel text-gray-300 py-3 rounded-sm flex items-center justify-center space-x-2 text-xs tracking-widest hover:bg-white/5 transition-colors md:col-span-1 col-span-2">
+<svg class="w-3.5 h-3.5 text-blue-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>EN/TR</span>
+</button>
+</div>
+<!-- Daily Puzzle Banner -->
+<div class="w-full max-w-2xl">
+<div class="glass-panel rounded-sm p-4 flex items-center justify-between cursor-pointer hover:bg-brand-border/30 transition-colors group">
+<div class="flex items-center space-x-4">
+<!-- Puzzle Icon Box -->
+<div class="w-12 h-12 border border-brand-border bg-black/40 flex items-center justify-center rounded-sm">
+<svg class="w-5 h-5 text-brand-gold-dark" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div>
+<div class="text-[10px] text-gray-400 tracking-widest uppercase mb-1 font-semibold">GÜNÜN BULMACASI</div>
+<div class="font-garamond text-brand-gold-light text-xl mb-0.5">Master Savunma II</div>
+<div class="text-[11px] text-gray-400">Zor • Savun</div>
+</div>
+</div>
+<svg class="w-5 h-5 text-gray-500 group-hover:text-brand-gold-light transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+</div>
+</main>
+<!-- END: Main Content Container -->
+</body></html>

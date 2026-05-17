@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TİMURLENK SATRANCI - Splash Screen</title>
+<!-- Font Setup -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration based on Design System -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: '#131316',
+            'surface-dim': '#131316',
+            'surface-bright': '#39393c',
+            'surface-container-lowest': '#0e0e11',
+            'surface-container-low': '#1b1b1e',
+            primary: '#9e1b1b', // Added custom color from DS
+            imperial: {
+              gold: '#cba052',
+              bronze: '#8c6d3d',
+              dark: '#1a1611'
+            }
+          },
+          fontFamily: {
+            serif: ['"EB Garamond"', 'serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 2s ease-out forwards',
+            'pulse-slow': 'pulseSlow 3s infinite',
+            'torch-flicker': 'torchFlicker 4s infinite alternate',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            pulseSlow: {
+              '0%, 100%': { opacity: '0.6' },
+              '50%': { opacity: '1' },
+            },
+            torchFlicker: {
+              '0%': { textShadow: '0 0 10px rgba(203, 160, 82, 0.5), 0 0 20px rgba(203, 160, 82, 0.3)' },
+              '50%': { textShadow: '0 0 15px rgba(203, 160, 82, 0.8), 0 0 30px rgba(203, 160, 82, 0.5)' },
+              '100%': { textShadow: '0 0 8px rgba(203, 160, 82, 0.4), 0 0 15px rgba(203, 160, 82, 0.2)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles -->
+<style data-purpose="layout">
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background-color: #0e0e11;
+    }
+    .splash-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+      opacity: 0.85;
+      /* Add a subtle vignette to enhance the torch-lit feel */
+      box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(26,22,17,0.1) 0%, rgba(14,14,17,0.8) 100%);
+      z-index: 1;
+    }
+    .content-wrapper {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+  </style>
+<style data-purpose="typography">
+    .title {
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      line-height: 1.2;
+      letter-spacing: 0.15em;
+      color: #cba052;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.9);
+      font-family: 'EB Garamond', serif;
+    }
+    .quote {
+      font-size: clamp(1rem, 3.5vw, 1.25rem);
+      font-style: italic;
+      color: #cba052;
+      opacity: 0.9;
+      margin: 1.5rem 0;
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+      max-width: 80%;
+      font-family: 'EB Garamond', serif;
+    }
+    .start-prompt {
+      font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+      letter-spacing: 0.4em;
+      color: #e0d0b0;
+      text-transform: uppercase;
+      margin-top: auto;
+      margin-bottom: 2rem;
+      cursor: pointer;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+      font-family: 'EB Garamond', serif;
+    }
+  </style>
+</head>
+<body class="font-serif text-white antialiased select-none">
+<!-- BEGIN: SplashScreen -->
+<main class="splash-container animate-fade-in" id="splash-screen">
+<!-- Background Image -->
+<img alt="Timurlenk Satrancı Background" class="bg-image" draggable="false" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARDEFyQNBieAF-naLizxMBP-IBf9U0aoPpB1yagsUQFWS0_sFoTGTFhwKtCrCnbN43ZxLnE72qd_LEYc-qtlQefnlGzs55_gSU2Sr8m8KPishBLLl_S9EjVtOemcYq78AOpo33fzfYIVGPBWTQ4qsOvolauW3bfGS8W6ocjVOOgfGP3afEeFvn8O5xr7mUf9WakXyk3epPi3w2WnZo09myOUSGuau-lYOhgXmlbjzDqJJc7B2Ffe6EBoC7IeC2Hh_-2-quZKEIrp1u"/>
+<!-- Atmospheric Overlay -->
+<div class="overlay pointer-events-none" style="background: radial-gradient(circle, rgba(26,22,17,0.2) 0%, rgba(14,14,17,0.85) 100%);"></div>
+<!-- Content -->
+<div class="content-wrapper">
+<div class="flex flex-col items-center justify-center flex-grow w-full">
+<!-- Title Area -->
+<div class="flex flex-col items-center justify-center mt-12 mb-4">
+<h1 class="title animate-torch-flicker">
+          TİMURLENK<br/>SATRANCI
+        </h1>
+</div>
+<!-- Quote Area -->
+<div class="quote">
+        "Zekâ gökten iner, toprağa kök salar."
+      </div>
+</div>
+<!-- Interaction Prompt -->
+<div class="start-prompt animate-pulse-slow" id="start-button" role="button" tabindex="0">TAP TO START</div>
+</div>
+</main>
+<!-- END: SplashScreen -->
+<!-- Interaction Script -->
+<script data-purpose="interaction">
+    document.addEventListener('DOMContentLoaded', () => {
+      const splashScreen = document.getElementById('splash-screen');
+      const startButton = document.getElementById('start-button');
+
+      const handleStart = () => {
+        // Example transition effect
+        splashScreen.style.transition = 'opacity 1s ease-out, filter 1s ease-out';
+        splashScreen.style.opacity = '0';
+        splashScreen.style.filter = 'blur(10px)';
+        
+        // In a real app, this would trigger navigation or state change
+        setTimeout(() => {
+          console.log('Transition to game menu...');
+        }, 1000);
+      };
+
+      // Handle both click and touch events
+      splashScreen.addEventListener('click', handleStart);
+      splashScreen.addEventListener('touchstart', handleStart);
+      
+      // Accessibility: Allow Enter/Space to start if focused
+      startButton.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleStart();
+        }
+      });
+    });
+  </script>
+</body></html>

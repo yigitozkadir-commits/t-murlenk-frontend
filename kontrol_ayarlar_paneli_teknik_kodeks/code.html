@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kontrol Kodeksi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#b9c4da",
+                      "surface-container-high": "#2a2a2d",
+                      "primary": "#ffb4ac",
+                      "on-tertiary-fixed-variant": "#3c475a",
+                      "tertiary-container": "#465164",
+                      "inverse-primary": "#b22a27",
+                      "tertiary-fixed-dim": "#bcc7dd",
+                      "tertiary-fixed": "#d8e3fa",
+                      "on-secondary-fixed": "#261900",
+                      "on-secondary-fixed-variant": "#5d4201",
+                      "on-background": "#e4e1e6",
+                      "primary-fixed-dim": "#ffb4ac",
+                      "on-secondary-container": "#dab36a",
+                      "error": "#ffb4ab",
+                      "on-primary-fixed-variant": "#8f0e12",
+                      "error-container": "#93000a",
+                      "primary-fixed": "#ffdad6",
+                      "surface-container-lowest": "#0e0e11",
+                      "surface-container-highest": "#353438",
+                      "secondary-fixed-dim": "#e9c176",
+                      "secondary-fixed": "#ffdea5",
+                      "secondary": "#e9c176",
+                      "outline": "#a98986",
+                      "tertiary": "#bcc7dd",
+                      "inverse-surface": "#e4e1e6",
+                      "on-primary": "#690006",
+                      "outline-variant": "#59413e",
+                      "on-secondary": "#412d00",
+                      "primary-container": "#9e1b1b",
+                      "on-surface-variant": "#e1bebb",
+                      "surface-dim": "#131316",
+                      "on-tertiary-fixed": "#111c2c",
+                      "background": "#131316",
+                      "on-surface": "#e4e1e6",
+                      "inverse-on-surface": "#303033",
+                      "surface-bright": "#39393c",
+                      "secondary-container": "#604403",
+                      "surface-tint": "#ffb4ac",
+                      "on-tertiary": "#263142",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-container": "#ffafa7",
+                      "surface-container-low": "#1b1b1e",
+                      "on-primary-fixed": "#410002",
+                      "surface-container": "#1f1f22",
+                      "surface": "#131316",
+                      "surface-variant": "#353438",
+                      "on-error": "#690005"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "data-density": "tight",
+                      "margin-safe": "32px",
+                      "unit": "4px",
+                      "gutter": "16px",
+                      "panel-gap": "8px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "EB Garamond", "serif"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono", "monospace"
+                      ],
+                      "body-lg": [
+                              "JetBrains Mono", "monospace"
+                      ],
+                      "headline-md": [
+                              "EB Garamond", "serif"
+                      ],
+                      "data-tabular": [
+                              "JetBrains Mono", "monospace"
+                      ],
+                      "body-md": [
+                              "JetBrains Mono", "monospace"
+                      ],
+                      "headline-sm": [
+                              "EB Garamond", "serif"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-tabular": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #131316;
+            color: #e4e1e6;
+        }
+
+        /* Scanline Overlay */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.1)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.3;
+        }
+
+        /* Vignette */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(19,19,22,0.9) 100%);
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        /* Custom Scrollbar for brutalist feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: #1b1b1e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #59413e;
+            border: 1px solid #131316;
+        }
+
+        /* Tactical Range Input Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 8px;
+            background: #e9c176;
+            cursor: pointer;
+            border-radius: 0;
+            border: 1px solid #131316;
+            margin-top: -8px;
+            box-shadow: 0 0 5px rgba(233, 193, 118, 0.5);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #353438;
+            border-radius: 0;
+            border: 1px solid #59413e;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        
+        /* Tactical Toggle */
+        .tactical-toggle {
+            appearance: none;
+            width: 40px;
+            height: 20px;
+            background-color: #353438;
+            border: 1px solid #59413e;
+            position: relative;
+            cursor: pointer;
+        }
+        .tactical-toggle::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 16px;
+            height: 16px;
+            background-color: #a98986;
+            transition: 0.2s;
+        }
+        .tactical-toggle:checked {
+            background-color: #9e1b1b;
+            border-color: #ffb4ac;
+        }
+        .tactical-toggle:checked::after {
+            left: 21px;
+            background-color: #e4e1e6;
+            box-shadow: 0 0 5px rgba(255, 180, 172, 0.5);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col pt-16 pb-20 md:pb-0 overflow-x-hidden">
+<!-- Atmospheric Overlays -->
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<!-- TopAppBar (Web & Mobile) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface-dim dark:bg-surface-dim border-b border-outline-variant">
+<button class="flex items-center justify-center p-2 text-secondary dark:text-secondary hover:bg-secondary-container dark:hover:bg-secondary-container hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_balance</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-secondary tracking-widest uppercase">KONTROL KODEKSİ</h1>
+<button class="flex items-center justify-center p-2 text-secondary dark:text-secondary hover:bg-secondary-container dark:hover:bg-secondary-container hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings_input_component</span>
+</button>
+</header>
+<!-- Main Tactical Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-gutter py-6 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-gutter z-10 relative">
+<!-- Column 1: Navigation & Directives -->
+<div class="md:col-span-7 flex flex-col gap-6">
+<!-- Tactical Block: HAREKET VE NAVİGASYON -->
+<section class="bg-[#1A1A1F] border border-secondary shadow-[inset_0_0_10px_rgba(233,193,118,0.05)] relative overflow-hidden">
+<!-- Header Bar -->
+<div class="bg-secondary text-on-secondary px-4 py-2 border-b border-secondary flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-xl tracking-wide uppercase">HAREKET VE NAVİGASYON</h2>
+<span class="font-data-tabular text-data-tabular opacity-70">[MODÜL-A1]</span>
+</div>
+<!-- Content Canvas -->
+<div class="p-6 flex flex-col gap-8">
+<!-- Setting: Kamera Hassasiyeti -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Kamera Hassasiyeti</label>
+<span class="font-data-tabular text-data-tabular text-secondary">75%</span>
+</div>
+<div class="relative pt-2">
+<input class="w-full" max="100" min="0" type="range" value="75"/>
+<!-- Visual tick marks -->
+<div class="flex justify-between mt-1 px-1">
+<span class="w-[1px] h-2 bg-outline-variant"></span>
+<span class="w-[1px] h-2 bg-outline-variant"></span>
+<span class="w-[1px] h-2 bg-outline-variant"></span>
+<span class="w-[1px] h-2 bg-outline-variant"></span>
+<span class="w-[1px] h-2 bg-outline-variant"></span>
+</div>
+</div>
+</div>
+<hr class="border-t border-dashed border-outline-variant"/>
+<!-- Setting: Serbest Bakış -->
+<div class="flex justify-between items-center">
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block">Serbest Bakış</label>
+<span class="font-body-md text-body-md text-on-tertiary-container text-xs mt-1 block">Taktik haritada serbest kamera dönüşü sağlar.</span>
+</div>
+<input checked="" class="tactical-toggle" type="checkbox"/>
+</div>
+<hr class="border-t border-dashed border-outline-variant"/>
+<!-- Setting: Odak Hızı -->
+<div class="flex flex-col gap-3">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block">Odak Hızı</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="bg-surface-container-high border border-outline-variant p-3 flex flex-col items-center justify-center hover:bg-surface-variant transition-colors text-on-surface group">
+<span class="font-label-caps text-label-caps text-on-surface-variant group-hover:text-secondary transition-colors uppercase">Kutsal Ağırlık</span>
+<span class="font-data-tabular text-data-tabular text-[10px] text-tertiary-container mt-1">YAVAŞ / STABİL</span>
+</button>
+<button class="bg-primary-container border border-primary p-3 flex flex-col items-center justify-center shadow-[inset_0_0_10px_rgba(255,180,172,0.2)]">
+<span class="font-label-caps text-label-caps text-on-primary-container font-bold uppercase">Seri</span>
+<span class="font-data-tabular text-data-tabular text-[10px] text-error mt-1">HIZLI / ÇEVİK</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Tactical Block: KLAVYE DİREKTİFLERİ -->
+<section class="bg-[#1A1A1F] border border-outline-variant shadow-[inset_0_0_10px_rgba(89,65,62,0.1)] relative overflow-hidden">
+<div class="bg-surface-container-highest text-on-surface px-4 py-2 border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-xl tracking-wide uppercase text-tertiary">KLAVYE DİREKTİFLERİ</h2>
+<span class="font-data-tabular text-data-tabular opacity-70 text-tertiary">[MODÜL-B2]</span>
+</div>
+<div class="p-0">
+<ul class="flex flex-col divide-y divide-dashed divide-outline-variant">
+<!-- List Item 1 -->
+<li class="flex items-center px-6 py-4 hover:bg-surface-container-high transition-colors group">
+<div class="font-data-tabular text-data-tabular text-tertiary-container mr-4 text-xs">[001-A]</div>
+<div class="flex-1">
+<span class="font-body-lg text-body-lg text-on-surface">Birincil Aksiyon</span>
+</div>
+<button class="bg-surface-dim border border-outline-variant px-4 py-2 font-data-tabular text-data-tabular text-secondary group-hover:border-secondary transition-colors min-w-[100px] text-center shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
+                                SOL TIK
+                            </button>
+</li>
+<!-- List Item 2 -->
+<li class="flex items-center px-6 py-4 hover:bg-surface-container-high transition-colors group">
+<div class="font-data-tabular text-data-tabular text-tertiary-container mr-4 text-xs">[002-B]</div>
+<div class="flex-1">
+<span class="font-body-lg text-body-lg text-on-surface">Taktik Harita</span>
+</div>
+<button class="bg-surface-dim border border-outline-variant px-4 py-2 font-data-tabular text-data-tabular text-secondary group-hover:border-secondary transition-colors min-w-[100px] text-center shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
+                                M
+                            </button>
+</li>
+<!-- List Item 3 -->
+<li class="flex items-center px-6 py-4 bg-surface-container-high border-l-2 border-primary group">
+<div class="font-data-tabular text-data-tabular text-primary-container mr-4 text-xs">[003-C]</div>
+<div class="flex-1">
+<span class="font-body-lg text-body-lg text-primary font-bold">Özel Yetenek</span>
+<span class="block font-data-tabular text-data-tabular text-[10px] text-error mt-0.5">* DEĞİŞTİRİLİYOR *</span>
+</div>
+<button class="bg-surface-dim border border-primary px-4 py-2 font-data-tabular text-data-tabular text-on-primary-container min-w-[100px] text-center shadow-[0_0_8px_rgba(158,27,27,0.5)] animate-pulse">
+                                SPACE
+                            </button>
+</li>
+<!-- List Item 4 -->
+<li class="flex items-center px-6 py-4 hover:bg-surface-container-high transition-colors group">
+<div class="font-data-tabular text-data-tabular text-tertiary-container mr-4 text-xs">[004-D]</div>
+<div class="flex-1">
+<span class="font-body-lg text-body-lg text-on-surface">Birimi Seç</span>
+</div>
+<button class="bg-surface-dim border border-outline-variant px-4 py-2 font-data-tabular text-data-tabular text-secondary group-hover:border-secondary transition-colors min-w-[100px] text-center shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
+                                S
+                            </button>
+</li>
+</ul>
+</div>
+</section>
+</div>
+<!-- Column 2: Accessibility & Shortcuts -->
+<div class="md:col-span-5 flex flex-col gap-6">
+<!-- Tactical Block: ERİŞİLEBİLİRLİK -->
+<section class="bg-[#1A1A1F] border border-outline-variant shadow-[inset_0_0_10px_rgba(89,65,62,0.1)] relative overflow-hidden">
+<div class="bg-surface-container-highest text-on-surface px-4 py-2 border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-xl tracking-wide uppercase text-tertiary">ERİŞİLEBİLİRLİK</h2>
+<span class="font-data-tabular text-data-tabular opacity-70 text-tertiary">[MODÜL-C3]</span>
+</div>
+<div class="p-6 flex flex-col gap-6">
+<!-- Setting: Rün Parlaklığı -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Rün Parlaklığı</label>
+<span class="font-data-tabular text-data-tabular text-secondary">YÜKSEK</span>
+</div>
+<div class="relative pt-2">
+<input class="w-full" max="100" min="0" type="range" value="90"/>
+</div>
+</div>
+<hr class="border-t border-dashed border-outline-variant"/>
+<!-- Setting: Ekran Sarsıntısı -->
+<div class="flex justify-between items-center">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block">Ekran Sarsıntısı</label>
+<input class="tactical-toggle" type="checkbox"/>
+</div>
+<hr class="border-t border-dashed border-outline-variant"/>
+<!-- Setting: Altyazı Boyutu -->
+<div class="flex flex-col gap-3">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest block">Altyazı Boyutu</label>
+<div class="flex flex-col border border-outline-variant divide-y divide-outline-variant bg-surface-dim">
+<label class="flex items-center px-4 py-3 cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="appearance-none w-4 h-4 rounded-full border border-outline-variant checked:border-secondary checked:bg-secondary checked:shadow-[0_0_8px_rgba(233,193,118,0.5)] mr-3" name="subtitle_size" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface flex-1">Küçük (Standart)</span>
+</label>
+<label class="flex items-center px-4 py-3 cursor-pointer bg-surface-container-high">
+<input checked="" class="appearance-none w-4 h-4 rounded-full border border-outline-variant checked:border-secondary checked:bg-secondary checked:shadow-[0_0_8px_rgba(233,193,118,0.5)] mr-3" name="subtitle_size" type="radio"/>
+<span class="font-body-md text-body-md text-secondary flex-1">Orta (Taktiksel)</span>
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</label>
+<label class="flex items-center px-4 py-3 cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="appearance-none w-4 h-4 rounded-full border border-outline-variant checked:border-secondary checked:bg-secondary checked:shadow-[0_0_8px_rgba(233,193,118,0.5)] mr-3" name="subtitle_size" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface flex-1">Büyük (Erişilebilir)</span>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Tactical Block: TAKTİKSEL KISAYOLLAR -->
+<section class="bg-[#1A1A1F] border border-outline-variant shadow-[inset_0_0_10px_rgba(89,65,62,0.1)] relative overflow-hidden">
+<div class="bg-surface-container-highest text-on-surface px-4 py-2 border-b border-outline-variant flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-xl tracking-wide uppercase text-tertiary">TAKTİKSEL KISAYOLLAR</h2>
+<span class="font-data-tabular text-data-tabular opacity-70 text-tertiary">[MODÜL-D4]</span>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<div class="flex justify-between items-center bg-surface-dim border border-outline-variant p-3 shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
+<span class="font-body-md text-body-md text-on-surface font-bold">Şah Koruma</span>
+<kbd class="font-data-tabular text-data-tabular text-secondary bg-surface-container px-2 py-1 border border-outline-variant shadow-sm rounded-sm">ALT + K</kbd>
+</div>
+<div class="flex justify-between items-center bg-surface-dim border border-outline-variant p-3 shadow-[inset_0_2px_4px_rgba(0,0,0,0.5)]">
+<span class="font-body-md text-body-md text-on-surface font-bold">Gök Gözü</span>
+<kbd class="font-data-tabular text-data-tabular text-secondary bg-surface-container px-2 py-1 border border-outline-variant shadow-sm rounded-sm">TAB</kbd>
+</div>
+</div>
+<!-- Corner Accents -->
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-outline-variant m-1"></div>
+<div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-outline-variant m-1"></div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-margin-safe pb-safe bg-surface-container-lowest dark:bg-surface-container-lowest border-t-2 border-outline">
+<button class="flex flex-col items-center justify-center text-on-tertiary-container dark:text-on-tertiary-container py-1 px-3 hover:bg-surface-container-high dark:hover:bg-surface-container-high hover:text-secondary transition-colors duration-150">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">keyboard</span>
+<span class="font-label-caps text-label-caps uppercase">Klavye</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-tertiary-container dark:text-on-tertiary-container py-1 px-3 hover:bg-surface-container-high dark:hover:bg-surface-container-high hover:text-secondary transition-colors duration-150">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">videocam</span>
+<span class="font-label-caps text-label-caps uppercase">Kamera</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-tertiary-container dark:text-on-tertiary-container py-1 px-3 hover:bg-surface-container-high dark:hover:bg-surface-container-high hover:text-secondary transition-colors duration-150">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">explore</span>
+<span class="font-label-caps text-label-caps uppercase">Navigasyon</span>
+</button>
+<!-- Active Item: Klavye as proxy for 'SİSTEM' settings in context of JSON -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary bg-primary-container/20 rounded-lg py-1 px-3 scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined mb-1 text-primary" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-caps text-label-caps font-bold uppercase">Sistem</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-tertiary-container dark:text-on-tertiary-container py-1 px-3 hover:bg-surface-container-high dark:hover:bg-surface-container-high hover:text-secondary transition-colors duration-150">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">military_tech</span>
+<span class="font-label-caps text-label-caps uppercase">Taktik</span>
+</button>
+</nav>
+</body></html>

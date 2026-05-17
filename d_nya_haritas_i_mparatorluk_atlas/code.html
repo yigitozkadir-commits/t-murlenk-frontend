@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Imperial Atlas - World Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "on-primary": "#273045",
+                        "surface-container": "#20201f",
+                        "secondary-container": "#604403",
+                        "on-secondary-fixed": "#261900",
+                        "surface-tint": "#bdc6e1",
+                        "secondary": "#e9c176",
+                        "primary-container": "#0a1428",
+                        "surface-container-highest": "#353535",
+                        "primary-fixed-dim": "#bdc6e1",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-tertiary-fixed": "#410000",
+                        "primary": "#bdc6e1",
+                        "on-secondary-container": "#dab36a",
+                        "on-surface": "#e5e2e1",
+                        "background": "#131313",
+                        "inverse-primary": "#555e76",
+                        "secondary-fixed-dim": "#e9c176",
+                        "surface-variant": "#353535",
+                        "outline-variant": "#45464d",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "surface-container-high": "#2a2a2a",
+                        "inverse-on-surface": "#313030",
+                        "on-background": "#e5e2e1",
+                        "tertiary-container": "#330000",
+                        "outline": "#8f9097",
+                        "on-secondary": "#412d00",
+                        "surface-container-low": "#1c1b1b",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-bright": "#393939",
+                        "tertiary": "#ffb4a8",
+                        "primary-fixed": "#d9e2fe",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary": "#690000",
+                        "on-tertiary-container": "#e24735",
+                        "surface-dim": "#131313",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#c6c6cd",
+                        "on-primary-fixed-variant": "#3d475d",
+                        "on-tertiary-fixed-variant": "#920703",
+                        "secondary-fixed": "#ffdea5",
+                        "on-primary-container": "#757f97",
+                        "on-error": "#690005",
+                        "surface": "#131313",
+                        "on-primary-fixed": "#121b2f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "max-width": "1280px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["EB Garamond"],
+                        "label-lg": ["EB Garamond"],
+                        "headline-md": ["EB Garamond"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "label-sm": ["EB Garamond"],
+                        "body-md": ["EB Garamond"],
+                        "body-lg": ["EB Garamond"],
+                        "headline-sm": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["20px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .girih-corner {
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+        .parchment-texture {
+            background-color: theme('colors.surface');
+            background-image: radial-gradient(theme('colors.on-surface') 1px, transparent 0);
+            background-size: 40px 40px;
+            background-position: -19px -19px;
+            opacity: 0.95;
+        }
+        .map-fog {
+            box-shadow: inset 0 0 100px 50px rgba(19, 19, 19, 0.9);
+        }
+        .embossed-gold {
+            box-shadow: inset 0px 2px 4px rgba(0,0,0,0.8);
+        }
+        /* Custom scrollbar for immersive feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.background');
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.secondary-container');
+            border-radius: 4px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-16 pb-20 md:pb-0">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 bg-background shadow-[0_4px_24px_rgba(0,0,0,0.8)]">
+<span class="material-symbols-outlined text-secondary md:hidden cursor-pointer active:opacity-80 transition-opacity">menu</span>
+<div class="font-headline-md text-headline-md text-secondary uppercase tracking-widest flex items-center gap-4">
+<span class="material-symbols-outlined" style="font-size: 32px;">explore</span>
+            IMPERIAL ATLAS
+        </div>
+<!-- Desktop Navigation Cluster (Moved from BottomNav for Responsive Pivot) -->
+<div class="hidden md:flex items-center gap-8">
+<button class="flex items-center gap-2 text-outline hover:text-secondary-fixed-dim transition-colors font-label-sm text-label-sm uppercase tracking-widest">
+<span class="material-symbols-outlined">military_tech</span> War Room
+            </button>
+<button class="flex items-center gap-2 text-secondary font-label-sm text-label-sm uppercase tracking-widest bg-secondary-container/20 px-4 py-2 rounded-lg border border-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">public</span> World Map
+            </button>
+<button class="flex items-center gap-2 text-outline hover:text-secondary-fixed-dim transition-colors font-label-sm text-label-sm uppercase tracking-widest">
+<span class="material-symbols-outlined">handshake</span> Diplomacy
+            </button>
+<button class="flex items-center gap-2 text-outline hover:text-secondary-fixed-dim transition-colors font-label-sm text-label-sm uppercase tracking-widest">
+<span class="material-symbols-outlined">auto_stories</span> Archives
+            </button>
+</div>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-secondary-fixed-dim transition-colors active:opacity-80">settings</span>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col md:flex-row gap-gutter p-margin-mobile md:p-margin-desktop max-w-max-width mx-auto w-full relative h-[calc(100vh-64px)] overflow-hidden">
+<!-- Map Viewport -->
+<div class="relative flex-grow rounded-DEFAULT border border-secondary-container overflow-hidden girih-corner bg-surface-container-lowest">
+<!-- Map Background Image -->
+<img alt="Ancient Map" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-luminosity" data-alt="An intricate ancient world map drawn on aged, weathered parchment. The map features detailed cartography lines, mythical sea elements, and faded ink topography. Illuminated by a cinematic, moody light that highlights the texture of the vellum. The aesthetic is dark academia meets Timurid imperial archives, utilizing deep sepia, burnt gold, and charcoal tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU1ciJ5xx5SOBvkq2sJqr1ctzOHR3JcCMLzYU4zuY6JL5e8QMgGoISbJPMSHDr08O30Gk9l1ieH2PltWmMNffeYWp24ugGDFkgmufIBoSjr2aI07AKe14_tYuU6n11ArGXhXv5-TJVnuUnHZcPBtANsjEUmGq8smagS6Wx3-TOIBtRVg9qRgLpFBwPZJUdq4NU-nBB0p0lSHDs97ESPKkxuXyCILgR61odkY3Aio25Kzp13o3B6jd9f4yH6RHw0sFIV84nmTDnQNPw"/>
+<!-- Atmospheric Fog Edge Overlay -->
+<div class="absolute inset-0 map-fog pointer-events-none"></div>
+<!-- Geopolitical Zones & Lines (Abstracted with CSS/HTML elements) -->
+<div class="absolute inset-0">
+<!-- Imperial Territory Marker -->
+<div class="absolute top-[30%] left-[40%] w-64 h-64 border-2 border-secondary rounded-full bg-secondary/10 flex items-center justify-center animate-pulse shadow-[0_0_30px_rgba(233,193,118,0.2)]">
+<div class="text-center">
+<h2 class="font-headline-sm text-headline-sm text-secondary drop-shadow-md">MERKEZ</h2>
+<p class="font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-widest">Imperial Core</p>
+</div>
+</div>
+<!-- Enemy Territory Marker -->
+<div class="absolute top-[60%] right-[20%] w-48 h-48 border-2 border-error border-dashed rounded-full bg-error/5 flex items-center justify-center">
+<div class="text-center">
+<h2 class="font-headline-sm text-headline-sm text-error drop-shadow-md">SINIR</h2>
+<p class="font-label-sm text-label-sm text-error/80 uppercase tracking-widest">Hostile Frontier</p>
+</div>
+</div>
+<!-- Strategic Trade Route -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" preserveaspectratio="none">
+<path class="opacity-70" d="M 40% 30% Q 50% 50% 80% 60%" fill="transparent" stroke="theme('colors.secondary')" stroke-dasharray="8 8" stroke-width="2"></path>
+<!-- Waypoint -->
+<circle class="animate-ping" cx="60%" cy="43%" fill="theme('colors.secondary')" r="4"></circle>
+<circle cx="60%" cy="43%" fill="theme('colors.secondary')" r="4"></circle>
+</svg>
+</div>
+<!-- Interactive Map Pin (Hoverable) -->
+<div class="absolute top-[43%] left-[60%] transform -translate-x-1/2 -translate-y-1/2 group cursor-pointer">
+<span class="material-symbols-outlined text-secondary text-3xl drop-shadow-[0_0_10px_rgba(233,193,118,0.8)]">location_on</span>
+<!-- Tooltip / Mini Info -->
+<div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 bg-surface-container border border-secondary-container p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10 girih-corner shadow-2xl">
+<h3 class="font-label-lg text-label-lg text-secondary border-b border-secondary-container pb-1 mb-2">TİCARET YOLU</h3>
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Prosperity</span>
+<span class="font-label-sm text-label-sm text-secondary">+15%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Threat Level</span>
+<span class="font-label-sm text-label-sm text-error">Low</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar / Sector Info Panel -->
+<aside class="w-full md:w-96 flex flex-col gap-gutter shrink-0 overflow-y-auto">
+<!-- Contextual Header -->
+<div class="flex items-center gap-3 pb-4 border-b border-surface-variant relative">
+<div class="w-full h-px bg-surface-variant absolute bottom-0"></div>
+<div class="w-8 h-px bg-secondary absolute bottom-0 left-1/2 transform -translate-x-1/2"></div>
+<span class="material-symbols-outlined text-secondary text-4xl">travel_explore</span>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-secondary">BÖLGE BİLGİSİ</h1>
+<p class="font-label-sm text-label-sm text-outline-variant uppercase tracking-widest">Sector Analysis</p>
+</div>
+</div>
+<!-- Main Data Card -->
+<div class="bg-surface border border-secondary-container girih-corner p-6 relative">
+<!-- Parchment texture overlay -->
+<div class="absolute inset-0 parchment-texture mix-blend-overlay pointer-events-none"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Anadolu</h2>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Core Province</p>
+</div>
+<!-- Crimson Seal / Tag -->
+<div class="bg-error-container text-on-error-container px-3 py-1 font-label-sm text-label-sm uppercase tracking-widest border border-error/50">
+                            Secured
+                        </div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="border-l-2 border-secondary pl-3">
+<p class="font-label-sm text-label-sm text-outline-variant uppercase mb-1">Prosperity</p>
+<p class="font-headline-sm text-headline-sm text-secondary">High</p>
+</div>
+<div class="border-l-2 border-error pl-3">
+<p class="font-label-sm text-label-sm text-outline-variant uppercase mb-1">Threat Level</p>
+<p class="font-headline-sm text-headline-sm text-error">Minimal</p>
+</div>
+</div>
+<!-- Divider -->
+<div class="flex items-center justify-center my-6 opacity-50">
+<div class="h-px bg-secondary-container flex-grow"></div>
+<span class="material-symbols-outlined text-secondary mx-2 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<div class="h-px bg-secondary-container flex-grow"></div>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-surface-container text-secondary font-label-lg text-label-lg uppercase py-3 border border-secondary hover:bg-tertiary-container hover:border-secondary hover:text-secondary transition-all duration-300 flex justify-center items-center gap-2 group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">swords</span>
+                        Deploy Garrison
+                    </button>
+</div>
+</div>
+<!-- Secondary Info / Legend -->
+<div class="bg-surface-container-low border border-surface-variant p-5 girih-corner">
+<h3 class="font-label-lg text-label-lg text-on-surface mb-4 uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">map</span>
+                    Legend
+                </h3>
+<ul class="space-y-3">
+<li class="flex items-center gap-3">
+<div class="w-4 h-4 rounded-full border border-secondary bg-secondary/20"></div>
+<span class="font-body-md text-body-md text-on-surface-variant">Imperial Domain</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-4 h-4 rounded-full border border-error border-dashed bg-error/10"></div>
+<span class="font-body-md text-body-md text-on-surface-variant">Hostile Territory</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-4 h-px bg-secondary border-b border-dashed border-secondary"></div>
+<span class="font-body-md text-body-md text-on-surface-variant">Supply Route</span>
+</li>
+</ul>
+</div>
+</aside>
+</main>
+<!-- BottomNavBar (Mobile Only Pivot) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 bg-surface-container-low shadow-[0_-4px_24px_rgba(0,0,0,0.8)] z-50">
+<button class="flex flex-col items-center justify-center text-outline-variant px-3 py-1 active:scale-95 duration-150 group">
+<span class="material-symbols-outlined group-hover:text-secondary-fixed-dim transition-colors text-2xl mb-1">military_tech</span>
+<span class="font-label-sm text-label-sm uppercase group-hover:text-secondary-fixed-dim transition-colors">War Room</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container/20 border border-secondary/30 text-secondary rounded-lg px-3 py-1 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-2xl mb-1" style="font-variation-settings: 'FILL' 1;">public</span>
+<span class="font-label-sm text-label-sm uppercase">World Map</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline-variant px-3 py-1 active:scale-95 duration-150 group">
+<span class="material-symbols-outlined group-hover:text-secondary-fixed-dim transition-colors text-2xl mb-1">handshake</span>
+<span class="font-label-sm text-label-sm uppercase group-hover:text-secondary-fixed-dim transition-colors">Diplomacy</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline-variant px-3 py-1 active:scale-95 duration-150 group">
+<span class="material-symbols-outlined group-hover:text-secondary-fixed-dim transition-colors text-2xl mb-1">auto_stories</span>
+<span class="font-label-sm text-label-sm uppercase group-hover:text-secondary-fixed-dim transition-colors">Archives</span>
+</button>
+</nav>
+</body></html>

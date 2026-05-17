@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kritik Hamle Uyarı Paneli</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#1f1f22",
+                      "on-secondary": "#412d00",
+                      "primary-fixed-dim": "#ffb4ac",
+                      "surface-container-high": "#2a2a2d",
+                      "on-secondary-container": "#dab36a",
+                      "tertiary": "#bcc7dd",
+                      "primary": "#ffb4ac",
+                      "surface-tint": "#ffb4ac",
+                      "outline-variant": "#59413e",
+                      "on-primary-fixed": "#410002",
+                      "error": "#ffb4ab",
+                      "on-error-container": "#ffdad6",
+                      "primary-fixed": "#ffdad6",
+                      "on-background": "#e4e1e6",
+                      "secondary": "#e9c176",
+                      "inverse-on-surface": "#303033",
+                      "on-secondary-fixed-variant": "#5d4201",
+                      "tertiary-fixed-dim": "#bcc7dd",
+                      "on-surface-variant": "#e1bebb",
+                      "surface-container-lowest": "#0e0e11",
+                      "on-primary-container": "#ffafa7",
+                      "on-error": "#690005",
+                      "error-container": "#93000a",
+                      "surface-dim": "#131316",
+                      "surface-container-highest": "#353438",
+                      "on-tertiary-container": "#b9c4da",
+                      "on-surface": "#e4e1e6",
+                      "background": "#131316",
+                      "inverse-surface": "#e4e1e6",
+                      "surface-variant": "#353438",
+                      "on-primary": "#690006",
+                      "on-tertiary-fixed-variant": "#3c475a",
+                      "on-secondary-fixed": "#261900",
+                      "on-primary-fixed-variant": "#8f0e12",
+                      "secondary-fixed": "#ffdea5",
+                      "surface-container-low": "#1b1b1e",
+                      "surface-bright": "#39393c",
+                      "secondary-container": "#604403",
+                      "inverse-primary": "#b22a27",
+                      "tertiary-fixed": "#d8e3fa",
+                      "primary-container": "#9e1b1b",
+                      "tertiary-container": "#465164",
+                      "outline": "#a98986",
+                      "on-tertiary": "#263142",
+                      "surface": "#131316",
+                      "secondary-fixed-dim": "#e9c176",
+                      "on-tertiary-fixed": "#111c2c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "panel-gap": "8px",
+                      "gutter": "16px",
+                      "data-density": "tight",
+                      "margin-safe": "32px"
+              },
+              "fontFamily": {
+                      "display-lg": ["EB Garamond", "serif"],
+                      "data-tabular": ["JetBrains Mono", "monospace"],
+                      "headline-md": ["EB Garamond", "serif"],
+                      "label-caps": ["JetBrains Mono", "monospace"],
+                      "body-lg": ["JetBrains Mono", "monospace"],
+                      "headline-sm": ["EB Garamond", "serif"],
+                      "body-md": ["JetBrains Mono", "monospace"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "data-tabular": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                      "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                      "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                      "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                      "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                      "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Custom brutalist additions not achievable pure utility classes */
+        .scan-line {
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+            background-size: 100% 4px;
+        }
+        .imperial-glow {
+            box-shadow: inset 0 0 20px rgba(147, 0, 10, 0.4), 0 0 30px rgba(147, 0, 10, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md overflow-hidden relative selection:bg-error selection:text-on-error">
+<!-- Atmospheric Background Overlay -->
+<div class="absolute inset-0 z-0 pointer-events-none opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-error-container via-background to-background"></div>
+<div class="absolute inset-0 z-0 pointer-events-none scan-line opacity-10"></div>
+<!-- TopAppBar from JSON -->
+<header class="flex justify-between items-center w-full px-gutter h-20 bg-surface-container border-b border-secondary/30 relative z-50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 border border-secondary/50 bg-surface-variant flex items-center justify-center overflow-hidden">
+<img alt="Imperial Commander Portrait" class="object-cover w-full h-full grayscale contrast-125" data-alt="A grim, heavily armored imperial commander portrait, dark lighting, metallic textures, brutalist framing, serious expression, military uniform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEJ_zIBNjmLpCCEHmexkqILxvK1gK3AB38q6lfZhNPWEVxWi8uVxA53wWlohuAn7SpLqpg6z_OquYoWopUsAu_HsL38_FsKzcrw6G9xQXf92WD4UP7qkGrLr9HJajHvccErAbJBq2CcRj2PXbL5ye6hsdhOINl9X1B63xCquva-eNk81c24vj54saWHREm4ZeJiSGkI6gsgNXG472aBgF3dXnDsxVtiNpbLHkPN9lU7gEgNXJ-P79FsknvBuDvSkkcn4GEwh22ofVz"/>
+</div>
+<div class="hidden md:flex flex-col">
+<span class="font-data-tabular text-data-tabular text-secondary/70">ID: CMD-091A</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Secure Uplink</span>
+</div>
+</div>
+<h1 class="font-headline-md text-headline-md uppercase tracking-widest text-secondary text-center drop-shadow-[0_0_8px_rgba(233,193,118,0.3)]">COMMANDER STATUS</h1>
+<button class="w-10 h-10 flex items-center justify-center border border-secondary/30 hover:bg-surface-bright transition-colors text-secondary">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas (Alert Focus) -->
+<main class="flex-grow flex items-center justify-center p-gutter relative z-10">
+<!-- Tactical Alert Banner -->
+<div class="w-full max-w-4xl bg-surface-container-lowest border-2 border-error imperial-glow relative flex flex-col items-center justify-center py-16 px-8 text-center" style="background-image: repeating-linear-gradient(45deg, #131316 25%, transparent 25%, transparent 75%, #131316 75%, #131316), repeating-linear-gradient(45deg, #131316 25%, #1f1f22 25%, #1f1f22 75%, #131316 75%, #131316); background-position: 0 0, 10px 10px; background-size: 20px 20px; background-blend-mode: multiply;">
+<!-- Corner Accents -->
+<div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-error m-2"></div>
+<div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-error m-2"></div>
+<div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-error m-2"></div>
+<div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-error m-2"></div>
+<div class="mb-6 flex justify-center">
+<span class="material-symbols-outlined text-6xl text-error drop-shadow-[0_0_15px_rgba(255,180,171,0.8)]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="font-data-tabular text-data-tabular text-error/80 mb-2 tracking-[0.2em] uppercase border-b border-error/30 pb-1 px-4 inline-block">
+                [ALRT-CRIT-992] // GÜVENLİK İHLALİ
+            </div>
+<h2 class="font-display-lg text-display-lg text-error uppercase drop-shadow-[0_0_12px_rgba(255,180,171,0.6)] mb-8 max-w-2xl leading-tight">
+                KRİTİK HAMLE TESPİT EDİLDİ
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-lg mb-10">
+<div class="border border-error-container bg-error-container/10 p-4 flex flex-col items-center justify-center">
+<span class="font-label-caps text-label-caps text-on-error-container/70 mb-1">DURUM</span>
+<span class="font-body-lg text-body-lg text-on-error-container font-bold uppercase">TEHLİKE SEVİYESİ: AZAMİ</span>
+</div>
+<div class="border border-error-container bg-error-container/10 p-4 flex flex-col items-center justify-center">
+<span class="font-label-caps text-label-caps text-on-error-container/70 mb-1">LOKASYON</span>
+<span class="font-body-lg text-body-lg text-on-error-container font-bold uppercase">ORDU KONUMU: TEHLİKEDE</span>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-6 w-full justify-center">
+<button class="bg-error text-on-error font-body-lg text-body-lg uppercase px-8 py-4 border border-error hover:bg-error/90 transition-colors flex items-center justify-center gap-2 relative overflow-hidden group">
+<div class="absolute inset-0 scan-line opacity-20 pointer-events-none"></div>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">gavel</span>
+                    KARŞI TEDBİR BAŞLAT
+                </button>
+<button class="bg-transparent text-error font-body-lg text-body-lg uppercase px-8 py-4 border border-error hover:bg-error-container/30 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">radio_button_checked</span>
+                    DURUMU ONAYLA
+                </button>
+</div>
+<!-- Fake Runic/Tactical Data Stream at bottom of card -->
+<div class="absolute bottom-4 left-0 right-0 text-center font-data-tabular text-[8px] text-error/40 flex justify-center gap-4 opacity-50">
+<span>0x8A7F</span>
+<span class="material-symbols-outlined text-[10px]">swords</span>
+<span>SYS_ERR_99</span>
+<span class="material-symbols-outlined text-[10px]">emergency</span>
+<span>OVERRIDE_REQ</span>
+</div>
+</div>
+</main>
+</body></html>

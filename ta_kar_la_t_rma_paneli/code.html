@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ancient War Academy Analysis Board</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#412d00",
+                        "inverse-primary": "#b22a27",
+                        "tertiary-container": "#465164",
+                        "on-primary-container": "#ffafa7",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "on-secondary-container": "#dab36a",
+                        "secondary-fixed-dim": "#e9c176",
+                        "outline-variant": "#59413e",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "on-background": "#e4e1e6",
+                        "on-primary": "#690006",
+                        "on-error": "#690005",
+                        "on-surface": "#e4e1e6",
+                        "surface-container-highest": "#353438",
+                        "error-container": "#93000a",
+                        "surface": "#131316",
+                        "primary": "#ffb4ac",
+                        "surface-container": "#1f1f22",
+                        "surface-container-lowest": "#0e0e11",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "on-tertiary-container": "#b9c4da",
+                        "tertiary": "#bcc7dd",
+                        "on-secondary-fixed": "#261900",
+                        "surface-variant": "#353438",
+                        "primary-fixed": "#ffdad6",
+                        "on-tertiary-fixed": "#111c2c",
+                        "surface-container-high": "#2a2a2d",
+                        "secondary": "#e9c176",
+                        "on-surface-variant": "#e1bebb",
+                        "inverse-surface": "#e4e1e6",
+                        "error": "#ffb4ab",
+                        "primary-container": "#9e1b1b",
+                        "surface-bright": "#39393c",
+                        "secondary-fixed": "#ffdea5",
+                        "secondary-container": "#604403",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#303033",
+                        "on-primary-fixed-variant": "#8f0e12",
+                        "surface-tint": "#ffb4ac",
+                        "background": "#131316",
+                        "outline": "#a98986",
+                        "on-primary-fixed": "#410002",
+                        "on-tertiary": "#263142",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "tertiary-fixed": "#d8e3fa",
+                        "surface-container-low": "#1b1b1e",
+                        "surface-dim": "#131316"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-safe": "32px",
+                        "gutter": "16px",
+                        "data-density": "tight",
+                        "unit": "4px",
+                        "panel-gap": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["EB Garamond", "serif"],
+                        "body-lg": ["JetBrains Mono", "monospace"],
+                        "display-lg": ["EB Garamond", "serif"],
+                        "headline-sm": ["EB Garamond", "serif"],
+                        "data-tabular": ["JetBrains Mono", "monospace"],
+                        "body-md": ["JetBrains Mono", "monospace"],
+                        "label-caps": ["JetBrains Mono", "monospace"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "data-tabular": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .texture-scanline {
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+            background-size: 100% 4px;
+        }
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(233, 193, 118, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(233, 193, 118, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface-container dark:bg-surface-container flex justify-between items-center w-full px-gutter h-20 docked full-width top-0 border-b border-secondary/30 sticky z-50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center border border-secondary/50 overflow-hidden">
+<span class="material-symbols-outlined text-secondary">account_circle</span>
+</div>
+<h1 class="font-headline-md text-headline-md uppercase tracking-widest text-secondary dark:text-secondary">COMMANDER STATUS</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-bright transition-colors rounded-full text-secondary dark:text-secondary">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<main class="flex-1 w-full max-w-7xl mx-auto px-gutter py-8 space-y-8 pb-32 md:pb-8">
+<!-- Header -->
+<div class="text-center space-y-4 mb-12 border-b border-secondary/30 pb-8">
+<h2 class="font-display-lg text-display-lg text-secondary">YADİGAR KIYASLAMASI</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant uppercase tracking-widest">Fil vs Dabbaba Stratejik Analizi</p>
+</div>
+<!-- Hero Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-panel-gap">
+<!-- Left Piece: Elephant -->
+<div class="relative group bg-surface-container-high border border-secondary/30 p-4 flex flex-col h-full">
+<div class="absolute inset-0 texture-scanline opacity-10 pointer-events-none"></div>
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary/50 to-transparent"></div>
+<div class="flex justify-between items-center mb-4 px-2 border-b border-secondary/20 pb-2">
+<span class="font-data-tabular text-data-tabular text-secondary">[001-A] FİL</span>
+<span class="material-symbols-outlined text-secondary text-sm">chess</span>
+</div>
+<div class="relative aspect-[3/4] w-full bg-surface-container-lowest border border-secondary/20 overflow-hidden mb-4">
+<img alt="Left Piece: Elephant" class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700 opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDze34mrE0oP0QbXSrqNf_ZKTkiMXudPwHy6jJE7sRtTdW9ye49SSnxpvkOZiyKPLsf8F64_JhSHXUoWUSuQdAdhIzwjis_Phk6MQn_HRi7cJlJrqyryrtmsNhdcGAqB5-Ha5HBwlR4EcOBECbxD35woLW1vH06JQP_dbpH0OVWLVDbsHP6yrnDFkafCzaJVjC1HbPSWHXa8uiyrXhXole2selaXFX4Wt3PfrqXogP4rHLrcX6xw4nuYRuL4OAyaEIimZstKmonOILX"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+</div>
+<div class="mt-auto space-y-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">KUTSAL KUŞATMA</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Ağır zırhlı ve yıkıcı. Düşman hatlarını yarmak için ideal.</p>
+</div>
+</div>
+<!-- Right Piece: Dabbaba -->
+<div class="relative group bg-surface-container-high border border-secondary/30 p-4 flex flex-col h-full">
+<div class="absolute inset-0 texture-scanline opacity-10 pointer-events-none"></div>
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary/50 to-transparent"></div>
+<div class="flex justify-between items-center mb-4 px-2 border-b border-secondary/20 pb-2">
+<span class="font-data-tabular text-data-tabular text-secondary">[002-B] DABBABA</span>
+<span class="material-symbols-outlined text-secondary text-sm">fort</span>
+</div>
+<div class="relative aspect-[3/4] w-full bg-surface-container-lowest border border-secondary/20 overflow-hidden mb-4">
+<img alt="Right Piece: Dabbaba" class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700 opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpdmXCMtEKiR8i5r8TV_-z86pwHszFrTEBPAEDMkYsRShT_PcGVSbs3vYOfVgrdSF1zHwqRjpy4ug1LzdHPjghp2wUH8tbJql_0n3Idni24G08eYRxVFws3jg6AkiqeTNEAamc1Q7x3TDy2uRLqrdbtPJDOjAyhQCDHHuRrlqYpr7kLUCjNxc1PwqQCDBzlaTzc_ZQOWCUSXhsNmmiszg3fy5L6UZfnKsKCzYiAGj5pDYOEFjnQznX7xhggicTzcGVSXMqe8ozwavA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+</div>
+<div class="mt-auto space-y-2">
+<h3 class="font-headline-sm text-headline-sm text-secondary">AGRESİF TAHKİMAT</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Hızlı mevzilenme ve alan kontrolü. Savunma hatlarını kırmak için.</p>
+</div>
+</div>
+</section>
+<!-- Stats Comparison -->
+<section class="bg-surface-container border border-secondary/30 p-6 relative">
+<div class="absolute top-0 left-4 px-2 -mt-3 bg-surface-container">
+<h3 class="font-label-caps text-label-caps text-secondary tracking-widest">STRATEJİK VERİ KIYAS</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between font-data-tabular text-data-tabular">
+<span class="text-on-surface">MOBİLİTE</span>
+<span class="text-secondary">FİL: 4 | DAB: 6</span>
+</div>
+<div class="h-2 w-full bg-surface-container-lowest border border-secondary/20 flex">
+<div class="h-full bg-primary/80" style="width: 40%;"></div>
+<div class="h-full bg-secondary/80 ml-auto" style="width: 60%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-data-tabular text-data-tabular">
+<span class="text-on-surface">SALDIRI GÜCÜ</span>
+<span class="text-secondary">FİL: 9 | DAB: 7</span>
+</div>
+<div class="h-2 w-full bg-surface-container-lowest border border-secondary/20 flex">
+<div class="h-full bg-primary/80" style="width: 90%;"></div>
+<div class="h-full bg-secondary/80 ml-auto" style="width: 70%;"></div>
+</div>
+</div>
+</div>
+<div class="hidden md:flex justify-center items-center">
+<span class="material-symbols-outlined text-secondary/30 text-6xl">compare_arrows</span>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between font-data-tabular text-data-tabular">
+<span class="text-on-surface">SAVUNMA</span>
+<span class="text-secondary">FİL: 8 | DAB: 5</span>
+</div>
+<div class="h-2 w-full bg-surface-container-lowest border border-secondary/20 flex">
+<div class="h-full bg-primary/80" style="width: 80%;"></div>
+<div class="h-full bg-secondary/80 ml-auto" style="width: 50%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-data-tabular text-data-tabular">
+<span class="text-on-surface">MENZİL</span>
+<span class="text-secondary">FİL: 3 | DAB: 5</span>
+</div>
+<div class="h-2 w-full bg-surface-container-lowest border border-secondary/20 flex">
+<div class="h-full bg-primary/80" style="width: 30%;"></div>
+<div class="h-full bg-secondary/80 ml-auto" style="width: 50%;"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Movement Comparison -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-panel-gap">
+<div class="bg-surface-container border border-secondary/30 p-6 relative">
+<div class="absolute top-0 left-4 px-2 -mt-3 bg-surface-container">
+<h3 class="font-label-caps text-label-caps text-secondary tracking-widest">HAREKET ŞEMALARI: FİL</h3>
+</div>
+<div class="mt-4 flex justify-center">
+<div class="grid grid-cols-5 grid-rows-5 gap-1 p-2 bg-surface-container-lowest border border-secondary/20 w-48 h-48">
+<!-- Simulated 5x5 grid for Elephant -->
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-primary/20 border border-primary/50"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-primary/40 border border-primary/50"></div>
+<div class="bg-primary/20 border border-primary/50"></div>
+<div class="bg-primary/40 border border-primary/50"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-primary/20 border border-primary/50"></div>
+<div class="bg-primary/20 border border-primary/50"></div>
+<div class="bg-primary border border-primary flex items-center justify-center"><span class="material-symbols-outlined text-[10px] text-on-primary">close</span></div>
+<div class="bg-primary/20 border border-primary/50"></div>
+<div class="bg-primary/20 border border-primary/50"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-primary/40 border border-primary/50"></div>
+<div class="bg-primary/20 border border-primary/50"></div>
+<div class="bg-primary/40 border border-primary/50"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-primary/20 border border-primary/50"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container border border-secondary/30 p-6 relative">
+<div class="absolute top-0 left-4 px-2 -mt-3 bg-surface-container">
+<h3 class="font-label-caps text-label-caps text-secondary tracking-widest">HAREKET ŞEMALARI: DABBABA</h3>
+</div>
+<div class="mt-4 flex justify-center">
+<div class="grid grid-cols-5 grid-rows-5 gap-1 p-2 bg-surface-container-lowest border border-secondary/20 w-48 h-48">
+<!-- Simulated 5x5 grid for Dabbaba -->
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-secondary/40 border border-secondary/50"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-secondary/40 border border-secondary/50"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-secondary border border-secondary flex items-center justify-center"><span class="material-symbols-outlined text-[10px] text-on-secondary">close</span></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-secondary/40 border border-secondary/50"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-secondary/40 border border-secondary/50"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+<div class="bg-surface-variant border border-secondary/10"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Details Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-panel-gap">
+<div class="bg-surface-container border border-secondary/30 p-6 relative">
+<div class="absolute top-0 left-4 px-2 -mt-3 bg-surface-container">
+<h3 class="font-label-caps text-label-caps text-secondary tracking-widest">TAKTİKSEL ÜSTÜNLÜKLER</h3>
+</div>
+<ul class="mt-4 space-y-3 font-body-md text-on-surface-variant">
+<li class="flex items-start gap-2 border-b border-secondary/10 pb-2">
+<span class="font-data-tabular text-primary shrink-0">[FİL-01]</span>
+<span>Merkez yarmalarında ezici üstünlük. Çapraz ve düz hatlarda etkili tahribat.</span>
+</li>
+<li class="flex items-start gap-2 border-b border-secondary/10 pb-2">
+<span class="font-data-tabular text-primary shrink-0">[FİL-02]</span>
+<span>Düşman piyon formasyonlarını dağıtmada birincil tercih.</span>
+</li>
+<li class="flex items-start gap-2 border-b border-secondary/10 pb-2">
+<span class="font-data-tabular text-secondary shrink-0">[DAB-01]</span>
+<span>Engeller üzerinden atlayarak beklenmedik noktalara sızma yeteneği.</span>
+</li>
+<li class="flex items-start gap-2 border-b border-secondary/10 pb-2">
+<span class="font-data-tabular text-secondary shrink-0">[DAB-02]</span>
+<span>Geniş alan kontrolü ve kanat savunmalarını felç etme kapasitesi.</span>
+</li>
+</ul>
+</div>
+<div class="bg-surface-container border border-secondary/30 p-6 relative">
+<div class="absolute top-0 left-4 px-2 -mt-3 bg-surface-container">
+<h3 class="font-label-caps text-label-caps text-secondary tracking-widest">SEMBOLİK HİYERARŞİ</h3>
+</div>
+<div class="mt-4 space-y-4">
+<p class="font-headline-sm text-on-surface leading-tight">İmparatorluk Arşivlerine göre bu iki figür, ordunun iki farklı doktrinini temsil eder.</p>
+<div class="p-4 bg-surface-container-lowest border border-secondary/20 font-body-md text-on-surface-variant text-sm italic">
+                        "Fil, imparatorun kudretini ve ezici gücünü simgelerken; Dabbaba, imparatorluğun zekasını ve aşılmaz surlarını temsil eder. İkisini aynı anda sahaya sürmek, mutlak zaferin fermanıdır."
+                    </div>
+</div>
+</div>
+</section>
+<!-- Recommendation Footer -->
+<section class="bg-surface-container-high border border-primary/50 p-6 relative overflow-hidden">
+<div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+<div class="absolute top-0 left-1/2 -translate-x-1/2 px-4 -mt-3 bg-surface-container-high border border-primary/50">
+<h3 class="font-label-caps text-label-caps text-primary tracking-widest uppercase">SAVAŞ ODASI TAVSİYESİ</h3>
+</div>
+<div class="relative z-10 mt-6 text-center space-y-4">
+<span class="material-symbols-outlined text-primary text-4xl">warning</span>
+<p class="font-headline-sm text-on-surface max-w-2xl mx-auto">
+                    Ağır zırhlı düşman formasyonlarına karşı <span class="text-primary font-bold">FİL</span> birimlerini merkezden sürün. Eğer düşman hareketli ve dağınık bir savunma hattı kurmuşsa, kanatlardan <span class="text-secondary font-bold">DABBABA</span> ile sızma harekatı başlatın.
+                </p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-container-lowest dark:bg-surface-container-lowest fixed bottom-0 w-full z-50 border-t-2 border-secondary/20 flex justify-around items-center h-24 px-margin-safe pb-4">
+<button class="text-on-surface-variant flex flex-col items-center opacity-70 hover:bg-surface-variant/50 w-full py-2">
+<span class="material-symbols-outlined mb-1">swords</span>
+<span class="font-label-caps text-label-caps">DEPLOY</span>
+</button>
+<button class="bg-primary-container text-on-primary-container border-t-2 border-primary px-6 py-2 flex flex-col items-center w-full relative overflow-hidden">
+<div class="absolute inset-0 texture-scanline opacity-20 pointer-events-none"></div>
+<span class="material-symbols-outlined mb-1">radar</span>
+<span class="font-label-caps text-label-caps">INTEL</span>
+</button>
+<button class="text-on-surface-variant flex flex-col items-center opacity-70 hover:bg-surface-variant/50 w-full py-2">
+<span class="material-symbols-outlined mb-1">groups</span>
+<span class="font-label-caps text-label-caps">LEGION</span>
+</button>
+</nav>
+</body></html>

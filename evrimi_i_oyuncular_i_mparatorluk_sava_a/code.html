@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>İmparatorluk Savaş Ağı Arşivi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#412d00",
+                        "error-container": "#93000a",
+                        "on-primary-fixed-variant": "#8f0e12",
+                        "on-secondary-fixed": "#261900",
+                        "on-primary": "#690006",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#ffb4ac",
+                        "surface-container-highest": "#353438",
+                        "surface-container-lowest": "#0e0e11",
+                        "on-primary-fixed": "#410002",
+                        "on-tertiary-fixed-variant": "#3c475a",
+                        "on-primary-container": "#ffafa7",
+                        "outline-variant": "#59413e",
+                        "surface-container": "#1f1f22",
+                        "surface-dim": "#131316",
+                        "tertiary-fixed-dim": "#bcc7dd",
+                        "secondary-fixed-dim": "#e9c176",
+                        "secondary-fixed": "#ffdea5",
+                        "on-surface": "#e4e1e6",
+                        "surface-container-low": "#1b1b1e",
+                        "primary-container": "#9e1b1b",
+                        "inverse-on-surface": "#303033",
+                        "on-tertiary-fixed": "#111c2c",
+                        "on-tertiary-container": "#b9c4da",
+                        "on-error": "#690005",
+                        "on-background": "#e4e1e6",
+                        "primary-fixed": "#ffdad6",
+                        "on-tertiary": "#263142",
+                        "surface-bright": "#39393c",
+                        "background": "#131316",
+                        "surface-variant": "#353438",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "outline": "#a98986",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "tertiary-container": "#465164",
+                        "tertiary": "#bcc7dd",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#ffb4ac",
+                        "inverse-primary": "#b22a27",
+                        "on-surface-variant": "#e1bebb",
+                        "on-secondary-container": "#dab36a",
+                        "inverse-surface": "#e4e1e6",
+                        "tertiary-fixed": "#d8e3fa",
+                        "surface": "#131316",
+                        "secondary": "#e9c176",
+                        "surface-container-high": "#2a2a2d",
+                        "secondary-container": "#604403"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-safe": "32px",
+                        "data-density": "tight",
+                        "panel-gap": "8px",
+                        "gutter": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["ebGaramond"],
+                        "display-lg": ["ebGaramond"],
+                        "data-tabular": ["jetbrainsMono"],
+                        "label-caps": ["jetbrainsMono"],
+                        "headline-md": ["ebGaramond"],
+                        "body-lg": ["jetbrainsMono"],
+                        "body-md": ["jetbrainsMono"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "data-tabular": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .texture-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .metal-border {
+            box-shadow: inset 0 0 0 1px theme('colors.secondary.DEFAULT');
+        }
+        .metal-border-slate {
+            box-shadow: inset 0 0 0 1px theme('colors.outline.DEFAULT');
+        }
+        .glow-active {
+            box-shadow: 0 0 8px theme('colors.primary.DEFAULT');
+        }
+        .glow-idle {
+            box-shadow: 0 0 8px theme('colors.secondary.DEFAULT');
+        }
+        .scan-line-hover:hover::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(255,255,255,0.05) 51%, transparent 51%);
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-lg">
+<!-- TopAppBar (Web) -->
+<header class="hidden md:flex justify-between items-center w-full px-gutter max-w-full h-16 z-50 fixed top-0 bg-surface-container dark:bg-surface-container border-b border-outline-variant dark:border-outline-variant bg-surface-container-high">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary">shield</span>
+<span class="font-headline-md text-headline-md font-bold text-secondary dark:text-secondary tracking-widest uppercase">IMPERIAL COMMAND ARCHIVE</span>
+</div>
+<nav class="flex gap-8 items-center h-full">
+<a class="h-full flex items-center px-4 text-on-surface-variant dark:text-on-surface-variant hover:bg-primary-container/20 dark:hover:bg-primary-container/20 transition-colors" href="#">Tactical</a>
+<a class="h-full flex items-center px-4 text-on-surface-variant dark:text-on-surface-variant hover:bg-primary-container/20 dark:hover:bg-primary-container/20 transition-colors" href="#">Archive</a>
+<a class="h-full flex items-center px-4 text-primary dark:text-primary border-b-2 border-primary hover:bg-primary-container/20 dark:hover:bg-primary-container/20 transition-colors" href="#">Legions</a>
+<a class="h-full flex items-center px-4 text-on-surface-variant dark:text-on-surface-variant hover:bg-primary-container/20 dark:hover:bg-primary-container/20 transition-colors" href="#">Logistics</a>
+<a class="h-full flex items-center px-4 text-on-surface-variant dark:text-on-surface-variant hover:bg-primary-container/20 dark:hover:bg-primary-container/20 transition-colors" href="#">Council</a>
+</nav>
+<span class="material-symbols-outlined text-primary dark:text-primary">settings</span>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-4 md:pt-20 pb-20 md:pb-8 px-4 md:px-margin-safe relative overflow-hidden">
+<div class="absolute inset-0 texture-overlay"></div>
+<div class="max-w-6xl mx-auto relative z-10">
+<!-- Header Section -->
+<div class="mb-8 border-b border-outline-variant pb-4">
+<h1 class="font-display-lg text-display-lg text-secondary uppercase tracking-widest mb-2">İMPARATORLUK SAVAŞ AĞI</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-data-tabular">Aktif Komutanlar ve Stratejik Mevziler</p>
+</div>
+<!-- Toolbar / Search -->
+<div class="flex flex-col md:flex-row gap-4 mb-8">
+<div class="flex-grow relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-high border-b-2 border-outline focus:border-secondary focus:ring-0 pl-10 pr-4 py-3 font-data-tabular text-data-tabular text-on-surface placeholder-outline-variant outline-none transition-colors" placeholder="KOMUTAN VEYA BİRLİK ARA..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-high border-b-2 border-outline px-4 py-2 flex items-center justify-center hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-secondary">filter_list</span>
+</button>
+<button class="bg-surface-container-high border-b-2 border-outline px-4 py-2 flex items-center justify-center hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-secondary">sort</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid of Dossiers -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Card 1 (Active) -->
+<div class="bg-surface-container border border-outline-variant relative group overflow-hidden flex flex-col">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/10 to-transparent pointer-events-none"></div>
+<!-- Header -->
+<div class="bg-surface-container-high border-b border-outline-variant p-3 flex justify-between items-center">
+<span class="font-data-tabular text-data-tabular text-outline-variant">[001-A]</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full glow-active"></span>
+<span class="font-data-tabular text-data-tabular text-primary uppercase">Savaşta</span>
+</div>
+</div>
+<!-- Body -->
+<div class="p-6 flex-grow flex flex-col gap-4">
+<div class="flex items-start gap-4">
+<div class="relative">
+<div class="w-16 h-16 rounded-full border-2 border-primary overflow-hidden bg-surface-dim">
+<img alt="A stoic military commander in dark imperial armor, standing against a fiery, crimson-lit war room background. The lighting is harsh and dramatic, emphasizing an authoritative and intimidating aura. Brutalist architectural elements are visible in the deep background." class="w-full h-full object-cover grayscale opacity-80 mix-blend-screen" data-alt="A stoic military commander in dark imperial armor, standing against a fiery, crimson-lit war room background. The lighting is harsh and dramatic, emphasizing an authoritative and intimidating aura. Brutalist architectural elements are visible in the deep background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOXkZ6yMltrQ5he8jMa1qSSkyfnKs9D4R2I7dewZVV1zIuDy1-u2IhngBLgCW2LXRiygXbhvCAi4mpG7KZ45HSlw5_dMgGSQBmtuhhFTBS1wSRXfSqeDcg4Exri8P8HELmCymy49QQMqTjzYjxGDu6E8_kWI1CjuVYG9C6jLu5_mSHuk4Pm7iBTZvddmBs66zdlCPRS7ogQe4OcdaM46waeKlEl8Vuv9NzoRrCDA0Yxff-i4yl88xkn1qAgw1dzcXdE4d8gUly7p8k"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-primary-container border border-primary w-6 h-6 flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-[14px] text-on-primary-container">swords</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">Commander Bayezid</h3>
+<p class="font-data-tabular text-data-tabular text-secondary uppercase tracking-widest">Grandmaster</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-2">
+<div class="flex flex-col gap-1 border-l-2 border-outline-variant pl-3">
+<span class="font-label-caps text-label-caps text-outline-variant">FRAKSİYON</span>
+<span class="font-body-md text-body-md text-on-surface">Turkic Vanguard</span>
+</div>
+<div class="flex flex-col gap-1 border-l-2 border-outline-variant pl-3">
+<span class="font-label-caps text-label-caps text-outline-variant">HARP İTİBARI</span>
+<span class="font-body-md text-body-md text-secondary">2840 ELO</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="p-4 border-t border-outline-variant bg-surface-container-low flex gap-2">
+<button class="flex-1 bg-primary text-on-primary font-data-tabular text-data-tabular uppercase py-2 border border-primary relative scan-line-hover transition-all hover:bg-primary-container">
+                            Düello Teklifi
+                        </button>
+<button class="flex-1 bg-transparent text-secondary font-data-tabular text-data-tabular uppercase py-2 border border-secondary relative scan-line-hover transition-all hover:bg-secondary/10">
+                            Sicil İncele
+                        </button>
+</div>
+</div>
+<!-- Card 2 (Idle) -->
+<div class="bg-surface-container border border-outline-variant relative group overflow-hidden flex flex-col">
+<!-- Header -->
+<div class="bg-surface-container-high border-b border-outline-variant p-3 flex justify-between items-center">
+<span class="font-data-tabular text-data-tabular text-outline-variant">[002-B]</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-secondary rounded-full glow-idle opacity-70"></span>
+<span class="font-data-tabular text-data-tabular text-secondary uppercase opacity-70">Karargahta</span>
+</div>
+</div>
+<!-- Body -->
+<div class="p-6 flex-grow flex flex-col gap-4">
+<div class="flex items-start gap-4">
+<div class="relative">
+<div class="w-16 h-16 rounded-full border-2 border-outline-variant overflow-hidden bg-surface-dim">
+<img alt="A weathered tactician studying a glowing holographic map table in a dimly lit, gunmetal grey bunker. The scene is illuminated by the cold blue light of the hologram and faint golden sparks. The aesthetic is gritty, brutalist, and highly detailed." class="w-full h-full object-cover grayscale opacity-60" data-alt="A weathered tactician studying a glowing holographic map table in a dimly lit, gunmetal grey bunker. The scene is illuminated by the cold blue light of the hologram and faint golden sparks. The aesthetic is gritty, brutalist, and highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMQ3GpnmdM7QmWeH7A3JIXWu-5zPkJQ3LbE96E_F6oidAkh9zsUYU76yDUtb9XFyYiLKB6S6wjdWqeDkOevTRRzwoTpWZrEcc5Ov3z4WT-rTqjttCWUS_zQFQ5KwQv4e1utUT1bOMg-qC-g_eDAqZxcpzAzRFKVY68hexNq_OmbEz140Zkzl2RpEkaplZmaL092Sdum3J4l9lzLNfEBnHRRFf3dmtYkQQVypT_r80Z1BA6hc3IhJ8jP-DkhR-FziimBALeRXj-6Z0M"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-surface-container-highest border border-outline-variant w-6 h-6 flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-[14px] text-outline">fort</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-1 opacity-90">Strategist Alp Arslan</h3>
+<p class="font-data-tabular text-data-tabular text-outline uppercase tracking-widest">Legatus</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-2">
+<div class="flex flex-col gap-1 border-l-2 border-outline-variant/50 pl-3">
+<span class="font-label-caps text-label-caps text-outline-variant">FRAKSİYON</span>
+<span class="font-body-md text-body-md text-on-surface opacity-80">Persian Immortals</span>
+</div>
+<div class="flex flex-col gap-1 border-l-2 border-outline-variant/50 pl-3">
+<span class="font-label-caps text-label-caps text-outline-variant">HARP İTİBARI</span>
+<span class="font-body-md text-body-md text-outline">2610 ELO</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="p-4 border-t border-outline-variant bg-surface-container-low flex gap-2">
+<button class="flex-1 bg-transparent text-secondary font-data-tabular text-data-tabular uppercase py-2 border border-secondary relative scan-line-hover transition-all hover:bg-secondary/10">
+                            Sicil İncele
+                        </button>
+</div>
+</div>
+<!-- Card 3 (Active) -->
+<div class="bg-surface-container border border-outline-variant relative group overflow-hidden flex flex-col">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/10 to-transparent pointer-events-none"></div>
+<!-- Header -->
+<div class="bg-surface-container-high border-b border-outline-variant p-3 flex justify-between items-center">
+<span class="font-data-tabular text-data-tabular text-outline-variant">[003-C]</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full glow-active"></span>
+<span class="font-data-tabular text-data-tabular text-primary uppercase">Savaşta</span>
+</div>
+</div>
+<!-- Body -->
+<div class="p-6 flex-grow flex flex-col gap-4">
+<div class="flex items-start gap-4">
+<div class="relative">
+<div class="w-16 h-16 rounded-full border-2 border-primary overflow-hidden bg-surface-dim">
+<div class="w-full h-full flex items-center justify-center bg-surface-container-highest">
+<span class="material-symbols-outlined text-4xl text-outline-variant">person</span>
+</div>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-primary-container border border-primary w-6 h-6 flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-[14px] text-on-primary-container">swords</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">Centurion Tarkan</h3>
+<p class="font-data-tabular text-data-tabular text-secondary uppercase tracking-widest">Tribune</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-2">
+<div class="flex flex-col gap-1 border-l-2 border-outline-variant pl-3">
+<span class="font-label-caps text-label-caps text-outline-variant">FRAKSİYON</span>
+<span class="font-body-md text-body-md text-on-surface">Mongol Horde</span>
+</div>
+<div class="flex flex-col gap-1 border-l-2 border-outline-variant pl-3">
+<span class="font-label-caps text-label-caps text-outline-variant">HARP İTİBARI</span>
+<span class="font-body-md text-body-md text-secondary">2950 ELO</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="p-4 border-t border-outline-variant bg-surface-container-low flex gap-2">
+<button class="flex-1 bg-primary text-on-primary font-data-tabular text-data-tabular uppercase py-2 border border-primary relative scan-line-hover transition-all hover:bg-primary-container">
+                            Düello Teklifi
+                        </button>
+<button class="flex-1 bg-transparent text-secondary font-data-tabular text-data-tabular uppercase py-2 border border-secondary relative scan-line-hover transition-all hover:bg-secondary/10">
+                            Sicil İncele
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 h-16 z-50 bg-surface-dim dark:bg-surface-dim border-t border-outline-variant dark:border-outline-variant bg-surface-container-lowest">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2 hover:text-secondary dark:hover:text-secondary" href="#">
+<span class="material-symbols-outlined mb-1">grid_view</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Tactical</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2 hover:text-secondary dark:hover:text-secondary" href="#">
+<span class="material-symbols-outlined mb-1">history_edu</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Archive</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-none border-t-2 border-secondary p-2 scale-95 duration-100" href="#">
+<span class="material-symbols-outlined mb-1 text-secondary">groups</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-secondary">Legions</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2 hover:text-secondary dark:hover:text-secondary" href="#">
+<span class="material-symbols-outlined mb-1">account_balance</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Logistics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 p-2 hover:text-secondary dark:hover:text-secondary" href="#">
+<span class="material-symbols-outlined mb-1">temple_buddhist</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Council</span>
+</a>
+</nav>
+</body></html>

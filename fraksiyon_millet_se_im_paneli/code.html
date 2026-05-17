@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>İmparatorluk Seçimi - Imperial Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#dab36a",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#bdc6e1",
+                        "on-background": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-secondary-fixed": "#261900",
+                        "surface-container-highest": "#353535",
+                        "secondary-fixed-dim": "#e9c176",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-fixed": "#d9e2fe",
+                        "on-primary-fixed-variant": "#3d475d",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#2a2a2a",
+                        "primary": "#bdc6e1",
+                        "on-tertiary-container": "#e24735",
+                        "tertiary-fixed": "#ffdad4",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "tertiary-container": "#330000",
+                        "inverse-primary": "#555e76",
+                        "on-tertiary-fixed-variant": "#920703",
+                        "on-primary-container": "#757f97",
+                        "on-tertiary": "#690000",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#bdc6e1",
+                        "secondary-container": "#604403",
+                        "surface-bright": "#393939",
+                        "on-error": "#690005",
+                        "surface-variant": "#353535",
+                        "surface-container": "#20201f",
+                        "surface": "#131313",
+                        "on-primary-fixed": "#121b2f",
+                        "surface-container-low": "#1c1b1b",
+                        "on-primary": "#273045",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary": "#ffb4a8",
+                        "outline": "#8f9097",
+                        "secondary-fixed": "#ffdea5",
+                        "secondary": "#e9c176",
+                        "on-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "background": "#131313",
+                        "surface-dim": "#131313",
+                        "on-tertiary-fixed": "#410000",
+                        "primary-container": "#0a1428",
+                        "on-surface-variant": "#c6c6cd",
+                        "on-secondary": "#412d00",
+                        "outline-variant": "#45464d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "max-width": "1280px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["EB Garamond"],
+                        "label-sm": ["EB Garamond"],
+                        "body-lg": ["EB Garamond"],
+                        "headline-md": ["EB Garamond"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "headline-lg": ["EB Garamond"],
+                        "body-md": ["EB Garamond"],
+                        "headline-sm": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["20px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .girih-pattern {
+            background-color: transparent;
+            background-image: repeating-linear-gradient(45deg, rgba(233, 193, 118, 0.05) 25%, transparent 25%, transparent 75%, rgba(233, 193, 118, 0.05) 75%, rgba(233, 193, 118, 0.05)), repeating-linear-gradient(45deg, rgba(233, 193, 118, 0.05) 25%, transparent 25%, transparent 75%, rgba(233, 193, 118, 0.05) 75%, rgba(233, 193, 118, 0.05));
+            background-position: 0 0, 10px 10px;
+            background-size: 20px 20px;
+        }
+        .texture-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen relative overflow-x-hidden">
+<!-- Texture Overlay -->
+<div class="fixed inset-0 texture-overlay z-0"></div>
+<!-- TopAppBar -->
+<header class="bg-background text-secondary font-headline-sm uppercase tracking-widest flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 border-b border-secondary-container shadow-inner sticky top-0 z-40">
+<div class="cursor-pointer active:scale-95 text-on-surface-variant hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</div>
+<div class="font-headline-md text-headline-md text-secondary tracking-tighter text-center">IMPERIAL SELECTION</div>
+<div class="cursor-pointer active:scale-95 text-on-surface-variant hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</div>
+</header>
+<main class="relative z-10 max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-[80px] md:py-[120px] flex flex-col gap-[80px]">
+<!-- Faction Carousel Section -->
+<section class="flex flex-col gap-gutter">
+<div class="flex items-center justify-center gap-4">
+<div class="h-px bg-secondary-container flex-grow max-w-[100px] relative">
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-secondary rotate-45"></div>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-secondary text-center uppercase">İmparatorluk Seçimi</h1>
+<div class="h-px bg-secondary-container flex-grow max-w-[100px] relative">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-secondary rotate-45"></div>
+</div>
+</div>
+<p class="text-center text-on-surface-variant font-body-lg text-body-lg max-w-2xl mx-auto">
+                Kaderin iplerini eline al. Tarihin sayfalarına kazınacak medeniyetini belirle.
+            </p>
+<div class="flex gap-gutter overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar mt-8">
+<!-- Faction Card 1: Timurid (Selected) -->
+<div class="snap-center shrink-0 w-[300px] md:w-[400px] flex flex-col items-center relative group">
+<div class="w-full aspect-[2/3] border border-secondary bg-surface-container relative overflow-hidden group-hover:border-tertiary transition-colors duration-500 shadow-[0_0_15px_rgba(233,193,118,0.2)]">
+<img alt="A majestic historical banner featuring intricate Persian geometric patterns and gold inlay on a dark velvet background. The lighting is dramatic, casting deep shadows that emphasize the tactile texture of the fabric and the glowing metallic threads. The overall mood is powerful and ancient, fitting a strategic imperial setting." class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="A majestic historical banner featuring intricate Persian geometric patterns and gold inlay on a dark velvet background. The lighting is dramatic, casting deep shadows that emphasize the tactile texture of the fabric and the glowing metallic threads. The overall mood is powerful and ancient, fitting a strategic imperial setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeJxOoLA_8lcLrwL_WFX0uNHyZFNPL2td3Cdw35DdIV7wFGqOtU9TlIVzF1bAQa1eg77ZafW-4rpHspFIuVMQZRE_40cNKICWG03X2E9i0g80uxyYqqz2c8F5koPRmLpi7EB9eRnYJr4olw0GJMlwSQwI7nY_PYn0dzhxXGjKw9MovG9eoH_1fo3E1ac7rHRqtYgdMnDzDzWjTDG7pcR4hST0J41OO45Kx14KrgP3HrSGkxqIRx_ZNKte8E-N2kJmkrg5BVEoaS-Ta"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"></div>
+<div class="absolute bottom-6 left-0 right-0 text-center">
+<h2 class="font-headline-md text-headline-md text-secondary uppercase tracking-widest">TİMURLU</h2>
+<p class="font-label-lg text-label-lg text-on-surface-variant uppercase mt-2">Bozkırın Hakimi</p>
+</div>
+</div>
+<!-- Indicator -->
+<div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3 h-3 bg-tertiary rotate-45 shadow-[0_0_10px_#ffb4a8]"></div>
+</div>
+<!-- Faction Card 2: Roman -->
+<div class="snap-center shrink-0 w-[260px] md:w-[320px] flex flex-col items-center opacity-50 hover:opacity-100 transition-opacity duration-500 cursor-pointer mt-10 md:mt-16">
+<div class="w-full aspect-[2/3] border border-secondary-container bg-surface-container relative overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="A weathered Roman legion standard (Aquila) against a dramatic, stormy sky. The golden eagle is tarnished but proud, mounted on a wooden pole with crimson ribbons. The lighting is harsh, highlighting the cold metal and the deep reds, conveying a sense of disciplined military might." class="w-full h-full object-cover" data-alt="A weathered Roman legion standard (Aquila) against a dramatic, stormy sky. The golden eagle is tarnished but proud, mounted on a wooden pole with crimson ribbons. The lighting is harsh, highlighting the cold metal and the deep reds, conveying a sense of disciplined military might." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATEVHzYX6U3cM3d8JMfdB7h1scRKtufQArGeEEpyMO-cZK0PsBACUGM12NUkItohcdar3G1JqWQDYykXdpSp_tuLfBQCA3ctZdhZpiJoUjbfSFBwTsmfKsJAKYcQSbfrvIRdUY0JcHvWwBTRPseZBpiPDGGoRT47urhPY_f7EdG49RTRdoQWoZI7DspgqDP-6FAXEVEWCHkcbTfjmiJL_sLxpnfYyP_NtSCtKELohUqJu7SFkG1ibNDiLhwV5wyXkbcPKK2-MIjTca"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+<div class="absolute bottom-6 left-0 right-0 text-center">
+<h2 class="font-headline-md text-headline-md text-secondary-container uppercase tracking-widest">ROMA</h2>
+</div>
+</div>
+</div>
+<!-- Faction Card 3: Byzantine -->
+<div class="snap-center shrink-0 w-[260px] md:w-[320px] flex flex-col items-center opacity-50 hover:opacity-100 transition-opacity duration-500 cursor-pointer mt-10 md:mt-16">
+<div class="w-full aspect-[2/3] border border-secondary-container bg-surface-container relative overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="A Byzantine double-headed eagle emblem cast in heavy gold, set against a backdrop of deep purple and crimson mosaic tiles. The scene is illuminated by flickering candlelight, creating an atmosphere of ancient mystery, religious authority, and imperial decadence." class="w-full h-full object-cover" data-alt="A Byzantine double-headed eagle emblem cast in heavy gold, set against a backdrop of deep purple and crimson mosaic tiles. The scene is illuminated by flickering candlelight, creating an atmosphere of ancient mystery, religious authority, and imperial decadence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2yR0oXZ3KBFxFf8VokuUgXNFNwyWrTLxt4HuiNL3tIr-dmZtqh7yExK_kr2CcPgKJUBtCdOa1zbyYHLc0vTs0sjUDC61f3Rl02-KM4abSMj7GX4Q-xT6sdnfioPP1HtV5ioxrKIJJnjgYSbR7kqhwZ92sWVvLbC0GQA1vo_mfwkBkjkRJjvTcMLKelPdQ4lwq8Qq7C8Xc4CzpU_-fzQ7exbCgDjsDp3uuZxTLx5m-OlZAcCaLEAgHQDjOy3EUjkiVW9xbzilhPV1k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+<div class="absolute bottom-6 left-0 right-0 text-center">
+<h2 class="font-headline-md text-headline-md text-secondary-container uppercase tracking-widest">BİZANS</h2>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Details Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-[80px]">
+<!-- Kültürel Bellek -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4 border-b border-secondary-container pb-2">
+<span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<h3 class="font-headline-sm text-headline-sm text-secondary uppercase">Kültürel Bellek</h3>
+</div>
+<div class="bg-surface-container border border-secondary-container p-6 relative girih-pattern">
+<div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-secondary"></div>
+<div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-secondary"></div>
+<div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-secondary"></div>
+<div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-secondary"></div>
+<p class="font-body-md text-body-md text-on-surface mb-4 leading-relaxed">
+                        Cengiz Han'ın mirasını devralan ve Maveraünnehir'den Hindistan'a kadar uzanan geniş coğrafyada bilim, sanat ve mimariyi zirveye taşıyan bir imparatorluk. Semerkant'ın mavi kubbeleri altında, gökyüzünü inceleyen astronomlar ve savaş meydanlarında rüzgar gibi esen süvariler.
+                    </p>
+<ul class="flex flex-col gap-3 mt-6">
+<li class="flex items-start gap-3 border-b border-surface-variant pb-3 last:border-0">
+<div class="w-2 h-2 bg-secondary rotate-45 mt-2 shrink-0"></div>
+<div>
+<h4 class="font-label-lg text-label-lg text-secondary">Yasa ve Töre</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Geleneksel bozkır kanunları ile İslami hukukun mükemmel sentezi.</p>
+</div>
+</li>
+<li class="flex items-start gap-3 border-b border-surface-variant pb-3 last:border-0">
+<div class="w-2 h-2 bg-secondary rotate-45 mt-2 shrink-0"></div>
+<div>
+<h4 class="font-label-lg text-label-lg text-secondary">Rönesansın Doğuşu</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Uluğ Bey Rasathanesi ve Ali Kuşçu'nun matematiksel dehası.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Stratejik Güçler -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4 border-b border-secondary-container pb-2">
+<span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">swords</span>
+<h3 class="font-headline-sm text-headline-sm text-secondary uppercase">Stratejik Güçler</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Stat 1 -->
+<div class="bg-surface-container border border-secondary-container p-4 flex flex-col gap-3 hover:border-secondary transition-colors duration-300">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+<span class="bg-tertiary-container text-tertiary font-label-sm text-label-sm px-2 py-1 uppercase rounded-sm border border-tertiary/30">+20%</span>
+</div>
+<h4 class="font-label-lg text-label-lg text-secondary uppercase">Süvari Üstünlüğü</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Ağır zırhlı süvariler ile açık alanda durdurulamaz hücum gücü.</p>
+</div>
+<!-- Stat 2 -->
+<div class="bg-surface-container border border-secondary-container p-4 flex flex-col gap-3 hover:border-secondary transition-colors duration-300">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="bg-secondary-container text-secondary font-label-sm text-label-sm px-2 py-1 uppercase rounded-sm border border-secondary/30">+15%</span>
+</div>
+<h4 class="font-label-lg text-label-lg text-secondary uppercase">Kültürel Etki</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Fethedilen topraklarda hızlı asimilasyon ve bilimsel ilerleme hızı.</p>
+</div>
+<!-- Stat 3 -->
+<div class="bg-surface-container border border-secondary-container p-4 flex flex-col gap-3 hover:border-secondary transition-colors duration-300">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">fort</span>
+<span class="bg-primary-container text-primary font-label-sm text-label-sm px-2 py-1 uppercase rounded-sm border border-primary/30">+10%</span>
+</div>
+<h4 class="font-label-lg text-label-lg text-secondary uppercase">Kuşatma Sanatı</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Gelişmiş topçu birlikleri ve mühendislik ile surları yıkma becerisi.</p>
+</div>
+<!-- Stat 4 -->
+<div class="bg-surface-container border border-secondary-container p-4 flex flex-col gap-3 hover:border-secondary transition-colors duration-300">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="bg-error-container text-error font-label-sm text-label-sm px-2 py-1 uppercase rounded-sm border border-error/30">-10%</span>
+</div>
+<h4 class="font-label-lg text-label-lg text-secondary uppercase">Donanma Zafiyeti</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Deniz savaşlarında ve kıyı savunmasında taktiksel dezavantaj.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Section -->
+<section class="flex justify-center items-center pb-[120px]">
+<button class="bg-background border border-secondary text-secondary font-label-lg text-label-lg uppercase px-12 py-4 tracking-widest hover:bg-tertiary-container hover:border-tertiary hover:text-tertiary transition-all duration-300 flex items-center gap-3 relative group">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-3 h-3 bg-secondary rotate-45 group-hover:bg-tertiary transition-colors duration-300"></span>
+                İmparatorluğu Seç
+                <span class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-3 h-3 bg-secondary rotate-45 group-hover:bg-tertiary transition-colors duration-300"></span>
+</button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container text-secondary font-label-sm text-label-sm uppercase border-t border-secondary-container shadow-lg md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-all active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">book_2</span>
+<span>ARCHIVE</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-all active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">map</span>
+<span>MAP</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-lg p-2 border border-secondary hover:bg-surface-container-high transition-all active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span>FACTIONS</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-high transition-all active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">history_edu</span>
+<span>CODEX</span>
+</div>
+</nav>
+</body></html>
