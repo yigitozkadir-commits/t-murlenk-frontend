@@ -1,0 +1,112 @@
+{
+  "name": "discord-bug",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "discord-bug",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-discord-bug",
+      "name": "Webhook — Discord Bug",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $input.first().json.body;\nconst aciklama = body.aciklama || 'Açıklama yok';\nconst kullanici = body.kullanici || 'Bilinmeyen';\nconst tarih = body.tarih || new Date().toISOString();\n\nreturn [{\n  json: {\n    aciklama,\n    kullanici,\n    tarih,\n    github_baslik: `[Discord Bug] ${aciklama.slice(0, 80)}`,\n    github_body: `**Raporlayan:** ${kullanici}\\n**Tarih:** ${tarih}\\n\\n**Açıklama:**\\n${aciklama}\\n\\n---\\n*Discord bot tarafından otomatik oluşturuldu*`\n  }\n}];"
+      },
+      "id": "hazirla-discord-bug",
+      "name": "Veriyi Hazırla",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.github.com/repos/={{ $env.GITHUB_REPO }}/issues",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "token {{ $env.GITHUB_TOKEN }}" },
+            { "name": "Accept", "value": "application/vnd.github+json" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "title", "value": "={{ $json.github_baslik }}" },
+            { "name": "body", "value": "={{ $json.github_body }}" },
+            { "name": "labels", "value": "[\"bug\",\"discord\"]" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "github-issue-ac",
+      "name": "GitHub Issue Aç",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 220]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.DISCORD_WEBHOOK_URL }}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "content",
+              "value": "🐛 **Yeni Bug → GitHub Issue oluşturuldu**\\n`{{ $json.aciklama.slice(0, 100) }}`\\nRaporlayan: {{ $json.kullanici }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "discord-konfirmasyon",
+      "name": "Discord Konfirmasyon",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 380]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\"ok\": true}"
+      },
+      "id": "webhook-yanit",
+      "name": "Webhook Yanıt",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [900, 300]
+    }
+  ],
+  "connections": {
+    "Webhook — Discord Bug": {
+      "main": [[{ "node": "Veriyi Hazırla", "type": "main", "index": 0 }]]
+    },
+    "Veriyi Hazırla": {
+      "main": [
+        [
+          { "node": "GitHub Issue Aç", "type": "main", "index": 0 },
+          { "node": "Discord Konfirmasyon", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "GitHub Issue Aç": {
+      "main": [[{ "node": "Webhook Yanıt", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "staticData": null,
+  "meta": { "templateCredsSetupCompleted": true },
+  "pinData": {},
+  "versionId": "gokumay-discord-bug-v1",
+  "triggerCount": 0,
+  "tags": [{ "name": "gokumay" }, { "name": "bug" }]
+}

@@ -1,0 +1,99 @@
+{
+  "name": "deploy-itch",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "deploy-itch",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-deploy",
+      "name": "Webhook — Deploy",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $input.first().json.body;\nconst oyun_slug = body.oyun_slug;\nconst versiyon = body.versiyon;\nconst dosya_yolu = body.dosya_yolu;\nconst kanal = body.kanal || 'html5';\n\nif (!oyun_slug || !dosya_yolu) {\n  throw new Error('oyun_slug ve dosya_yolu zorunlu');\n}\n\nreturn [{ json: { oyun_slug, versiyon, dosya_yolu, kanal, kullanici_adi: $env.ITCH_USERNAME } }];"
+      },
+      "id": "dogrula",
+      "name": "Parametreleri Doğrula",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "command": "butler push \"{{ $json.dosya_yolu }}\" \"{{ $json.kullanici_adi }}/{{ $json.oyun_slug }}:{{ $json.kanal }}\" --userversion \"{{ $json.versiyon }}\" 2>&1 | tail -5"
+      },
+      "id": "butler-push",
+      "name": "Butler Push (itch.io CLI)",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const cikti = $input.first().json.stdout || '';\nconst hata = $input.first().json.stderr || '';\nconst basarili = cikti.includes('wharf:') || cikti.includes('Build is now processing');\n\nreturn [{\n  json: {\n    basarili,\n    mesaj: basarili ? '✅ itch.io deploy tamamlandı' : `❌ Deploy başarısız: ${hata.slice(0, 200)}`,\n    cikti: cikti.slice(0, 500)\n  }\n}];"
+      },
+      "id": "sonuc-kontrol",
+      "name": "Sonuç Kontrol",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.DISCORD_WEBHOOK_URL }}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "content",
+              "value": "={{ $json.mesaj }}\\nhttps://{{ $env.ITCH_USERNAME }}.itch.io/{{ $('Parametreleri Doğrula').item.json.oyun_slug }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "discord-bildir",
+      "name": "Discord'a Bildir",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1100, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ basarili: $json.basarili, mesaj: $json.mesaj }) }}"
+      },
+      "id": "webhook-yanit",
+      "name": "Webhook Yanıt",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1300, 300]
+    }
+  ],
+  "connections": {
+    "Webhook — Deploy": {
+      "main": [[{ "node": "Parametreleri Doğrula", "type": "main", "index": 0 }]]
+    },
+    "Parametreleri Doğrula": {
+      "main": [[{ "node": "Butler Push (itch.io CLI)", "type": "main", "index": 0 }]]
+    },
+    "Butler Push (itch.io CLI)": {
+      "main": [[{ "node": "Sonuç Kontrol", "type": "main", "index": 0 }]]
+    },
+    "Sonuç Kontrol": {
+      "main": [[{ "node": "Discord'a Bildir", "type": "main", "index": 0 }]]
+    },
+    "Discord'a Bildir": {
+      "main": [[{ "node": "Webhook Yanıt", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "gokumay" }, { "name": "deploy" }]
+}

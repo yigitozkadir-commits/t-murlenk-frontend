@@ -1,0 +1,108 @@
+{
+  "name": "discord-duyuru",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "discord-duyuru",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-duyuru",
+      "name": "Webhook — Duyuru",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $input.first().json.body;\nconst oyun = body.oyun || 'Gök Umay';\nconst versiyon = body.versiyon || 'v1';\nconst ozet = body.ozet || '';\nconst itch_url = body.itch_url || '';\n\nconst discord_mesaj = [\n  `🎮 **${oyun} ${versiyon} yayında!**`,\n  ozet ? `\\n${ozet}` : '',\n  itch_url ? `\\n▶️ Oyna: ${itch_url}` : ''\n].filter(Boolean).join('');\n\nconst reddit_baslik = `${oyun} ${versiyon} — ${ozet.slice(0, 100)}`;\n\nreturn [{ json: { oyun, versiyon, ozet, itch_url, discord_mesaj, reddit_baslik } }];"
+      },
+      "id": "mesaj-hazirla",
+      "name": "Mesaj Hazırla",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.DISCORD_WEBHOOK_URL }}",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "content", "value": "={{ $json.discord_mesaj }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "discord-gonder",
+      "name": "Discord Gönder",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 180]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.TELEGRAM_API_URL }}/bot{{ $env.TELEGRAM_BOT_TOKEN }}/sendMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "chat_id", "value": "={{ $env.TELEGRAM_CHAT_ID }}" },
+            { "name": "text", "value": "={{ $json.discord_mesaj }}" },
+            { "name": "parse_mode", "value": "Markdown" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "telegram-gonder",
+      "name": "Telegram Gönder",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Termux bildirimi için log kaydı\nconst { oyun, versiyon } = $input.first().json;\nconsole.log(`✅ Duyuru gönderildi: ${oyun} ${versiyon}`);\nreturn [{ json: { durum: 'ok', oyun, versiyon, zaman: new Date().toISOString() } }];"
+      },
+      "id": "log-kaydet",
+      "name": "Log Kaydet",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 240]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}"
+      },
+      "id": "webhook-yanit",
+      "name": "Webhook Yanıt",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1100, 240]
+    }
+  ],
+  "connections": {
+    "Webhook — Duyuru": {
+      "main": [[{ "node": "Mesaj Hazırla", "type": "main", "index": 0 }]]
+    },
+    "Mesaj Hazırla": {
+      "main": [
+        [
+          { "node": "Discord Gönder", "type": "main", "index": 0 },
+          { "node": "Telegram Gönder", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Discord Gönder": {
+      "main": [[{ "node": "Log Kaydet", "type": "main", "index": 0 }]]
+    },
+    "Log Kaydet": {
+      "main": [[{ "node": "Webhook Yanıt", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "gokumay" }, { "name": "duyuru" }]
+}

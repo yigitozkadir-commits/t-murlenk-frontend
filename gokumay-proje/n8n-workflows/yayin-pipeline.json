@@ -1,0 +1,142 @@
+{
+  "name": "yayin-pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "yayin-pipeline",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-yayin",
+      "name": "Webhook — Yayın Pipeline",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Adım 1: Parametreleri doğrula\nconst body = $input.first().json.body;\nconst zorunlu = ['oyun_slug', 'versiyon', 'dosya_yolu', 'ozet'];\nconst eksik = zorunlu.filter(k => !body[k]);\n\nif (eksik.length > 0) {\n  throw new Error(`Eksik parametre: ${eksik.join(', ')}`);\n}\n\nreturn [{\n  json: {\n    oyun_slug: body.oyun_slug,\n    versiyon: body.versiyon,\n    dosya_yolu: body.dosya_yolu,\n    ozet: body.ozet,\n    itch_url: `https://${$env.ITCH_USERNAME}.itch.io/${body.oyun_slug}`,\n    baslangic: new Date().toISOString(),\n    adimlar: []\n  }\n}];"
+      },
+      "id": "baslangic-kontrol",
+      "name": "Başlangıç Kontrolü",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.N8N_URL }}/webhook/deploy-itch",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "oyun_slug", "value": "={{ $json.oyun_slug }}" },
+            { "name": "versiyon", "value": "={{ $json.versiyon }}" },
+            { "name": "dosya_yolu", "value": "={{ $json.dosya_yolu }}" }
+          ]
+        },
+        "options": { "timeout": 120000 }
+      },
+      "id": "itch-deploy-cagir",
+      "name": "1. itch.io Deploy",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 260]
+    },
+    {
+      "parameters": {
+        "jsCode": "const deploy = $('1. itch.io Deploy').item.json;\nconst pipeline = $('Başlangıç Kontrolü').item.json;\n\nif (!deploy.basarili) {\n  throw new Error(`Deploy başarısız: ${deploy.mesaj}`);\n}\n\nreturn [{ json: { ...pipeline, deploy_tamam: true } }];"
+      },
+      "id": "deploy-kontrol",
+      "name": "Deploy Kontrol",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 400]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.N8N_URL }}/webhook/discord-duyuru",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "oyun", "value": "={{ $json.oyun_slug }}" },
+            { "name": "versiyon", "value": "={{ $json.versiyon }}" },
+            { "name": "ozet", "value": "={{ $json.ozet }}" },
+            { "name": "itch_url", "value": "={{ $json.itch_url }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "duyuru-gonder",
+      "name": "2. Duyuru Gönder",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [940, 260]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Sentry release oluştur (varsa)\nconst { oyun_slug, versiyon } = $input.first().json;\nconst sentry_dsn = $env.SENTRY_DSN;\n\nif (!sentry_dsn) {\n  return [{ json: { ...($input.first().json), sentry_atlandı: true } }];\n}\n\n// Sentry API çağrısı burada olacak\n// Şimdilik log\nconsole.log(`Sentry release: ${oyun_slug}@${versiyon}`);\nreturn [{ json: { ...($input.first().json), sentry_tamam: true } }];"
+      },
+      "id": "sentry-release",
+      "name": "3. Sentry Release",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [940, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "const pipeline = $('Başlangıç Kontrolü').item.json;\nconst bitis = new Date();\nconst baslangic = new Date(pipeline.baslangic);\nconst sure_sn = Math.round((bitis - baslangic) / 1000);\n\nconst ozet = {\n  oyun: pipeline.oyun_slug,\n  versiyon: pipeline.versiyon,\n  deploy: '✅',\n  duyuru: '✅',\n  sure: `${sure_sn}s`,\n  itch_url: pipeline.itch_url,\n  tamamlandi: bitis.toISOString()\n};\n\nconsole.log('🚀 Yayın Pipeline Tamamlandı:', JSON.stringify(ozet, null, 2));\nreturn [{ json: ozet }];"
+      },
+      "id": "pipeline-ozet",
+      "name": "Pipeline Özeti",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1180, 340]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}"
+      },
+      "id": "webhook-yanit",
+      "name": "Webhook Yanıt",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1400, 340]
+    }
+  ],
+  "connections": {
+    "Webhook — Yayın Pipeline": {
+      "main": [[{ "node": "Başlangıç Kontrolü", "type": "main", "index": 0 }]]
+    },
+    "Başlangıç Kontrolü": {
+      "main": [
+        [
+          { "node": "1. itch.io Deploy", "type": "main", "index": 0 },
+          { "node": "Deploy Kontrol", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Deploy Kontrol": {
+      "main": [
+        [
+          { "node": "2. Duyuru Gönder", "type": "main", "index": 0 },
+          { "node": "3. Sentry Release", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "2. Duyuru Gönder": {
+      "main": [[{ "node": "Pipeline Özeti", "type": "main", "index": 0 }]]
+    },
+    "3. Sentry Release": {
+      "main": [[{ "node": "Pipeline Özeti", "type": "main", "index": 0 }]]
+    },
+    "Pipeline Özeti": {
+      "main": [[{ "node": "Webhook Yanıt", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "gokumay" }, { "name": "yayin" }, { "name": "pipeline" }]
+}

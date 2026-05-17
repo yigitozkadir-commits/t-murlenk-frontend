@@ -1,0 +1,30 @@
+# Gök Umay Claude Config Repo — .gitignore
+
+# Gizli bilgiler — asla commit etme
+.env
+.env.*
+*.key
+*.pem
+*.secret
+
+# Oturum verileri — kişisel, repo'ya gitmesin
+session-backups/
+logs/
+*.jsonl
+
+# Hook'lar lokalde çalışır — repo'ya gitmez
+# (kurulum-hooks.sh bu dosyaları oluşturur)
+hooks/
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# Termux geçici
+*.tmp
+*.cache
+
+# İşletim sistemi
+Thumbs.db
+
+
