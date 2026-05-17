@@ -1,0 +1,70 @@
+# Gök Umay — .claudeignore
+# Token tasarrufu: Bu dosyalar Claude tarafından okunmaz
+# KURAL: Sadece gereksiz büyük dosyaları dışla — oyun asset'lerini engelleme
+
+# ── Bağımlılıklar ──────────────────────────────────
+node_modules/
+bower_components/
+
+# ── Build çıktıları ────────────────────────────────
+dist/
+build/
+.next/
+.nuxt/
+out/
+coverage/
+
+# ── Log ve geçici ──────────────────────────────────
+*.log
+*.tmp
+*.cache
+.DS_Store
+Thumbs.db
+
+# ── Paket kilitleri ────────────────────────────────
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ── Ortam ve gizli ────────────────────────────────
+.env
+.env.*
+*.pem
+*.key
+
+# ── Python ────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# ── Medya — SADECE assets klasöründe ──────────────
+# NOT: Proje kökündeki .svg, .png gibi dosyalar
+# oyun kodu veya ikonlar olabilir — onları dışlama
+assets/images/**
+assets/audio/**
+assets/video/**
+public/images/**
+
+# ── Minified (büyük, okunması anlamsız) ───────────
+*.min.js
+*.min.css
+three.min.js
+# Not: three.js kaynak kodunu okumak gerekirse CDN linkini kullan
+
+# ── Git ───────────────────────────────────────────
+.git/
+.gitmodules
+
+# ── IDE ───────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Capacitor build çıktıları ─────────────────────
+android/
+ios/
+# Not: capacitor.config.json dosyasını dışlama — okunması gerekir
+
+

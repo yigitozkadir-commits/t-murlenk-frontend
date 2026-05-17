@@ -1,0 +1,20 @@
+{
+  "name": "gokumay-tools",
+  "version": "1.0.0",
+  "description": "Gök Umay Stüdyo MCP Sunucusu — 7 araç",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "start": "tsx index.ts",
+    "test": "tsx index.ts 2>&1 | head -5"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@supabase/supabase-js": "^2.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}
